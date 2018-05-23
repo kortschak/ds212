@@ -1,5 +1,5 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
-  Brief   : µ×²ãÓ²¼şÅäÖÃ  
+  Brief   : åº•å±‚ç¡¬ä»¶é…ç½®  
  Version  : DS212                                                 Author : bure 
 *******************************************************************************/
 #include "Interrupt.h"
@@ -36,22 +36,22 @@ u16  KeyM_Dly = 0;
 extern u8  Menu_Temp[5];
 
 /*******************************************************************************
- Wait_mS: ÑÓÊ±³ÌĞò¡£ ÊäÈë: ÑÓÊ±µÄºÁÃëÖµ£¨ÔÚ72MHzÖ÷ÆµÇé¿öÏÂ£©
+ Wait_mS: å»¶æ—¶ç¨‹åºã€‚ è¾“å…¥: å»¶æ—¶çš„æ¯«ç§’å€¼ï¼ˆåœ¨72MHzä¸»é¢‘æƒ…å†µä¸‹ï¼‰
 *******************************************************************************/
-void Wait_mS(u16 mS) // ÊäÈëÖµÎª 0~65536 mS
+void Wait_mS(u16 mS) // è¾“å…¥å€¼ä¸º 0~65536 mS
 {
   WaitCnt = mS;
   while(WaitCnt){};
 }
 /*******************************************************************************
- SysTick_ISP:  SysTick ¶¨Ê±ÖĞ¶Ï´¦Àí³ÌĞò 
+ SysTick_ISP:  SysTick å®šæ—¶ä¸­æ–­å¤„ç†ç¨‹åº 
 *******************************************************************************/
 void SysTick_ISP(void)
 {
   u16 i;
   
   if(WaitCnt) WaitCnt--;
-  if(KeymS_F)KeymS_Cnt++;                  //µ¥»÷ºó¼ÆÊ±
+  if(KeymS_F)KeymS_Cnt++;                  //å•å‡»åè®¡æ—¶
   if(KeyS_Dly)KeyS_Dly--;
   if(KeyM_Dly)KeyM_Dly--;
 
@@ -62,21 +62,21 @@ void SysTick_ISP(void)
     if(SysCnt == 1000)
     {
       SysCnt = 0;
-      //------------µçÁ¿¼ì²â------------------
+      //------------ç”µé‡æ£€æµ‹------------------
 
       for(i=0; i<4; i++) if(Vbat <= V_BT[i]) break;
       if( __Info(P_VUSB)){
         Battery = 5;
       } else         Battery = i;
       
-      //----------------´ı»ú---------------- 
+      //----------------å¾…æœº---------------- 
       if((PopMenu3_Value[SYS_Standy]!=0)&& (PD_Cnt > 0))
-        PD_Cnt--;      //´ı»ú¼ÇÊ±
+        PD_Cnt--;      //å¾…æœºè®°æ—¶
       if((PopMenu3_Value[SYS_PowerOff]!=0)&& (AutoPwr_Cnt > 0))
-        AutoPwr_Cnt--; //×Ô¶¯¹Ø»ú¼ÇÊ±
+        AutoPwr_Cnt--; //è‡ªåŠ¨å…³æœºè®°æ—¶
     }  
     
-    //------------µçÁ¿¼ì²â------------------
+    //------------ç”µé‡æ£€æµ‹------------------
       if(PopMenu1_Value[TIM_Base]>1) //1us
         Vb_Sum += (__Info(P_VBAT) - Vb_Sum/16);
       
@@ -85,7 +85,7 @@ void SysTick_ISP(void)
     
     if(Key_Wait_Cnt)    Key_Wait_Cnt--;
     if(Key_Repeat_Cnt)  Key_Repeat_Cnt--;
-    Key_UPD = 1;        //°´¼üÉ¨Ãè±êÖ¾
+    Key_UPD = 1;        //æŒ‰é”®æ‰«ææ ‡å¿—
     
     if(BeepCnt > 40) BeepCnt-= 40;
     else             __Ctrl(BUZZ_ST, DISABLE);
@@ -96,14 +96,14 @@ void SysTick_ISP(void)
       PopCnt = 0;
       if(!(PopType & (DAILOG_POP|PWR_POP))){
         if(PopType & FILE_POP){ 
-          //Èç¹ûÊÇÎÄ¼ş¹ÜÀí×Ó´°¿Ú£¬»Ö¸´´ò¿ªÊ±µÄµ±Ç°Ò³ºÍÑ¡Ïî
+          //å¦‚æœæ˜¯æ–‡ä»¶ç®¡ç†å­çª—å£ï¼Œæ¢å¤æ‰“å¼€æ—¶çš„å½“å‰é¡µå’Œé€‰é¡¹
           menu.current = Menu_Temp[0];
           menu.menu_index[menu.current] = Menu_Temp[1];
         }
-        ClosePop();           //DAILOG_POP¶Ô»°¿ò²»×Ô¶¯¹Ø±Õ
+        ClosePop();           //DAILOG_POPå¯¹è¯æ¡†ä¸è‡ªåŠ¨å…³é—­
       }
-      Windows_Flag = 0;      //¹Ø±Õwindows
-      if(Windows_Flag == 0){ //Çå³ıĞ¡´°¿Ú ºóÆÚ·Åµ½¶¨Ê±Æ÷´¦Àí
+      Windows_Flag = 0;      //å…³é—­windows
+      if(Windows_Flag == 0){ //æ¸…é™¤å°çª—å£ åæœŸæ”¾åˆ°å®šæ—¶å™¨å¤„ç†
         Clr_WavePosi(DAR);
       }
     }
@@ -111,33 +111,33 @@ void SysTick_ISP(void)
     if((++SysCnt%2 )== 0){
     
       if(KeyM_Dly == 0){
-      V_EncdSt = (~GPIOB->IDR)&(KU_BIT    | KD_BIT);                                // ¶ÁÈ¡±àÂëÆ÷×´Ì¬
+      V_EncdSt = (~GPIOB->IDR)&(KU_BIT    | KD_BIT);                                // è¯»å–ç¼–ç å™¨çŠ¶æ€
       if((V_EncdSt & ~V_EncdLS)& KU_BIT){
-        if(V_EncdSt & KD_BIT) Key_Exit = K_UP;                // ±àÂëÆ÷ÉÏ¶¯×÷
-        else                  Key_Exit = K_DOWN;               // ±àÂëÆ÷ÏÂ¶¯×÷
+        if(V_EncdSt & KD_BIT) Key_Exit = K_UP;                // ç¼–ç å™¨ä¸ŠåŠ¨ä½œ
+        else                  Key_Exit = K_DOWN;               // ç¼–ç å™¨ä¸‹åŠ¨ä½œ
       }
-      V_EncdLS = V_EncdSt;                                      // ±£´æ±àÂëÆ÷×´Ì¬
+      V_EncdLS = V_EncdSt;                                      // ä¿å­˜ç¼–ç å™¨çŠ¶æ€
     }
     
   if(KeyS_Dly == 0){  
-      H_EncdSt = (~GPIOB->IDR)&(KL_BIT | KR_BIT);                                // ¶ÁÈ¡±àÂëÆ÷×´Ì¬
+      H_EncdSt = (~GPIOB->IDR)&(KL_BIT | KR_BIT);                                // è¯»å–ç¼–ç å™¨çŠ¶æ€
       if((H_EncdSt & ~H_EncdLS)& KL_BIT){
-        if(H_EncdSt & KR_BIT) Key_Exit = K_LEFT;                  // ±àÂëÆ÷ÉÏ¶¯×÷
-        else                  Key_Exit = K_RIGHT;                // ±àÂëÆ÷ÏÂ¶¯×÷
+        if(H_EncdSt & KR_BIT) Key_Exit = K_LEFT;                  // ç¼–ç å™¨ä¸ŠåŠ¨ä½œ
+        else                  Key_Exit = K_RIGHT;                // ç¼–ç å™¨ä¸‹åŠ¨ä½œ
       }
-      H_EncdLS = H_EncdSt;                                      // ±£´æ±àÂëÆ÷×´Ì¬
+      H_EncdLS = H_EncdSt;                                      // ä¿å­˜ç¼–ç å™¨çŠ¶æ€
     }
   }
   
 }
 
 /*******************************************************************************
- Bat_Vol: ¼ì²âµç³ØµçÑ¹
+ Bat_Vol: æ£€æµ‹ç”µæ± ç”µå‹
 *******************************************************************************/
 u16 Bat_Vol(void)
 {
   u16 Tmp = Vb_Sum*2/16;
-  if((Vbattrey >(Tmp+10))||(Vbattrey <(Tmp-10))) Vbattrey = Tmp; // È¥¶¶¶¯
+  if((Vbattrey >(Tmp+10))||(Vbattrey <(Tmp-10))) Vbattrey = Tmp; // å»æŠ–åŠ¨
   return Vbattrey;
 }
 
@@ -153,22 +153,22 @@ void Keys_Detect(void)
     Key_UPD = 0;
     Key_Now = __Info(KEY_IN);
     if(Key_Now &(~Key_Last)){
-      Key_Wait_Cnt   = 30;                            // ÖØÖÃ³ÖĞø°´¼ü 0.6S ¼ÆÊı
-      Key_Repeat_Cnt = 3;                             // Éè¶¨ 60mS ×Ô¶¯ÖØ¸´ÖÜÆÚ
+      Key_Wait_Cnt   = 30;                            // é‡ç½®æŒç»­æŒ‰é”® 0.6S è®¡æ•°
+      Key_Repeat_Cnt = 3;                             // è®¾å®š 60mS è‡ªåŠ¨é‡å¤å‘¨æœŸ
       //if(Key_Now & 0x01)  Tmp_PWR = K_PWR;
       if(Key_Now & 0x02)  Tmp_RUN = K_RUN;
       if(Key_Now & 0x80)  Tmp_S   = K_S;
       if(Key_Now & 0x01)  //Tmp_S = K_S;
       {
-        if(KeymS_F){                            // OK¼üË«»÷                     
-              KeymS_F = 0;                        //µ¥»÷ºó¼ÆÊ±±êÖ¾ºó£¬KeymS_Cnt¼ÆÊ± 
-              if(KeymS_Cnt < Key_S_Time){            // KEYTIMEºÁÃëÄÚÁ¬°´Á½´Î¼´ÊÓÎªË«»÷
+        if(KeymS_F){                            // OKé”®åŒå‡»                     
+              KeymS_F = 0;                        //å•å‡»åè®¡æ—¶æ ‡å¿—åï¼ŒKeymS_Cntè®¡æ—¶ 
+              if(KeymS_Cnt < Key_S_Time){            // KEYTIMEæ¯«ç§’å†…è¿æŒ‰ä¸¤æ¬¡å³è§†ä¸ºåŒå‡»
                 KeyCode = KEY_DOUBLE_M;
               }else {
                 KeyCode = K_M;
               }
               KeymS_Cnt = 0;                      
-          }else{                                  // OK¼üË«»÷  
+          }else{                                  // OKé”®åŒå‡»  
               KeymS_Cnt = 0; 
               KeymS_F = 1;                  
               Tmp_M = K_M;
@@ -185,7 +185,7 @@ void Keys_Detect(void)
           if(Key_Now & 0x80){KeyCode = S_HOLD,Tmp_S = 0;}
           if(Key_Now & 0x02){KeyCode = R_HOLD,Tmp_RUN = 0;}
           if(Key_Now & 0x01){KeyCode = M_HOLD,Tmp_M = 0;KeymS_F = 0; KeymS_Cnt = 0; }
-          if(Key_Now & 0x83) Key_Repeat_Cnt = 150;      //Éè¶¨ 3.0S ×Ô¶¯ÖØ¸´ÖÜÆÚ
+          if(Key_Now & 0x83) Key_Repeat_Cnt = 150;      //è®¾å®š 3.0S è‡ªåŠ¨é‡å¤å‘¨æœŸ
         }
       }else {
         //if(Tmp_S)   {KeyCode = Tmp_S;   Tmp_S = 0;}
@@ -211,7 +211,7 @@ void Keys_Detect(void)
   }
 }
 /*******************************************************************************
- DevCtrl:  Ó²¼şÉè±¸¿ØÖÆ
+ DevCtrl:  ç¡¬ä»¶è®¾å¤‡æ§åˆ¶
 *******************************************************************************/
 void AiPosi(u8 Val)
 {
@@ -225,7 +225,7 @@ void Beep(u16 mS)
 {
   __Ctrl(BUZZ_ST, DISABLE);
   BeepCnt = mS; 
-  __Ctrl(BUZZVOL,PopMenu3_Value[SYS_Volume]*10);     // Éè¶¨·äÃùÆ÷ÒôÁ¿(0~100%)
+  __Ctrl(BUZZVOL,PopMenu3_Value[SYS_Volume]*10);     // è®¾å®šèœ‚é¸£å™¨éŸ³é‡(0~100%)
   __Ctrl(BUZZ_ST, ENABLE);
 }
 /*******************************************************************************
@@ -244,7 +244,7 @@ void USB_MSD_Config(void)
   GPIOA->MODER  &= 0xFCFFFFFF;
   GPIOA->MODER  |= 0x02000000;
   GPIOA->OTYPER |= 0x1000;      // Open-Drain Output
-  __Ctrl(DELAYmS, 100);         // ÑÓÊ±1Ãëºó¼ì²â°´¼ü×´Ì¬
+  __Ctrl(DELAYmS, 100);         // å»¶æ—¶1ç§’åæ£€æµ‹æŒ‰é”®çŠ¶æ€
   SCI_CLK_HIGH();
   SCI_DIO_HIGH();
     
@@ -304,7 +304,7 @@ void USB_MSD_Config(void)
   Disk_Init();
 } 
  /******************************************************************************
- ADC_Start: ÖØĞÂ¿ªÊ¼ADCÉ¨Ãè²ÉÑù
+ ADC_Start: é‡æ–°å¼€å§‹ADCæ‰«æé‡‡æ ·
 *******************************************************************************/
 void ADC_Start(void)
 {
@@ -317,19 +317,19 @@ void ADC_Start(void)
     PopMenu1_Value[WIN_Posi]= 0;
   }else Dpth = DEPTH[PopMenu1_Value[WIN_Depth]];
    if(PopMenu1_Value[TIM_Base]<2){  
-    __Ctrl(SMPL_ST, INTERLEAVE);                       // Éè¶¨½»´í¹¤×÷Ä£Ê½
-    __Ctrl(SMPLBUF, (u32)Smpl);                        // ÖØĞÂÉè¶¨DMAÍ¨µÀ1
+    __Ctrl(SMPL_ST, INTERLEAVE);                       // è®¾å®šäº¤é”™å·¥ä½œæ¨¡å¼
+    __Ctrl(SMPLBUF, (u32)Smpl);                        // é‡æ–°è®¾å®šDMAé€šé“1
     __Ctrl(SMPLNUM, Dpth/2);
   } else {
-    __Ctrl(SMPL_ST, SIMULTANEO);                       // Éè¶¨²¢ĞĞ¹¤×÷Ä£Ê½
-    __Ctrl(SMPLBUF, (u32)Smpl);                        // ÖØĞÂÉè¶¨DMAÍ¨µÀ1
+    __Ctrl(SMPL_ST, SIMULTANEO);                       // è®¾å®šå¹¶è¡Œå·¥ä½œæ¨¡å¼
+    __Ctrl(SMPLBUF, (u32)Smpl);                        // é‡æ–°è®¾å®šDMAé€šé“1
     __Ctrl(SMPLNUM, Dpth);
   }  
-  __Ctrl(SMPL_ST, ENABLE);                           // ÖØĞÂ¿ªÊ¼É¨Ãè²ÉÑù
+  __Ctrl(SMPL_ST, ENABLE);                           // é‡æ–°å¼€å§‹æ‰«æé‡‡æ ·
 } 
 
 /*******************************************************************************
- ÉèÖÃ USB Éè±¸ IO ¶Ë¿Ú   NewState = ENABLE / DISABLE
+ è®¾ç½® USB è®¾å¤‡ IO ç«¯å£   NewState = ENABLE / DISABLE
 *******************************************************************************/
 void __USB_Port(u8 NewState)
 {
@@ -347,7 +347,7 @@ void __USB_Port(u8 NewState)
   }
 }
 /*******************************************************************************
- °´¼ü³õÊ¼»¯ void Key_Init(void)
+ æŒ‰é”®åˆå§‹åŒ– void Key_Init(void)
 *******************************************************************************/
 void GPIO_SWD_NormalMode(void)  
 {

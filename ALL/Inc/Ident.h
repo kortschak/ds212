@@ -1,5 +1,5 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
- Brief : 通用安全认证模块                                          Author : bure
+ Brief : 閫氱敤瀹夊叏璁よ瘉妯″潡                                          Author : bure
 *******************************************************************************/
 #ifndef __IDENT_H
 #define __IDENT_H

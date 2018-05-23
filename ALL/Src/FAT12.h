@@ -7,30 +7,30 @@
 #include "STM32F30x.h"
 
 //-------FLASH-----W25Q64BV--------------------------------------------------//
-#define FILE_BASE_8M    0x7000     /*ÎÄ¼şÇø¿ªÊ¼µØÖ· */ 
-#define ROOT_BASE_8M    0x3000     /* ¸ùÄ¿Â¼¿ªÊ¼µØÖ·*/ 
+#define FILE_BASE_8M    0x7000     /*æ–‡ä»¶åŒºå¼€å§‹åœ°å€ */ 
+#define ROOT_BASE_8M    0x3000     /* æ ¹ç›®å½•å¼€å§‹åœ°å€*/ 
 #define FAT_LEN_8M      0x1000 
-#define FAT1_BASE_8M    0x1000     /* FAT1Çø¿ªÊ¼µØÖ·*/ 
-#define FAT2_BASE_8M    0x2000     /* FAT2Çø¿ªÊ¼µØÖ·*/ 
-#define SEC_LEN_8M      0x1000     /* ÉÈÇø³¤¶È */ 
-#define FAT1_SEC_8M     0x1        /* FAT1ÉÈÇøÊı*/ 
-#define FAT2_SEC_8M     0x1        /* FAT2ÉÈÇøÊı*/ 
-#define FAT_END_8M      0x7FF      /* Á´½Ó½áÊø*/ 
+#define FAT1_BASE_8M    0x1000     /* FAT1åŒºå¼€å§‹åœ°å€*/ 
+#define FAT2_BASE_8M    0x2000     /* FAT2åŒºå¼€å§‹åœ°å€*/ 
+#define SEC_LEN_8M      0x1000     /* æ‰‡åŒºé•¿åº¦ */ 
+#define FAT1_SEC_8M     0x1        /* FAT1æ‰‡åŒºæ•°*/ 
+#define FAT2_SEC_8M     0x1        /* FAT2æ‰‡åŒºæ•°*/ 
+#define FAT_END_8M      0x7FF      /* é“¾æ¥ç»“æŸ*/ 
 
-#define OK           0             /* ²Ù×÷Íê³É*/ 
-#define SEC_ERR      1             /* ÉÈÇø¶ÁĞ´´íÎó*/ 
-#define FAT_ERR      2             /* FAT±í¶ÁĞ´´íÎó*/ 
-#define OVER         3             /* ²Ù×÷Òç³ö*/ 
-#define NEW          4             /* ¿Õ°×/ĞÂÄ¿Â¼Ïî*/ 
-#define SUM_ERR      6             /* Ğ£ÑéºÍ´íÎó*/ 
+#define OK           0             /* æ“ä½œå®Œæˆ*/ 
+#define SEC_ERR      1             /* æ‰‡åŒºè¯»å†™é”™è¯¯*/ 
+#define FAT_ERR      2             /* FATè¡¨è¯»å†™é”™è¯¯*/ 
+#define OVER         3             /* æ“ä½œæº¢å‡º*/ 
+#define NEW          4             /* ç©ºç™½/æ–°ç›®å½•é¡¹*/ 
+#define SUM_ERR      6             /* æ ¡éªŒå’Œé”™è¯¯*/ 
 
-#define VER_ERR      1             /* °æ±¾´íÎó*/ 
-#define NO_FILE      2             /* ÎÄ¼ş²»´æÔÚ*/ 
-#define FILE_RW_ERR  3             /* ÉÈÇø¶Á´íÎó*/ 
-#define DISK_RW_ERR  4             /* ´ÅÅÌ´íÎó*/ 
+#define VER_ERR      1             /* ç‰ˆæœ¬é”™è¯¯*/ 
+#define NO_FILE      2             /* æ–‡ä»¶ä¸å­˜åœ¨*/ 
+#define FILE_RW_ERR  3             /* æ‰‡åŒºè¯»é”™è¯¯*/ 
+#define DISK_RW_ERR  4             /* ç£ç›˜é”™è¯¯*/ 
 
-#define OW           0             /* »òĞ´(Êı¾İ´Ó0±ä1¸ÄĞ´)*/ 
-#define RW           1             /* ÖØĞ´*/ 
+#define OW           0             /* æˆ–å†™(æ•°æ®ä»0å˜1æ”¹å†™)*/ 
+#define RW           1             /* é‡å†™*/ 
 
 extern u8 Clash;
 

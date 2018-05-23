@@ -24,8 +24,8 @@ typedef void (*pFunc)(void);
 void MSD_Disk_Config(void);
 void Set_Licence(u16 x, u16 y);
 
-//===============================APP°æ±¾ºÅ======================================
-u8  APP_VERSION[] = "V1.03";   //²»µÃ³¬¹ı12¸ö×Ö·û
+//===============================APPç‰ˆæœ¬å·======================================
+u8  APP_VERSION[] = "V1.03";   //ä¸å¾—è¶…è¿‡12ä¸ªå­—ç¬¦
 
 u16 Key_Flag = 0; 
 u8  CalPop_Flag = 1, ResPop_Flag = 1; 
@@ -36,20 +36,20 @@ u8  Channel = 0;
 
 void main(void)
 {
-  //===============================ÏµÍ³³õÊ¼»¯===================================
+  //===============================ç³»ç»Ÿåˆå§‹åŒ–===================================
   __Ctrl(SYS_CFG, RCC_DEV | TIM_DEV | GPIO_OPA | ADC_DAC | SPI );
 
- GPIO_SWD_NormalMode() ;  //¹Ø±ÕSWDÉÕÂ¼¿Ú¹¦ÄÜ
+ GPIO_SWD_NormalMode() ;  //å…³é—­SWDçƒ§å½•å£åŠŸèƒ½
  
 #if   defined (APP1)  
-  NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x8000);      //µÚÒ»·ÖÇøAPP
+  NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x8000);      //ç¬¬ä¸€åˆ†åŒºAPP
 #elif defined (APP2)  
-  NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x20000);     //µÚ¶ş·ÖÇøAPP
+  NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x20000);     //ç¬¬äºŒåˆ†åŒºAPP
 #endif  
   SysTick_Config(SystemCoreClock/1000);                 //SysTick = 1mS
-  __Ctrl(B_LIGHT, 50);                                  //´ò¿ª LCD ±³¹âÕÕÃ÷ 50%
+  __Ctrl(B_LIGHT, 50);                                  //æ‰“å¼€ LCD èƒŒå…‰ç…§æ˜ 50%
 
-  __Ctrl(BUZZVOL, 50);                                  //Éè¶¨·äÃùÆ÷ÒôÁ¿(0~100%) 
+  __Ctrl(BUZZVOL, 50);                                  //è®¾å®šèœ‚é¸£å™¨éŸ³é‡(0~100%) 
   Beep(200);                                            //200mS                                     
   
   USB_MSD_Config();
@@ -60,7 +60,7 @@ void main(void)
   __Ctrl(SMPLNUM, DEPTH[PopMenu1_Value[WIN_Depth]]);
   __Ctrl(SMPL_ST, ENABLE);
   
-  //=============================ÏÔÊ¾¿ª»úÌáÊ¾ĞÅÏ¢Ò³Ãæ===========================  
+  //=============================æ˜¾ç¤ºå¼€æœºæç¤ºä¿¡æ¯é¡µé¢===========================  
   SetColor(BLK, WHT);
   DispStr(0,      90, PRN, "                                        ");
   DispStr(0,      70, PRN, "                                        ");
@@ -80,7 +80,7 @@ void main(void)
   memset(VRAM_PTR+TR1_pBUF, ~0,    900); 
   memcpy(VRAM_PTR+TAB_PTR,  PARAM,  90);  
   
-  //=============================µÚÒ»´ÎĞ´¹Ì¼ş×Ô¶¯Ğ£×¼===========================   
+  //=============================ç¬¬ä¸€æ¬¡å†™å›ºä»¶è‡ªåŠ¨æ ¡å‡†===========================   
   Read_CalFlag();
   /**/
   if(Cal_Flag == 1){  
@@ -90,80 +90,80 @@ void main(void)
     DispStr(8, 70, PRN, "                                        ");
     DispStr(8, 90, PRN, "      Run the calibration program...    ");
     DispStr(8, 70, PRN, "        Please wait a few seconds       ");
-    Zero_Align();                              //´¹Ö±Î»ÒÆÁãµãĞ£Õı 
-    Restore_OrigVal();                         //ÖØÖÃ²ÎÊı
-    Save_Param();                              //±£´æ²ÎÊı
+    Zero_Align();                              //å‚ç›´ä½ç§»é›¶ç‚¹æ ¡æ­£ 
+    Restore_OrigVal();                         //é‡ç½®å‚æ•°
+    Save_Param();                              //ä¿å­˜å‚æ•°
     Save_Kpg();
   }
   
-  //=============================Ö÷½çÃæÏÔÊ¾=====================================   
-  Read_Kpg();                                   //¶ÁÈ¡Ğ£×¼²ÎÊı
-  Load_Param();                                 //´ÓUÅÌ¶ÁÈ¡±£´æ²ÎÊı
-  File_Num();                                   //¶ÁÈ¡ÎÄ¼ş±àºÅ
-  ClrScrn(DAR);                                 //±³¾°ÇåÆÁ
-  menu.menu_flag = 1;                           //menuÖ÷²Ëµ¥
-  menu.mflag  |= UPD;                           //menuÑ¡Ïî
-  menu.iflag  |= UPD;                           //menu×Ó²Ëµ¥
-  Label_Flag  |= UPD;                           //ÓÎ±ê
-  Show_Title();                                 //ÏÔÊ¾
-  Show_Menu();                                  //Ö÷²Ëµ¥ºÍÑ¡Ïî   
-  Update_Proc_All();                            //²Ù×÷Ë¢ĞÂ
-  Update_Label();                               //ÓÎ±êÏÔÊ¾
+  //=============================ä¸»ç•Œé¢æ˜¾ç¤º=====================================   
+  Read_Kpg();                                   //è¯»å–æ ¡å‡†å‚æ•°
+  Load_Param();                                 //ä»Uç›˜è¯»å–ä¿å­˜å‚æ•°
+  File_Num();                                   //è¯»å–æ–‡ä»¶ç¼–å·
+  ClrScrn(DAR);                                 //èƒŒæ™¯æ¸…å±
+  menu.menu_flag = 1;                           //menuä¸»èœå•
+  menu.mflag  |= UPD;                           //menué€‰é¡¹
+  menu.iflag  |= UPD;                           //menuå­èœå•
+  Label_Flag  |= UPD;                           //æ¸¸æ ‡
+  Show_Title();                                 //æ˜¾ç¤º
+  Show_Menu();                                  //ä¸»èœå•å’Œé€‰é¡¹   
+  Update_Proc_All();                            //æ“ä½œåˆ·æ–°
+  Update_Label();                               //æ¸¸æ ‡æ˜¾ç¤º
   Print_dT_Info(INV);
   Print_dV_Info(INV);
   Battery_Show();              
-  MenuCnt = 5000;                               //MenuÖ÷²Ëµ¥µÚÒ»´Î´ı»úÊ±¼ä
-  PD_Cnt      = PopMenu3_Value[SYS_Standy]*Unit;   //ÆÁÄ»´ı»úÊ±¼ä
-  AutoPwr_Cnt = PopMenu3_Value[SYS_PowerOff]*Unit; //×Ô¶¯¹Ø»úÊ±¼ä
+  MenuCnt = 5000;                               //Menuä¸»èœå•ç¬¬ä¸€æ¬¡å¾…æœºæ—¶é—´
+  PD_Cnt      = PopMenu3_Value[SYS_Standy]*Unit;   //å±å¹•å¾…æœºæ—¶é—´
+  AutoPwr_Cnt = PopMenu3_Value[SYS_PowerOff]*Unit; //è‡ªåŠ¨å…³æœºæ—¶é—´
   if(PopMenu1_Value[TRI_Fit])Key_S_Time = 300;
   else                       Key_S_Time = 0;
   
-  //========================¼ì²é Licence ÕıÈ·Ôò¹Ø±ÕDEMO´°=======================   
+  //========================æ£€æŸ¥ Licence æ­£ç¡®åˆ™å…³é—­DEMOçª—=======================   
   if(__Info(LIC_OK) == 1){  
     PopType &= ~DEMO_POP;  
     ClosePop();
   }
   else Demo_Pop();
 
-  Keys_Detect();                                //Ïû¶¶
+  Keys_Detect();                                //æ¶ˆæŠ–
   KeyIn=0;
     
-  //===================================Ö÷Ñ­»·³ÌĞò===============================
+  //===================================ä¸»å¾ªç¯ç¨‹åº===============================
   while(1){
-    //=================¶ÁADCÊı¾İ=====================   
+    //=================è¯»ADCæ•°æ®=====================   
 
-    if(!__Info(LIC_OK)){//¹Ø»ú²âÊÔ KEY_R KEY_S
+    if(!__Info(LIC_OK)){//å…³æœºæµ‹è¯• KEY_R KEY_S
       if(((~GPIOB->IDR)& 0x0020)&&((~GPIOB->IDR)& 0x0040))
         __Ctrl(PWROFF, ENABLE);
     }
-    //====================´ı»ú=======================
+    //====================å¾…æœº=======================
     if(((PopMenu3_Value[SYS_Standy]!=0) && (PD_Cnt == 0))){
-      __Ctrl(B_LIGHT,1);                   //¹Ø±Õ±³¹â 
+      __Ctrl(B_LIGHT,1);                   //å…³é—­èƒŒå…‰ 
       StdBy_Flag = 1;
     }
-    //==================×Ô¶¯¹Ø»ú=====================
+    //==================è‡ªåŠ¨å…³æœº=====================
     if((PopMenu3_Value[SYS_PowerOff] != 0) && (AutoPwr_Cnt == 0) && (__Info(P_VUSB) == 0)){
       Beep(500);
-      __Ctrl(DELAYmS, 500);                //¹Ø»úÇ°·äÃùÆ÷Ïì0.5sÌáÊ¾ 
+      __Ctrl(DELAYmS, 500);                //å…³æœºå‰èœ‚é¸£å™¨å“0.5sæç¤º 
       __Ctrl(PWROFF,  ENABLE);              //power off
     }
-    else if(__Info(P_VUSB))                 //USB³äµçÊ±²»×Ô¶¯¹Ø»ú
+    else if(__Info(P_VUSB))                 //USBå……ç”µæ—¶ä¸è‡ªåŠ¨å…³æœº
       AutoPwr_Cnt = PopMenu3_Value[SYS_PowerOff]*Unit;
     
     //if(menu.menu_flag == 1)Show_Menu();
     if((PopType & DEMO_POP)&&!(PopType&(DAILOG_POP|PWR_POP|LIST_POP|FILE_POP)))
-      MovePop();                           //Î´½âËøÊÇÏÔÊ¾Demo´°¿Ú    
-    if(About_Flag == 0){                   //ÏÔÊ¾AboutÊ±£¬²»Ë¢ĞÂ²¨ĞÎ´°¿Ú
+      MovePop();                           //æœªè§£é”æ˜¯æ˜¾ç¤ºDemoçª—å£    
+    if(About_Flag == 0){                   //æ˜¾ç¤ºAboutæ—¶ï¼Œä¸åˆ·æ–°æ³¢å½¢çª—å£
       Process();
       __DrawWindow(VRAM_PTR);
     }
     
-    Keys_Detect();                         //°´¼üÉ¨Ãè
+    Keys_Detect();                         //æŒ‰é”®æ‰«æ
    
     if(KeyIn) Key_Flag = 1;
     else      Key_Flag = 0;
     
-    if(About_Flag == 1){                   //ÏÔÊ¾AboutÊ±£¬Ö»ÓĞ¡°M¡±¼üºÍ½ØÍ¼ÓĞĞ§
+    if(About_Flag == 1){                   //æ˜¾ç¤ºAboutæ—¶ï¼Œåªæœ‰â€œMâ€é”®å’Œæˆªå›¾æœ‰æ•ˆ
       Key_Flag = 0;
       if((KeyIn == K_M)||(KeyIn == R_HOLD))
         Key_Flag = 1;
@@ -179,21 +179,21 @@ void main(void)
 
     if(KeyIn && Key_Flag){       
       
-      //==========ÓĞ°´¼ü»Ö¸´´ı»úºÍ×Ô¶¯¹Ø»úÊ±¼ä===============
+      //==========æœ‰æŒ‰é”®æ¢å¤å¾…æœºå’Œè‡ªåŠ¨å…³æœºæ—¶é—´===============
       if(((PopMenu3_Value[SYS_Standy] != 0) &&(PD_Cnt == 0)) || (StdBy_Key == 1)){
         __Ctrl(B_LIGHT, PopMenu3_Value[SYS_BKLight]*10);
         StdBy_Flag  = 0;
         StdBy_Key   = 0;
         KeyIn = 0;
       }
-      PD_Cnt      = PopMenu3_Value[SYS_Standy]*Unit;   //´ı»úÊ±¼ä 
-      AutoPwr_Cnt = PopMenu3_Value[SYS_PowerOff]*Unit; //×Ô¶¯¹Ø»úÊ±¼ä
+      PD_Cnt      = PopMenu3_Value[SYS_Standy]*Unit;   //å¾…æœºæ—¶é—´ 
+      AutoPwr_Cnt = PopMenu3_Value[SYS_PowerOff]*Unit; //è‡ªåŠ¨å…³æœºæ—¶é—´
       
-      //=======================°´¼ü²Ù×÷=====================
+      //=======================æŒ‰é”®æ“ä½œ=====================
       switch (KeyIn){
-        //-------------»úĞµ°´¼ü---------------- 
+        //-------------æœºæ¢°æŒ‰é”®---------------- 
 
-      case R_HOLD:                       //³¤°´RUN¼ü£¬½ØÍ¼¿ì½İ°´¼ü
+      case R_HOLD:                       //é•¿æŒ‰RUNé”®ï¼Œæˆªå›¾å¿«æ·æŒ‰é”®
         Beep(50); 
         __Ctrl(DELAYmS, 100);
         Beep(50); 
@@ -201,11 +201,11 @@ void main(void)
         DispFileInfo(FileInfo);
         
         SetColor(DAR, ORN);
-        Print_dT_Info(INV);                //ÏÔÊ¾T1-T2
+        Print_dT_Info(INV);                //æ˜¾ç¤ºT1-T2
         Update[T1F] &=~ UPD ;
         break;
         
-      case M_HOLD:                        //³¤°´
+      case M_HOLD:                        //é•¿æŒ‰
         if(menu.menu_flag == 1)
         {
           if(PopType & (FILE_POP)){ 
@@ -219,11 +219,11 @@ void main(void)
             Menu_Temp[1] = menu.menu_index[menu.current];
             
             ClosePop();   
-            PopCnt = POP_TIME;                  //Éè¶¨ Pop ×Ô¶¯¹Ø±Õ¶¨Ê± 5000mS
+            PopCnt = POP_TIME;                  //è®¾å®š Pop è‡ªåŠ¨å…³é—­å®šæ—¶ 5000mS
             menu.current = Option;
             menu.menu_index[menu.current] = 0;
             Cur_PopItem = 1;
-            Show_PopMenu(Cur_PopItem);      //µ¯³ö×Ó²Ëµ¥_Pop
+            Show_PopMenu(Cur_PopItem);      //å¼¹å‡ºå­èœå•_Pop
             List_Pop();
           }
         }
@@ -232,14 +232,14 @@ void main(void)
       case S_HOLD: 
         if(!(PopType & (LIST_POP|DAILOG_POP|FILE_POP))){
           
-          if(menu.menu_flag){                          //Òş²Ø²Ëµ¥´°¿Ú
+          if(menu.menu_flag){                          //éšè—èœå•çª—å£
             MenuCnt = 0;
             menu.menu_flag = 0;
             ParamTab[M_WX] = 300;
-            Clear_Label_R(DAR);                        //²Á³ıÓÒÀ¸
+            Clear_Label_R(DAR);                        //æ“¦é™¤å³æ 
           }
-          else {                                        //µ¯³ö²Ëµ¥´°¿Ú
-            if(__Info(LIC_OK) == 1);                   //ÇĞ»»´°¿ÚÊ±demo¸´Î»
+          else {                                        //å¼¹å‡ºèœå•çª—å£
+            if(__Info(LIC_OK) == 1);                   //åˆ‡æ¢çª—å£æ—¶demoå¤ä½
             else if((ParamTab[PXx1]+ParamTab[PWx1]) >= (WIDTH_MINI+1))Demo_Pop();
             ParamTab[M_WX] = WIDTH_MINI;
             menu.menu_flag = 1;
@@ -249,8 +249,8 @@ void main(void)
         }
         break;
     
-      case K_RUN:                     //RUN¼ü
-        {                             //×öÔİÍ£¡¢ÔËĞĞ
+      case K_RUN:                     //RUNé”®
+        {                             //åšæš‚åœã€è¿è¡Œ
           if(Status == STOP) {
             Status &= ~STOP;
             if(PopMenu1_Value[TRI_Sync] == SNGL)ADC_Start();
@@ -271,9 +271,9 @@ void main(void)
         break; 
         
       case K_S:
-        if((PopType & PWR_POP)){          //¹Ø»ú´°¿Ú
+        if((PopType & PWR_POP)){          //å…³æœºçª—å£
         }
-        else if((PopType & FILE_POP)&&(menu.current == Option)  //ÎÄ¼ş×Ó²Ëµ¥´°¿Ú
+        else if((PopType & FILE_POP)&&(menu.current == Option)  //æ–‡ä»¶å­èœå•çª—å£
                 &&(menu.menu_index[menu.current] == 0)){
                   FileInfo = 1;
                   if(Cur_PopItem == SAVE_PAM) {
@@ -310,7 +310,7 @@ void main(void)
                   }
                   else if(Cur_PopItem == SAVE_SVG) {
                     FileInfo = Save_Svg(PopMenu3_Value[SAVE_Svg]);
-                    menu.current = Option;              //µ¯³öFile´°¿Ú
+                    menu.current = Option;              //å¼¹å‡ºFileçª—å£
                     menu.menu_index[menu.current] = 0;
                     Show_PopMenu(Cur_PopItem);
                     List_Pop();
@@ -324,7 +324,7 @@ void main(void)
                 }
         
         else if((menu.current == Option) && (menu.menu_index[menu.current] == 3)
-                && (PopType & (LIST_POP |DAILOG_POP))){   //CALĞ£×¼Ñ¡Ïî
+                && (PopType & (LIST_POP |DAILOG_POP))){   //CALæ ¡å‡†é€‰é¡¹
                   if(Cur_PopItem == CAL_ZERO) {
                     if(CalPop_Flag == 1){
                       Dialog_Pop("Auto Calibration?");
@@ -333,16 +333,16 @@ void main(void)
                       break;
                     }
                     if(CalPop_Flag == 0){
-                      if(PopType & DAILOG_POP){          //DAILOG_POP¶Ô»°¿òÑ¡Ôñ
+                      if(PopType & DAILOG_POP){          //DAILOG_POPå¯¹è¯æ¡†é€‰æ‹©
                         Save_Kpg(); 
                         ClosePop();
                         CalPop_Flag = 1;
                       }
-                      else if(PopType & LIST_POP){       //MENU_POP¶Ô»°¿òÑ¡Ôñ
+                      else if(PopType & LIST_POP){       //MENU_POPå¯¹è¯æ¡†é€‰æ‹©
                         if(Cur_PopItem == CAL_ZERO) {
                           ClosePop();
                           Tips_Pop("Waiting for Calibration ...");
-                          __DrawWindow(VRAM_PTR);        //Ë¢ĞÂ½çÃæ
+                          __DrawWindow(VRAM_PTR);        //åˆ·æ–°ç•Œé¢
                           Zero_Align();
                           Update_Proc_All();
                           ClosePop();
@@ -365,17 +365,17 @@ void main(void)
                         menu.menu_index[Oscillo] = 0;
                         Save_Param();
                         ClosePop();
-                        menu.mflag |= UPD;               //menuÑ¡Ïî
-                        Show_Menu();                     //Ö÷²Ëµ¥ºÍÑ¡Ïî 
+                        menu.mflag |= UPD;               //menué€‰é¡¹
+                        Show_Menu();                     //ä¸»èœå•å’Œé€‰é¡¹ 
                         ResPop_Flag = 1;
                       }
                       else if(PopType & LIST_POP){
                         Restore_OrigVal();
                         menu.current = Option;
                         menu.menu_index[Option] = 3;
-                        Show_Title();                   //ÏÔÊ¾
-                        Show_Menu();                    //Ö÷²Ëµ¥ºÍÑ¡Ïî   
-                        Update_Proc_All();              //²Ù×÷Ë¢ĞÂ
+                        Show_Title();                   //æ˜¾ç¤º
+                        Show_Menu();                    //ä¸»èœå•å’Œé€‰é¡¹   
+                        Update_Proc_All();              //æ“ä½œåˆ·æ–°
                         ClosePop();
                         Dialog_CalPop(" Restored,Save Setting?", 90, 50, 32, 26*6);
                         PopCnt = POP_TIME;                
@@ -419,34 +419,34 @@ void main(void)
       case K_M:
         
         if(menu.menu_flag){
-          if(PopType & PWR_POP){           //ÔÚ¹Ø»ú´°¿ÚÏÂ£¬°´µçÔ´¼ü¹Ø±Õ´°¿Ú
+          if(PopType & PWR_POP){           //åœ¨å…³æœºçª—å£ä¸‹ï¼ŒæŒ‰ç”µæºé”®å…³é—­çª—å£
             PopType &= ~PWR_POP;
             ClosePop();
           }
           
           else if(!(PopType & (LIST_POP|DAILOG_POP|FILE_POP))){ 
-            //ÎŞ×Ó´°¿ÚÊ±£¬´ò¿ª×Ó´°¿Ú
-            PopCnt = POP_TIME;                 // Éè¶¨ Pop ×Ô¶¯¹Ø±Õ¶¨Ê± 5000mS
-            Cur_PopItem = 1;               // ×Ó´°¿ÚÄ¬ÈÏÑ¡ÏîÎªµÚÒ»Ñ¡Ïî
-            Show_PopMenu(Cur_PopItem);     //µ¯³ö×Ó²Ëµ¥_Pop
-            if(PopType & FILE_POP){        //Èç¹ûµ¯³öÎÄ¼ş¹ÜÀí×Ó´°¿Ú£¬¼ÇÂ¼µ±Ç°Ò³ºÍµ±Ç°Ñ¡Ïî
+            //æ— å­çª—å£æ—¶ï¼Œæ‰“å¼€å­çª—å£
+            PopCnt = POP_TIME;                 // è®¾å®š Pop è‡ªåŠ¨å…³é—­å®šæ—¶ 5000mS
+            Cur_PopItem = 1;               // å­çª—å£é»˜è®¤é€‰é¡¹ä¸ºç¬¬ä¸€é€‰é¡¹
+            Show_PopMenu(Cur_PopItem);     //å¼¹å‡ºå­èœå•_Pop
+            if(PopType & FILE_POP){        //å¦‚æœå¼¹å‡ºæ–‡ä»¶ç®¡ç†å­çª—å£ï¼Œè®°å½•å½“å‰é¡µå’Œå½“å‰é€‰é¡¹
               Menu_Temp[0] = menu.current;
               Menu_Temp[1] = menu.menu_index[menu.current];
             }
             if((menu.menu_index[menu.current] != 5)||(menu.current == 0))
-              List_Pop();                  //µç³ØµçÑ¹ºÍabout²»µ¯³ö´°¿Ú
+              List_Pop();                  //ç”µæ± ç”µå‹å’Œaboutä¸å¼¹å‡ºçª—å£
           }
           
           else if(PopType & (LIST_POP|DAILOG_POP|FILE_POP)){ 
-            //ÓĞ×Ó´°¿ÚÊ±£¬¹Ø±Õ×Ó´°¿Ú          
-            if(PopType & FILE_POP){        //ÎÄ¼ş¹ÜÀí×Ó´°¿Ú,»Ö¸´´ò¿ªÊ±µÄµ±Ç°Ò³ºÍÑ¡Ïî
+            //æœ‰å­çª—å£æ—¶ï¼Œå…³é—­å­çª—å£          
+            if(PopType & FILE_POP){        //æ–‡ä»¶ç®¡ç†å­çª—å£,æ¢å¤æ‰“å¼€æ—¶çš„å½“å‰é¡µå’Œé€‰é¡¹
               menu.current = Menu_Temp[0];
               menu.menu_index[menu.current] = Menu_Temp[1];
             } 
             ClosePop();
             CalPop_Flag  = 1;             //Auto_Cal?
             ResPop_Flag  = 1;             //Restore?
-            Windows_Flag = 0;             //¹Ø±Õwindows
+            Windows_Flag = 0;             //å…³é—­windows
             Update_Windows();       
           }
         }
@@ -471,12 +471,12 @@ void main(void)
           break;
         }
         
-        if((PopType & LIST_POP)|| (Windows_Pop == 1)){   //×Ó²Ëµ¥PopÑ¡Ôñ
+        if((PopType & LIST_POP)|| (Windows_Pop == 1)){   //å­èœå•Popé€‰æ‹©
           if((menu.current == Option) && (menu.menu_index[menu.current] == 1) 
              && (PopMenu3_Value[WAVE_Type] > 0)){
                if(Cur_PopItem <= 1)           //menu_key_chose
                {
-                 if(PopMenu3_Value[SYS_PosiCyc])Cur_PopItem = Cur_Limit-1 ;  //Ä£ÄâÊä³öÊ±£¬DUTY²»Ñ­»·
+                 if(PopMenu3_Value[SYS_PosiCyc])Cur_PopItem = Cur_Limit-1 ;  //æ¨¡æ‹Ÿè¾“å‡ºæ—¶ï¼ŒDUTYä¸å¾ªç¯
                }else Cur_PopItem--;            
              }else{
                if(Cur_PopItem <= 1){           //menu_key_chose
@@ -490,7 +490,7 @@ void main(void)
       CalPop_Flag = 1;
           ResPop_Flag = 1;
         }
-        else if(PopType & FILE_POP){         //ÎÄ¼ş¹ÜÀíPopÊ±°´¼üÑ¡Ôñ
+        else if(PopType & FILE_POP){         //æ–‡ä»¶ç®¡ç†Popæ—¶æŒ‰é”®é€‰æ‹©
           menu.current = Option;
           menu.menu_index[menu.current] = 0;
           if(Cur_PopItem <= 1){               //menu_key_chose
@@ -501,7 +501,7 @@ void main(void)
           menu.mflag &= ~UPD;
           menu.iflag &= ~UPD;
         }
-        else if(!(PopType & (DAILOG_POP | PWR_POP))){     //Ö÷²Ëµ¥Ñ¡Ôñ
+        else if(!(PopType & (DAILOG_POP | PWR_POP))){     //ä¸»èœå•é€‰æ‹©
           if(menu.menu_index[menu.current] <= 0){          //menu_key_chose
             if(PopMenu3_Value[SYS_PosiCyc])menu.menu_index[menu.current] = Menu_Limit[menu.current]-1;
           }
@@ -540,7 +540,7 @@ void main(void)
           CalPop_Flag = 1;
           ResPop_Flag = 1;
         }
-        else if(PopType & FILE_POP){                      //ÎÄ¼ş¹ÜÀíPopÊ±°´¼ü
+        else if(PopType & FILE_POP){                      //æ–‡ä»¶ç®¡ç†Popæ—¶æŒ‰é”®
           menu.current = Option;
           menu.menu_index[menu.current] = 0;
           if(Cur_PopItem >= Cur_Limit  ){                  //menu_key_chose
@@ -571,7 +571,7 @@ void main(void)
           break;
         }
         
-        if(PopType & FILE_POP) {                          //ÎÄ¼ş¹ÜÀíPopÊ±°´¼ü
+        if(PopType & FILE_POP) {                          //æ–‡ä»¶ç®¡ç†Popæ—¶æŒ‰é”®
           PMenu_Proc(dec, Cur_PopItem, 0);
           menu.mflag &= ~UPD;
           menu.iflag &= ~UPD;
@@ -606,7 +606,7 @@ void main(void)
           break;
         }
         
-        if(PopType & FILE_POP) {                      //ÎÄ¼ş¹ÜÀíPopÊ±°´¼ü
+        if(PopType & FILE_POP) {                      //æ–‡ä»¶ç®¡ç†Popæ—¶æŒ‰é”®
           PMenu_Proc(add, Cur_PopItem, 0);
           menu.mflag &= ~UPD;
           menu.iflag &= ~UPD;
@@ -636,8 +636,8 @@ void main(void)
       
       KeyIn = 0;
       
-      if(menu.menu_flag == 1)Show_Menu();    //ÓĞ²Ëµ¥À¸Ê±Ë¢ĞÂ
-      else {                                 //ÎŞ²Ëµ¥À¸Ê±Ë¢ĞÂ
+      if(menu.menu_flag == 1)Show_Menu();    //æœ‰èœå•æ æ—¶åˆ·æ–°
+      else {                                 //æ— èœå•æ æ—¶åˆ·æ–°
         Update_Proc_All();
         Show_Title();
       }
@@ -645,16 +645,16 @@ void main(void)
     }//---Key_In end------
     
     
-    if(Bat_Vol() < 3200)//µç³ØĞ¡ÓÚ3.2V×Ô¶¯¹Ø»ú
+    if(Bat_Vol() < 3200)//ç”µæ± å°äº3.2Vè‡ªåŠ¨å…³æœº
     {
       Battery = 0;
       Battery_update();
       Beep(500);
-      __Ctrl(DELAYmS, 500);                //¹Ø»úÇ°·äÃùÆ÷Ïì0.5sÌáÊ¾ 
+      __Ctrl(DELAYmS, 500);                //å…³æœºå‰èœ‚é¸£å™¨å“0.5sæç¤º 
       __Ctrl(PWROFF, ENABLE);
     }
     
-    if(About_Flag == 0){                             //²âÁ¿Êı¾İ¶¨Ê±Ë¢ĞÂ
+    if(About_Flag == 0){                             //æµ‹é‡æ•°æ®å®šæ—¶åˆ·æ–°
       if((Label_Cnt == 50)){
         Label_Cnt = 0;
         Label_Flag |= UPD;

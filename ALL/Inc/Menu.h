@@ -22,8 +22,8 @@ typedef struct
   u8  menu_flag;         //win
   u8  mflag;             //menu
   u8  iflag;             //item
-  u8  current;           //µ±Ç°²Ëµ¥Ò³
-  u8  menu_index[12];    //µ±Ç°²Ëµ¥ÏîÄ¿
+  u8  current;           //å½“å‰èœå•é¡µ
+  u8  menu_index[12];    //å½“å‰èœå•é¡¹ç›®
 } MAINMENU;
 
 extern MAINMENU menu;
@@ -66,13 +66,13 @@ extern u16   CHA_Col, CHB_Col;
 
 enum            {  CH_A,    CH_B,    CH_C};
 //==============+========+========+========+========+========+========+========+
-//   SR_CÑ¡Ïî   | -CH_A  | -CH_B  | CH_A+B | CH_A-B |  MEM_1 |  MEM_2 |  MEM_2  |
+//   SR_Cé€‰é¡¹   | -CH_A  | -CH_B  | CH_A+B | CH_A-B |  MEM_1 |  MEM_2 |  MEM_2  |
 //==============+========+========+========+========+========+========+========+
 enum            {  aNEG,    bNEG,     ADD,     SUB,     MR1,     MR2,    MR3, };
 //==============+========+========+========+========+========+========+========+
 enum            { Oscillo, Measure,  Option};
 
-enum{               //µÚÒ»Ò³×Ó²Ëµ¥Ñ¡Ïî
+enum{               //ç¬¬ä¸€é¡µå­èœå•é€‰é¡¹
   CH1_Vol,  CH1_Posi, CH1_Coupl, CH1_Enable, CH1_Probe,
   CH2_Vol,  CH2_Posi, CH2_Coupl, CH2_Enable, CH2_Probe, 
   CH3_Type, CH3_Posi, CH3_Enable,
@@ -82,7 +82,7 @@ enum{               //µÚÒ»Ò³×Ó²Ëµ¥Ñ¡Ïî
   WIN_Posi, WIN_Depth,           WIN_Enable, WIN_T0         
 };
 
-enum{             //µÚÈıÒ³Ö®²Ëµ¥Ñ¡Ïî
+enum{             //ç¬¬ä¸‰é¡µä¹‹èœå•é€‰é¡¹
   SAVE_Pam,   SAVE_Bmp,    SAVE_Dat,   SAVE_Buf,     SAVE_Csv,    LOAD_Dat,   LOAD_Buf,   SAVE_Svg,
   WAVE_Type,  WAVE_Freq,   WAVE_Duty, 
   SYS_Volume, SYS_BKLight, SYS_Standy, SYS_PowerOff, SYS_MenuCyc, SYS_ItemCyc,SYS_PosiCyc, 

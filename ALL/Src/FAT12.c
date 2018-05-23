@@ -11,14 +11,14 @@
 
 typedef struct
 {
-  u32 FAT1_BASE;          // FAT1Çø¿ªÊ¼µØÖ·
-  u32 FAT2_BASE;          // FAT2Çø¿ªÊ¼µØÖ·
-  u32 ROOT_BASE;          // ¸ùÄ¿Â¼¿ªÊ¼µØÖ·
-  u32 FILE_BASE;          // ÎÄ¼şÇø¿ªÊ¼µØÖ· 
+  u32 FAT1_BASE;          // FAT1åŒºå¼€å§‹åœ°å€
+  u32 FAT2_BASE;          // FAT2åŒºå¼€å§‹åœ°å€
+  u32 ROOT_BASE;          // æ ¹ç›®å½•å¼€å§‹åœ°å€
+  u32 FILE_BASE;          // æ–‡ä»¶åŒºå¼€å§‹åœ°å€ 
   u32 FAT_LEN;
-  u32 SEC_LEN;            // ÉÈÇø³¤¶È 
-  u32 FAT_END;            // Á´½Ó½áÊø
-  u8  FAT1_SEC;           // FAT1ÉÈÇøÊı
+  u32 SEC_LEN;            // æ‰‡åŒºé•¿åº¦ 
+  u32 FAT_END;            // é“¾æ¥ç»“æŸ
+  u8  FAT1_SEC;           // FAT1æ‰‡åŒºæ•°
   u8  FAT2_SEC;
 }FAT_InitTypeDef;
 
@@ -43,7 +43,7 @@ int Init_Fat_Value(void)
   return 0;
 }
 /*******************************************************************************
- ¶Á´ÅÅÌÒ³Ãæ(256 Bytes)  °üº¬USB¶ÁĞ´³åÍ»ºóÖØ¶Á
+ è¯»ç£ç›˜é¡µé¢(256 Bytes)  åŒ…å«USBè¯»å†™å†²çªåé‡è¯»
 *******************************************************************************/
 u8 ReadDiskData(u8* pBuffer, u32 ReadAddr, u16 Lenght)
 {
@@ -52,12 +52,12 @@ u8 ReadDiskData(u8* pBuffer, u32 ReadAddr, u16 Lenght)
   while(1){
     Clash = 0;
     ExtFlashDataRd(pBuffer, ReadAddr, Lenght);
-    if(n++ > 6) return SEC_ERR;     // ³¬Ê±³ö´í·µ»Ø
-    if(Clash == 0) return OK;       // ÎŞ³åÍ»²úÉúÔò·µ»Ø
+    if(n++ > 6) return SEC_ERR;     // è¶…æ—¶å‡ºé”™è¿”å›
+    if(Clash == 0) return OK;       // æ— å†²çªäº§ç”Ÿåˆ™è¿”å›
   }
 }
 /*******************************************************************************
- Ğ´´ÅÅÌÒ³Ãæ(256 Bytes)  °üº¬USB¶ÁĞ´³åÍ»ºóÖØĞ´
+ å†™ç£ç›˜é¡µé¢(256 Bytes)  åŒ…å«USBè¯»å†™å†²çªåé‡å†™
 *******************************************************************************/
 u8 ProgDiskPage(u8* pBuffer, u32 ProgAddr)
 {                         
@@ -66,12 +66,12 @@ u8 ProgDiskPage(u8* pBuffer, u32 ProgAddr)
   while(1){
     Clash = 0;
     ExtFlashSecWr(pBuffer, ProgAddr);
-    if(n++ > 6) return SEC_ERR;     // ³¬Ê±³ö´í·µ»Ø
-    if(Clash == 0) return OK;       // ÎŞ³åÍ»²úÉúÔò·µ»Ø
+    if(n++ > 6) return SEC_ERR;     // è¶…æ—¶å‡ºé”™è¿”å›
+    if(Clash == 0) return OK;       // æ— å†²çªäº§ç”Ÿåˆ™è¿”å›
   }
 } 
 /*******************************************************************************
- ²éÕÒÏÂÒ»¸öÁ´½Ó´ØºÅºó·µ»Ø£¬µ±Ç°´ØºÅ±£´æÔÚÖ¸Õë+1µÄÎ»ÖÃ
+ æŸ¥æ‰¾ä¸‹ä¸€ä¸ªé“¾æ¥ç°‡å·åè¿”å›ï¼Œå½“å‰ç°‡å·ä¿å­˜åœ¨æŒ‡é’ˆ+1çš„ä½ç½®
 *******************************************************************************/
 u8 NextCluster(u16* pCluster)
 {
@@ -80,26 +80,26 @@ u8 NextCluster(u16* pCluster)
   
   Addr=FAT_V.FAT1_BASE +(*pCluster + *pCluster/2);
   
-  *(pCluster+1)= *pCluster;                                   // ±£´æÇ°Ò»¸ö´ØºÅ
+  *(pCluster+1)= *pCluster;                                   // ä¿å­˜å‰ä¸€ä¸ªç°‡å·
   *pCluster = 0;
   if((*(pCluster+1) >=FAT_V.FAT_END)||(*(pCluster+1)< 2)) return SEC_ERR;
   if(ReadDiskData((u8*)&FatNum, Addr, 2)!= OK) return SEC_ERR;
-  *pCluster= (*(pCluster+1) & 1)?(FatNum >>4):(FatNum & 0xFFF);//Ö¸ÏòÏÂÒ»¸ö´ØºÅ
+  *pCluster= (*(pCluster+1) & 1)?(FatNum >>4):(FatNum & 0xFFF);//æŒ‡å‘ä¸‹ä¸€ä¸ªç°‡å·
   return OK; 
 }
 /*******************************************************************************
- ¶ÁÎÄ¼şÉÈÇø(512 Bytes), ·µ»ØÊ±Ö¸ÕëÖ¸ÏòÏÂÒ»¸ö´ØºÅ£¬µ±Ç°´ØºÅ±£´æÔÚÖ¸Õë+1µÄÎ»ÖÃ
+ è¯»æ–‡ä»¶æ‰‡åŒº(512 Bytes), è¿”å›æ—¶æŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€ä¸ªç°‡å·ï¼Œå½“å‰ç°‡å·ä¿å­˜åœ¨æŒ‡é’ˆ+1çš„ä½ç½®
 *******************************************************************************/
 u8 ReadFileSec(u8* pBuffer, u16* pCluster)
 {
   u32 ReadAddr =FAT_V.FILE_BASE + FAT_V.SEC_LEN*(*pCluster-2);
 
   if(ReadDiskData(pBuffer, ReadAddr, FAT_V.SEC_LEN)!=OK) return SEC_ERR; 
-  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // È¡ÏÂÒ»¸ö´ØºÅ
+  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // å–ä¸‹ä¸€ä¸ªç°‡å·
   return OK;
 } 
 /*******************************************************************************
- Ğ´ÎÄ¼şÉÈÇø(512/4096 Bytes)£¬ÌîĞ´µ±Ç°FAT±í¼°·µ»Ø²éÕÒµ½µÄÏÂÒ»¸ö´ØºÅ
+ å†™æ–‡ä»¶æ‰‡åŒº(512/4096 Bytes)ï¼Œå¡«å†™å½“å‰FATè¡¨åŠè¿”å›æŸ¥æ‰¾åˆ°çš„ä¸‹ä¸€ä¸ªç°‡å·
 *******************************************************************************/
 u8 ProgFileSec(u8* pBuffer, u16* pCluster)
 {
@@ -107,7 +107,7 @@ u8 ProgFileSec(u8* pBuffer, u16* pCluster)
   u32 ProgAddr = FAT_V.FILE_BASE + FAT_V.SEC_LEN*(*pCluster-2);
   if(ProgDiskPage(pBuffer, ProgAddr)!= OK) return SEC_ERR; 
   
-  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // È¡ÏÂÒ»¸ö´ØºÅ
+  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // å–ä¸‹ä¸€ä¸ªç°‡å·
   Tmp = *(pCluster+1);
   if(*pCluster == 0){
     *pCluster = Tmp;
@@ -117,7 +117,7 @@ u8 ProgFileSec(u8* pBuffer, u16* pCluster)
   return OK;
 }
 /*******************************************************************************
- ²éÕÒ¿ÕÏĞ´ØºÅ£¬·µ»ØÊ±Ö¸ÕëÖ¸ÏòÏÂÒ»¸ö¿ÕÏĞ´ØºÅ£¬µ±Ç°´ØºÅ±£´æÔÚÖ¸Õë+1µÄÎ»ÖÃ
+ æŸ¥æ‰¾ç©ºé—²ç°‡å·ï¼Œè¿”å›æ—¶æŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€ä¸ªç©ºé—²ç°‡å·ï¼Œå½“å‰ç°‡å·ä¿å­˜åœ¨æŒ‡é’ˆ+1çš„ä½ç½®
 *******************************************************************************/
 u8 SeekBlank(u8* pBuffer, u16* pCluster)
 {
@@ -125,7 +125,7 @@ u8 SeekBlank(u8* pBuffer, u16* pCluster)
   u8   Buffer[2];
   u8   Tmp_Flag = 1;
 
-  *(pCluster+1)= *pCluster;                                    // ±£´æµ±Ç°´ØºÅ
+  *(pCluster+1)= *pCluster;                                    // ä¿å­˜å½“å‰ç°‡å·
 
   for(*pCluster=0; (*pCluster)<4095; (*pCluster)++){
     if(ReadDiskData(Buffer, FAT_V.FAT1_BASE +(*pCluster)+(*pCluster)/2, 2)!= 0)
@@ -144,15 +144,15 @@ u8 SeekBlank(u8* pBuffer, u16* pCluster)
   return OK;
 }         
 /*******************************************************************************
- ½«ÏÂÒ»´ØºÅĞ´ÈëFAT±íµ±Ç°´ØÁ´½ÓÎ»£¬·µ»ØÊ±Ö¸ÕëÖ¸ÏòÏÂÒ»´ØºÅ£¬Ö¸Õë+1Îªµ±Ç°´ØºÅ
+ å°†ä¸‹ä¸€ç°‡å·å†™å…¥FATè¡¨å½“å‰ç°‡é“¾æ¥ä½ï¼Œè¿”å›æ—¶æŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€ç°‡å·ï¼ŒæŒ‡é’ˆ+1ä¸ºå½“å‰ç°‡å·
 *******************************************************************************/
 u8 SetCluster(u8* pBuffer, u16* pCluster)
 {
   u16  Offset, i, k;
   u32  SecAddr;
 
-  i = *(pCluster+1);                    // ÌáÈ¡Ô­µ±Ç°´ØºÅ
-  k = *pCluster;                        // ÌáÈ¡ÏÂÒ»´ØºÅ
+  i = *(pCluster+1);                    // æå–åŸå½“å‰ç°‡å·
+  k = *pCluster;                        // æå–ä¸‹ä¸€ç°‡å·
   Offset = i+ i/2;
   SecAddr = FAT_V.FAT1_BASE +(Offset & 0xF000 );
   Offset &= 0x0FFF;
@@ -169,7 +169,7 @@ u8 SetCluster(u8* pBuffer, u16* pCluster)
   return OK;
 }
 /*******************************************************************************
- ¶ÁÄ£Ê½´ò¿ªÎÄ¼ş£º·µ»ØÎÄ¼şµÚÒ»¸ö´ØºÅ¼°Ä¿Â¼ÏîµØÖ·»ò 0´ØºÅ¼°µÚÒ»¸ö¿Õ°×Ä¿Â¼ÏîµØÖ·
+ è¯»æ¨¡å¼æ‰“å¼€æ–‡ä»¶ï¼šè¿”å›æ–‡ä»¶ç¬¬ä¸€ä¸ªç°‡å·åŠç›®å½•é¡¹åœ°å€æˆ– 0ç°‡å·åŠç¬¬ä¸€ä¸ªç©ºç™½ç›®å½•é¡¹åœ°å€
 *******************************************************************************/
 u8 OpenFileRd(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
 {
@@ -182,11 +182,11 @@ u8 OpenFileRd(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
       for(i=0; i<11; i++){
         if(pBuffer[n + i]!= 0){
           if(pBuffer[n + i]!= pFileName[i]) break;
-          if(i == 10){                             // ÕÒµ½ÎÄ¼şÃû
-            *pCluster = *(u16*)(pBuffer + n + 0x1A); // ÎÄ¼şµÚÒ»¸ö´ØºÅ
+          if(i == 10){                             // æ‰¾åˆ°æ–‡ä»¶å
+            *pCluster = *(u16*)(pBuffer + n + 0x1A); // æ–‡ä»¶ç¬¬ä¸€ä¸ªç°‡å·
             return OK;         
           }
-        } else return NEW;               // Óöµ½µÚÒ»¸ö¿Õ°×Ä¿Â¼Ïîºó·µ»Ø
+        } else return NEW;               // é‡åˆ°ç¬¬ä¸€ä¸ªç©ºç™½ç›®å½•é¡¹åè¿”å›
       }
       *pDirAddr += 32;
     }
@@ -194,7 +194,7 @@ u8 OpenFileRd(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
   return OVER;
 }
 /*******************************************************************************
- Ğ´Ä£Ê½´ò¿ªÎÄ¼ş£º·µ»ØÎÄ¼şµÚÒ»¸ö´ØºÅ¼°Ä¿Â¼ÏîµØÖ·
+ å†™æ¨¡å¼æ‰“å¼€æ–‡ä»¶ï¼šè¿”å›æ–‡ä»¶ç¬¬ä¸€ä¸ªç°‡å·åŠç›®å½•é¡¹åœ°å€
 *******************************************************************************/
 u8 OpenFileWr(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
 {
@@ -202,19 +202,19 @@ u8 OpenFileWr(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
   
   i = OpenFileRd(pBuffer, pFileName, pCluster, pDirAddr);
   if(i != NEW) return i;
-  else{                                                    // µ±Ç°ÏîÎª¿Õ°×Ä¿Â¼Ïî
-    if(SeekBlank(pBuffer, pCluster)!= OK) return OVER;     // ÈôFAT±íÂú·µ»Ø
+  else{                                                    // å½“å‰é¡¹ä¸ºç©ºç™½ç›®å½•é¡¹
+    if(SeekBlank(pBuffer, pCluster)!= OK) return OVER;     // è‹¥FATè¡¨æ»¡è¿”å›
     n =*pDirAddr & 0xFFF;
     offset=*pDirAddr-n;
     if(ReadDiskData(pBuffer,offset, FAT_V.SEC_LEN)!= OK) return SEC_ERR; 
-    for(i=0; i<11; i++) pBuffer[n+i]= pFileName[i];      // ´´½¨ĞÂÄ¿Â¼Ïîoffset +
+    for(i=0; i<11; i++) pBuffer[n+i]= pFileName[i];      // åˆ›å»ºæ–°ç›®å½•é¡¹offset +
     *(u16*)(pBuffer + n + 0x1A)= *pCluster;
     if(ProgDiskPage(pBuffer,offset)!= OK) return SEC_ERR;
     return OK;
   }
 }                
 /*******************************************************************************
- ¹Ø±ÕÎÄ¼ş£¬½«½áÊø·ûĞ´ÈëFAT±í£¬½«ÎÄ¼ş³¤¶ÈĞ´ÈëÄ¿Â¼Ïî£¬¸´ÖÆFAT1µ½FAT2
+ å…³é—­æ–‡ä»¶ï¼Œå°†ç»“æŸç¬¦å†™å…¥FATè¡¨ï¼Œå°†æ–‡ä»¶é•¿åº¦å†™å…¥ç›®å½•é¡¹ï¼Œå¤åˆ¶FAT1åˆ°FAT2
 *******************************************************************************/
 u8 CloseFile(u8* pBuffer, u32 Lenght, u16* pCluster, u32* pDirAddr)
 {

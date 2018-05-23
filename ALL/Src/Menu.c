@@ -23,7 +23,7 @@
 #define TITLE_H   223
 #define TITLE_L   3
 #define RowHeight 14
-#define MAX_FREQ  10-1                             /*Êä³öÄ£Äâ²¨ĞÎ×î´óÆµÂÊÎª20KHz   10KHz*/
+#define MAX_FREQ  10-1                             /*è¾“å‡ºæ¨¡æ‹Ÿæ³¢å½¢æœ€å¤§é¢‘ç‡ä¸º20KHz   10KHz*/
 
 
 
@@ -51,17 +51,17 @@ uc8  Item_Base[8] = {0,7,13};
 u16  CHA_Col = RED_, CHB_Col = DAR;
 
 //==============+======+======+======+======+======+======+======+======+======+
-//  µç³Ø×´Ì¬    | ±¨¾¯ | È«¿Õ | °ë¿Õ | °ëÂú | È«Âú | ³äµç | ³äÂú |             |
+//  ç”µæ± çŠ¶æ€    | æŠ¥è­¦ | å…¨ç©º | åŠç©º | åŠæ»¡ | å…¨æ»¡ | å……ç”µ | å……æ»¡ |             |
 //--------------+------+------+------+------+------+------+------+------+------+
-uc8  BT_S[][5] ={ ";<=", ";<=", ";&@", ";*@", ">`@", "\"#$", "\"#$"};// ·ûºÅ´® |
-uc16 V_BT[]    ={  3250,  3300,  3400,  3700,  3900,  4200,  4200};  // µçÑ¹Öµ |
-uc16 BT_C[]    ={  RED,   YEL,   GRN,   GRN,   GRN,   CYN,   GRN };  // ÑÕÉ«   |
+uc8  BT_S[][5] ={ ";<=", ";<=", ";&@", ";*@", ">`@", "\"#$", "\"#$"};// ç¬¦å·ä¸² |
+uc16 V_BT[]    ={  3250,  3300,  3400,  3700,  3900,  4200,  4200};  // ç”µå‹å€¼ |
+uc16 BT_C[]    ={  RED,   YEL,   GRN,   GRN,   GRN,   CYN,   GRN };  // é¢œè‰²   |
 //==============+======+======+======+======+======+======+======+======+======+
 
-//Ò³Ãæ±êÌâÑÕÉ«
+//é¡µé¢æ ‡é¢˜é¢œè‰²
 uc16 Page_BackCol =  RED;
 uc16 Page_ForeCol =  WHT;
-/*============================Ò³ÃæÑ¡ÏîÑÕÉ«====================================*/
+/*============================é¡µé¢é€‰é¡¹é¢œè‰²====================================*/
 //Page1_Menu        | CH_A  | CH_B | CH_C |TimeBase|Trigger|Cursors|X_Wondows|            
 //------------------+-------+------+------+--------+-------+-------+---------+
 uc16 CH_Col[] =     {  CYN,   YEL,   PUR,    ORN,     CYN,    RED,     CYN};
@@ -91,11 +91,11 @@ uc16 SAW_DATA[36] =  // Sawtooth wave data
    0xC57,0xCCC,0xD41,0xDB6,0xE2B,0xEA0,0xF15,0xF8A,0xFFF};   // 360
 
 //----------------+------------------------+-----------------+
-uc8 FnNote[][14]= {"File R/W OK!",          /*"ÎÄ¼ş²Ù×÷Íê³É"   */
-                   "File Ver Err",          /*"ÎÄ¼ş°æ±¾´íÎó"   */
-                   "Not Found!  ",          /*"ÎÄ¼şÃû²»´æÔÚ"   */
-                   "File R/W Err",          /*"ÎÄ¼ş²Ù×÷´íÎó"   */
-                   "Disk Busy!  ",          /*"´ÅÅÌ¶ÁĞ´´íÎó"   */
+uc8 FnNote[][14]= {"File R/W OK!",          /*"æ–‡ä»¶æ“ä½œå®Œæˆ"   */
+                   "File Ver Err",          /*"æ–‡ä»¶ç‰ˆæœ¬é”™è¯¯"   */
+                   "Not Found!  ",          /*"æ–‡ä»¶åä¸å­˜åœ¨"   */
+                   "File R/W Err",          /*"æ–‡ä»¶æ“ä½œé”™è¯¯"   */
+                   "Disk Busy!  ",          /*"ç£ç›˜è¯»å†™é”™è¯¯"   */
 };
 //----------------+------------------------+-----------------+
 
@@ -107,10 +107,10 @@ uc8 FileStr[][20] = {
 uc8 MeasStr[][8]  = {"Freq:","Duty:","Vrms:","Vavg:",
                      " Vpp:","Vmax:","Vmin:","Vbat:"};
 
-//-----------²Ëµ¥ÏîÄ¿±êÌâ-----------------------------------------------------//
+//-----------èœå•é¡¹ç›®æ ‡é¢˜-----------------------------------------------------//
 uc8 Menu_Str[][8] = {" Page1 ", "Oscillo", " Page2 ",
                      "Measure", " Page3 ", "Options"};
-//-----------²Ëµ¥Ñ¡Ïî---------------------------------------------------------//
+//-----------èœå•é€‰é¡¹---------------------------------------------------------//
 uc8 Item_Str[][10]= {
   "  CH_A   ",  "  CH_B   ",  "  CH_C   ", 
   "TimeBase ",  "Trigger  ",  "Cursors   ",  "X_Window  ",
@@ -124,12 +124,12 @@ uc8 Options_Str[][10]={
   " Manage  ",  " Option  ",  " Setting ",  " tion    ",  " Info    ",
 };
 
-//-------------ÌØ¶¨±êÊ¾·û-----------------------------------------------------//
+//-------------ç‰¹å®šæ ‡ç¤ºç¬¦-----------------------------------------------------//
 uc8  Cps_SYMB[][6]      = {"b", "a","_"};               //'~','-'
 uc8  Scale_SYMB[][6]    = {"c", "d"};                   //x1,x10
 uc8  Num_SYMB[][6]      = {"e", "f" ,"g" , "i" };       //"1", "2", "3", "F"
-uc8  SYMB_2[][6]        = {"f"   , "i"};                //·½¿ò¡®2¡¯ ºÍ¡®F¡¯
-uc8  SYMB_T[][6]        = {"h"   , "i"};                //·½¿ò¡®T¡¯ ºÍ¡®F¡¯
+uc8  SYMB_2[][6]        = {"f"   , "i"};                //æ–¹æ¡†â€˜2â€™ å’Œâ€˜Fâ€™
+uc8  SYMB_T[][6]        = {"h"   , "i"};                //æ–¹æ¡†â€˜Tâ€™ å’Œâ€˜Fâ€™
 uc8  Math_Str[][6]      = {" -A ", " -B ", "A+B ", "A-B ",
                            "RecA", "RecB", "RecC"};
 uc8  Probe_Str[][7]     ={" X1   "," X10   "};
@@ -166,7 +166,7 @@ uc8  VolMenu_Str[][10]  ={"  10mV   ","  20mV   ","  50mV   ","  0.1V   ",
                           "  5.0V   ","   10V   "};
 uc8  VolMenu_10X[][10]  ={"  0.1V   ","  0.2V   ","  0.5V   ","  1.0V   ",
                           "  2.0V   ","  5.0V   ","   10V   ","   20V   ",
-                          "   50V   ","  100V   ",};// ´¹Ö±µµ×Ö·û´®
+                          "   50V   ","  100V   ",};// å‚ç›´æ¡£å­—ç¬¦ä¸²
 uc8  VScale_Str[][6]    ={"10",   "20",   "50",   "100",  "200", 
                           "500",  "1000", "2000", "5000", "10000"};
 uc8  VScale_Str_10X[][6]={"100",   "200",   "500",   "1000",  "2000", 
@@ -185,7 +185,7 @@ uc8  TScale_Str[][8]   = { "1",    "2",     "5",     "10",    "20",   "50",   "1
                            "200",  "500",   "1000",  "2000",  "5000", "10000","20000",
                            "50000","100000","200000","500000","1000000", "2000000"}; 
 
-//--------------------------Êä³ö²¨ĞÎÔ¤·ÖÆµ--------------------------------------
+//--------------------------è¾“å‡ºæ³¢å½¢é¢„åˆ†é¢‘--------------------------------------
 //----------+-------+-------+-------+-------+-------+-------+-------+-------+---
 uc16 FPSC[] = {  128,  128,   64,   64,   16,   16,    4,    4,
                    1,    1,    1,    1,    1,    1,    1,    1};
@@ -193,7 +193,7 @@ uc16 FPSC[] = {  128,  128,   64,   64,   16,   16,    4,    4,
 uc16 FARR[] = {56250,28125,22500,11250,22500, 9000, 18000,9000,
                14400, 7200, 3600, 1440,  720,  360,  144,   72};
 //----------+-------+-------+-------+-------+-------+-------+-------+-------+---
-//--------------------------Êä³öÄ£Äâ²¨ĞÎ·ÖÆµ------------------------------------
+//--------------------------è¾“å‡ºæ¨¡æ‹Ÿæ³¢å½¢åˆ†é¢‘------------------------------------
 uc16 Dac_Psc[12] = {4,    2,    2,   2,   2,    2,   2,   2,    2,   2,   2};
 //uc16 Dac_Tim[12] = {10000,10000,4000,2000,1000, 400, 200, 100,  40,  100,  50};
 uc16 Dac_Tim[12] = {10000,10000,4000,2000,1000, 400, 200, 100,  40,  20,  10};
@@ -208,7 +208,7 @@ uc32 TScale[]    = { 1,     2,    5,   10,    20,     50,
                      100, 200,  500,  1000, 2000,    5000,  10000, 20000, 50000, 
                      100000, 200000, 500000, 1000000, 2000000};                
 
-//---TitleÏÔÊ¾Î»ÖÃ-----BAT| CH1| CH2| Ch3|  TB | TRI| AUTO--------------------//   
+//---Titleæ˜¾ç¤ºä½ç½®-----BAT| CH1| CH2| Ch3|  TB | TRI| AUTO--------------------//   
 uc16 Title_Posi_X[] = {  6,  30,  85, 140, 180, 240, 289,};  
 
 
@@ -238,11 +238,11 @@ uc8 PM3_Str[][13]={
  "          ",   "          ",
  "About:    ",   "          ", 
 };
-//====================PopmenuÑ¡ÏîÊıÄ¿=========================
-//---Popmenu_1Ñ¡ÏîÊıÄ¿---CH1| CH2| CH3| TIME| TRI | CURS| WIN
+//====================Popmenué€‰é¡¹æ•°ç›®=========================
+//---Popmenu_1é€‰é¡¹æ•°ç›®---CH1| CH2| CH3| TIME| TRI | CURS| WIN
 uc8  PopMenu1_Base[]  = { 0,   5,  10,   13,   15,   21,  27};
-uc8  PopMenu1_Limit[] = { 5,   5,   3,    1,    6,    6,   3};//¹Ø±ÕT0 Fit
-//---Popmenu_3Ñ¡ÏîÊıÄ¿---FILE| WAVE| SYS | CAL | PRO| ABOUT
+uc8  PopMenu1_Limit[] = { 5,   5,   3,    1,    6,    6,   3};//å…³é—­T0 Fit
+//---Popmenu_3é€‰é¡¹æ•°ç›®---FILE| WAVE| SYS | CAL | PRO| ABOUT
 uc8  PopMenu3_Base[]  = { 0,    8,   11,    18,   20,   22}; 
 uc8  PopMenu3_Limit[] = { 8,    3,    7,     2,    2,    2};
 
@@ -251,7 +251,7 @@ u8   PopMenu2_Len = 18;
 u8   PopMenu3_Len = 18;
 
 //====================Menu1_Popmenu========================= 
-//--------------PopmenuÑ¡ÏîÉÏÏŞ------------------------
+//--------------Popmenué€‰é¡¹ä¸Šé™------------------------
 
 sc16 Popmenu1_Limit1[]={
 //======+====+=====+======+=====+=====+=======+   
@@ -270,7 +270,7 @@ sc16 Popmenu1_Limit1[]={
 //WIN   POSI |DEPTH| EN | T0_Str
         7800,     3,    1,  2,                         
 };
-//--------------PopmenuÑ¡ÏîÏÂÏŞ------------------------
+//--------------Popmenué€‰é¡¹ä¸‹é™------------------------
 sc16 PopMenu1_Limit2[]={ 
   1,  5,  0,   0,  0,           //CH1     VOL | POST| AC/DC| ENABLE | PROBE
   1,  5,  0,   0,  0,           //CH2     VOL | POST| AC/DC| ENABLE | PROBE
@@ -280,7 +280,7 @@ sc16 PopMenu1_Limit2[]={
   5,  5,  0,   2,  2,  0,       //Curs    T1  |  T2 |  EN_T|  V1 |  V2 |EN_V 
   0,  0,  0,   0,               //Win    POSI |DEPTH| EN   |   T0_Str
 };
-//--------------PopmenuÑ¡ÏîÄ¬ÈÏÖµ------------------------
+//--------------Popmenué€‰é¡¹é»˜è®¤å€¼------------------------
 s16 PopMenu1_Value[]={
   6,  100,  0,  1,  0,        //CH1     VOL | POST| AC/DC| ENABLE | PROBE
   6,   90,  0,  1,  0,        //CH2     VOL | POST| AC/DC| ENABLE | PROBE
@@ -300,7 +300,7 @@ sc16 PopMenu1_CValue[]={
   0,    2,  1,  0,            //Win    POSI |DEPTH| EN           
 };
 
-//--------------Popmenu_Posi´°¿ÚÎ»ÖÃ------------------------ 
+//--------------Popmenu_Posiçª—å£ä½ç½®------------------------ 
 uc8 PopMenu1_Posi_Y[]={
    100,  70, 70,  60,  30,  20,  10,    
 }; 
@@ -322,7 +322,7 @@ uc8 MeasItem[][9]       = {"FREQ   ", "DUTY   ", "RMS    ", "Vavg  ", "VPP    ",
 uc8 MeasItem_Menu[][10] = {"  FREQ   ", "  DUTY   ", "  RMS    ", "  Vavg   ",
                            "  VPP    ", "  Max    ", "  Min    ", "  VBAT   "};
 
-uc16 PopMenu2_Limit1[]={1,  6,  1,    //ÉÏÏŞ  // µÚ¶şÑ¡Ïî£º7 £¬6µÄ»°¹Ø±ÕVBat
+uc16 PopMenu2_Limit1[]={1,  6,  1,    //ä¸Šé™  // ç¬¬äºŒé€‰é¡¹ï¼š7 ï¼Œ6çš„è¯å…³é—­VBat
                         1,  6,  1,
                         1,  6,  1,
                         1,  6,  1,
@@ -354,7 +354,7 @@ uc8  PopMenu2_CValue[]={
 };
 
 //**************Menu3_Pop**************************************** 
-uc16 PopMenu3_Limit1[]={//ÉÏÏŞ 
+uc16 PopMenu3_Limit1[]={//ä¸Šé™ 
   99, 99, 99, 99, 99, 99, 99, 99, //File   Pam | BMP | DAT | BUF | CSV | DAT |BUF 
   3,  15,  9,                     //Wave   TYPE| FRQ | DUTY| 
   9,  10, 60, 60, 1, 1, 1,        //Sys    VOL | BK  | STANDBY   | PowerOff
@@ -362,7 +362,7 @@ uc16 PopMenu3_Limit1[]={//ÉÏÏŞ
   1,  1,
   1,  1,
 };
-uc16 PopMenu3_Limit2[]={// ÏÂÏŞ
+uc16 PopMenu3_Limit2[]={// ä¸‹é™
   0,  0,  0,  0,  0,  0,  0,  0,
   0,  0,  1,  
   0,  1,  0, 0, 0, 0, 0,
@@ -370,7 +370,7 @@ uc16 PopMenu3_Limit2[]={// ÏÂÏŞ
   0,  0,
   0,  0,
 };
-u8 PopMenu3_Value[]={   //Ä¬ÈÏ
+u8 PopMenu3_Value[]={   //é»˜è®¤
   0,  0,  0,  0,  0,  0,  0,  0,
   0,  9,  5,  
   5,  5, 10, 20,1, 0, 1,
@@ -378,7 +378,7 @@ u8 PopMenu3_Value[]={   //Ä¬ÈÏ
   0,  0,
   0,  0,
 };
-uc8 PopMenu3_CValue[]={ //Ä¬ÈÏ
+uc8 PopMenu3_CValue[]={ //é»˜è®¤
   0,  0,  0,  0,  0,  0,  0,  0,
   0,  9,  5,  
   5,  5, 10, 20, 1, 0, 1,
@@ -390,7 +390,7 @@ uc8 PopMenu3_CValue[]={ //Ä¬ÈÏ
 
 
 /*******************************************************************************
-show menu: ÏÔÊ¾Ö÷²Ëµ¥±êÌâ
+show menu: æ˜¾ç¤ºä¸»èœå•æ ‡é¢˜
 *******************************************************************************/
 void Show_Menu(void)
 {
@@ -403,12 +403,12 @@ void Show_Menu(void)
     menu.iflag |= UPD;
     Background=CYN; 
     Foreground=WHT;
-    Clear_Label_R(DAR);                                        //²Á³ıÓÒÀ¸  
-    Draw_Circle_D(Page_BackCol,  Menu_X, Menu_Y, 38, 53, 56);  //»­²Ëµ¥±êÌâÒ³Êı¾ØĞÎ¿ò
+    Clear_Label_R(DAR);                                        //æ“¦é™¤å³æ   
+    Draw_Circle_D(Page_BackCol,  Menu_X, Menu_Y, 38, 53, 56);  //ç”»èœå•æ ‡é¢˜é¡µæ•°çŸ©å½¢æ¡†
     ptr=(u8*)&Menu_Str[menu.current*2];
     Background=Page_BackCol; 
     Foreground=Page_ForeCol;     
-    //------ÏÔÊ¾Ö÷Ò³Ãû³Æ------------ 
+    //------æ˜¾ç¤ºä¸»é¡µåç§°------------ 
     Sy =Menu_Y+20 ; 
     Sx =Menu_X;
     PrintStr(PRN, ptr);
@@ -449,7 +449,7 @@ void Show_Menu(void)
 }
 
 /*******************************************************************************
- show item : ÏÔÊ¾Ö÷²Ëµ¥×ÓÏî±í    ÊäÈë²ÎÊı £ºÖ÷²Ëµ¥µ±Ç°×ÓÏî
+ show item : æ˜¾ç¤ºä¸»èœå•å­é¡¹è¡¨    è¾“å…¥å‚æ•° ï¼šä¸»èœå•å½“å‰å­é¡¹
 *******************************************************************************/
 void Show_Item(u8 k)
 {
@@ -465,8 +465,8 @@ void Show_Item(u8 k)
       Str2 = (u8*)VolMenu_Str[PopMenu1_Value[CH1_Vol]];
       PrintStr6x8(wink, PopMenu1_Value[CH1_Probe]? Str1 : Str2);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //»­ÏîÄ¿À¸ÑÕÉ«
-      wink = (PopMenu1_Value[CH1_Probe])? INV : INV;  //FÄ£Ê½Ê±£¬×ÖÌå°ëÏûÒş
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //ç”»é¡¹ç›®æ é¢œè‰²
+      wink = (PopMenu1_Value[CH1_Probe])? INV : INV;  //Fæ¨¡å¼æ—¶ï¼Œå­—ä½“åŠæ¶ˆéš
       Draw_Circle_D(CH_Col[k], Title_Posi_X[k+1]+8, TITLE_H+2, 11, 2, 7*6);
       SetColor(DAR,CH_Col[k]);
       DispStr10x14(Title_Posi_X[k+1]-3, TITLE_H+2, SYMB,
@@ -485,9 +485,9 @@ void Show_Item(u8 k)
       Str2 = (u8*)VolMenu_Str[PopMenu1_Value[CH2_Vol]];
       PrintStr6x8(wink, PopMenu1_Value[CH2_Probe]? Str1 : Str2);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //ç”»é¡¹ç›®æ é¢œè‰²
       SetColor(DAR,CH_Col[k]);
-      wink = (PopMenu1_Value[CH2_Probe])? INV : INV;  //FÄ£Ê½Ê±£¬×ÖÌå°ëÏûÒş
+      wink = (PopMenu1_Value[CH2_Probe])? INV : INV;  //Fæ¨¡å¼æ—¶ï¼Œå­—ä½“åŠæ¶ˆéš
       Draw_Circle_D(CH_Col[k], Title_Posi_X[k+1]+8, TITLE_H+2, 11, 2, 7*6);
       DispStr10x14(Title_Posi_X[k+1]-3, TITLE_H+2, SYMB,
                   (PopMenu1_Value[CH2_Probe]?(u8*)("A"):(u8*)("B")));
@@ -499,18 +499,18 @@ void Show_Item(u8 k)
              (u8*)(Cps_SYMB[PopMenu1_Value[CH2_Coupl]]));               
       break;
     case CH3: 
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 14, 6);  //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 14, 6);  //ç”»é¡¹ç›®æ é¢œè‰²
       SetColor(DAR,CH_Col[k]);    
       Draw_Circle_D(CH_Col[k], Title_Posi_X[k+1]+8, TITLE_H+2, 11, 2, 5*6-1);
       DispStr6x8(Title_Posi_X[k+1]+12, TITLE_H+2, INV, (PopMenu1_Value[CH3_Enable]?
                 (u8*)(Math_Str[PopMenu1_Value[CH3_Type]]): (u8*)("Hide")));
       break;
     case TIMEBASE:        
-      wink = (PopMenu1_Value[TIM_Fit])? PRN : VOID; //FÄ£Ê½Ê±£¬×ÖÌå°ëÏûÒş
+      wink = (PopMenu1_Value[TIM_Fit])? PRN : VOID; //Fæ¨¡å¼æ—¶ï¼Œå­—ä½“åŠæ¶ˆéš
       Sy=ITEM_Y-rowh+3;
       PrintStr6x8(wink, (u8*)&TimeBaseMenu_Str[PopMenu1_Value[TIM_Base]]);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //ç”»é¡¹ç›®æ é¢œè‰²
       SetColor(DAR,CH_Col[k]);
       DispStr(Title_Posi_X[k+1], TITLE_H+2, SYMB,
              (PopMenu1_Value[TIM_Fit]?(u8*)("_"):(u8*)("i")));
@@ -545,60 +545,60 @@ void Show_Item(u8 k)
       Update_Status();
       break;
     case COURSOR:
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 14, 6);//»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 14, 6);//ç”»é¡¹ç›®æ é¢œè‰²
       break;
     case WINDOWS:
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 14, 6);//»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 14, 6);//ç”»é¡¹ç›®æ é¢œè‰²
       break;
- //-------------------µÚÈıÒ³------------------------------------------
+ //-------------------ç¬¬ä¸‰é¡µ------------------------------------------
     case FILE:
-      Sx=Menu_X+8;                                //²Ëµ¥±êÌâ
+      Sx=Menu_X+8;                                //èœå•æ ‡é¢˜
       Sy=ITEM_Y-rowh+3;
       PrintStr6x8(PRN, (u8*)&Options_Str[k-FILE]);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(P3Menu_Col[0], Menu_X, Sy, 28, 6);//»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(P3Menu_Col[0], Menu_X, Sy, 28, 6);//ç”»é¡¹ç›®æ é¢œè‰²
       break;
     case WAVE:
-      Sx=Menu_X+8;                                //²Ëµ¥±êÌâ
+      Sx=Menu_X+8;                                //èœå•æ ‡é¢˜
       Sy=ITEM_Y-rowh+3; 
       PrintStr6x8(PRN, (u8*)&Options_Str[k-FILE]);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(P3Menu_Col[1], Menu_X, Sy, 28, 6);//»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(P3Menu_Col[1], Menu_X, Sy, 28, 6);//ç”»é¡¹ç›®æ é¢œè‰²
       break;
     case SYSTEM:
-      Sx=Menu_X+8;                                //²Ëµ¥±êÌâ
+      Sx=Menu_X+8;                                //èœå•æ ‡é¢˜
       Sy=ITEM_Y-rowh+3;      
       PrintStr6x8(PRN, (u8*)&Options_Str[k-FILE]);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(P3Menu_Col[2], Menu_X, Sy, 28, 6);//»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(P3Menu_Col[2], Menu_X, Sy, 28, 6);//ç”»é¡¹ç›®æ é¢œè‰²
       break;
     case CALIBRATION:
-      Sx=Menu_X+8;                                //²Ëµ¥±êÌâ
+      Sx=Menu_X+8;                                //èœå•æ ‡é¢˜
       Sy=ITEM_Y-rowh+3;      
       PrintStr6x8(PRN, (u8*)&Options_Str[k-FILE]);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(P3Menu_Col[3], Menu_X, Sy, 28, 6);      //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(P3Menu_Col[3], Menu_X, Sy, 28, 6);      //ç”»é¡¹ç›®æ é¢œè‰²
       break;
     case PRO:
       Sy=ITEM_Y-rowh+3;
       PrintStr6x8(PRN, (u8*)&Options_Str[k-FILE]);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(P3Menu_Col[4], Menu_X, Sy, 28, 6);      //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(P3Menu_Col[4], Menu_X, Sy, 28, 6);      //ç”»é¡¹ç›®æ é¢œè‰²
       break;
     case ABOUT:
-      Draw_Circle_S(P3Menu_Col[5], Menu_X, Sy, 14, 6);      //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(P3Menu_Col[5], Menu_X, Sy, 14, 6);      //ç”»é¡¹ç›®æ é¢œè‰²
       break;
     }
     rowh++;
     x=Menu_X+2;
     y=ITEM_Y-rowh;
-    for(j=0; j<58; j++){                          //ºÚÏß¼ä¸ô
+    for(j=0; j<58; j++){                          //é»‘çº¿é—´éš”
       SetPosi(x++, y);
       SetPixel(BLK);
     }
 }
 /*******************************************************************************
-Show_Item_One : ÏÔÊ¾Ö÷²Ëµ¥×ÓÏî±í    ÊäÈë²ÎÊı £ºÖ÷²Ëµ¥µ±Ç°×ÓÏî
+Show_Item_One : æ˜¾ç¤ºä¸»èœå•å­é¡¹è¡¨    è¾“å…¥å‚æ•° ï¼šä¸»èœå•å½“å‰å­é¡¹
 *******************************************************************************/
 void Show_Item_One(u8 k)
 {
@@ -618,7 +618,7 @@ void Show_Item_One(u8 k)
       Str2 = (u8*)VolMenu_Str[PopMenu1_Value[CH1_Vol]];
       PrintStr6x8(wink, PopMenu1_Value[CH1_Probe]? Str1 : Str2);
       Sy=ITEM_Y-rowh;
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //ç”»é¡¹ç›®æ é¢œè‰²
       
       break;  
     case CH2:
@@ -633,7 +633,7 @@ void Show_Item_One(u8 k)
       Str2 = (u8*)VolMenu_Str[PopMenu1_Value[CH2_Vol]];
       PrintStr6x8(wink, PopMenu1_Value[CH2_Probe]? Str1 : Str2);
       Sy=ITEM_Y-rowh-1;
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //»­ÏîÄ¿À¸ÑÕÉ«              
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //ç”»é¡¹ç›®æ é¢œè‰²              
       break;
   case TIMEBASE:
       wink = PRN;
@@ -645,7 +645,7 @@ void Show_Item_One(u8 k)
       Foreground=BLK;
       PrintStr6x8(wink, (u8*)&TimeBaseMenu_Str[PopMenu1_Value[TIM_Base]]);
       Sy=ITEM_Y-rowh-3;
-      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[k], Menu_X, Sy, 28, 6);  //ç”»é¡¹ç›®æ é¢œè‰²
       break;
   case TRIGGER:
       wink = PRN;
@@ -669,7 +669,7 @@ void Show_Item_One(u8 k)
     
 }
 /*******************************************************************************
- Show_Title: ÏÔÊ¾±êÌâÀ¸    
+ Show_Title: æ˜¾ç¤ºæ ‡é¢˜æ     
 *******************************************************************************/
 void Show_Title(void)
 {
@@ -679,7 +679,7 @@ void Show_Title(void)
   for(k=0;k<7;k++){
     switch (k){
     case CH1:
-      wink = (PopMenu1_Value[CH1_Probe])? INV : INV; //FÄ£Ê½Ê±£¬×ÖÌå°ëÏûÒş
+      wink = (PopMenu1_Value[CH1_Probe])? INV : INV; //Fæ¨¡å¼æ—¶ï¼Œå­—ä½“åŠæ¶ˆéš
       Draw_Circle_D(CH_Col[k], Title_Posi_X[k+1]+8, TITLE_H+2, 11, 2, 7*6);
       SetColor(DAR,CH_Col[k]);
       DispStr10x14(Title_Posi_X[k+1]-3, TITLE_H+2, SYMB,
@@ -726,7 +726,7 @@ void Show_Title(void)
       Sx=Title_Posi_X[k+1];
       Sy=TITLE_H+2;
       Draw_Circle_D(CH_Col[PopMenu1_Value[TRI_Ch]], 
-                    Title_Posi_X[k+1]-3, TITLE_H+2, 11, 2, 6*6+1);//Ç°¾°±ß¿ò 
+                    Title_Posi_X[k+1]-3, TITLE_H+2, 11, 2, 6*6+1);//å‰æ™¯è¾¹æ¡† 
       if(PopMenu1_Value[TRI_Fit])PrintStr6x8(INV, "Trig");
       else{ 
         PrintStr6x8(INV, "Trig");
@@ -757,7 +757,7 @@ void Show_Title(void)
   }
 }
 /*******************************************************************************
-ÏÔÊ¾×Ó²Ëµ¥´°¿ÚÄ¿Â¼ 
+æ˜¾ç¤ºå­èœå•çª—å£ç›®å½• 
 *******************************************************************************/
 void Show_PopMenu(u8 Cur_Item)
 {
@@ -768,7 +768,7 @@ void Show_PopMenu(u8 Cur_Item)
   
   memset(ptr,0,64);
   switch (menu.current){
-    //----------------------------µÚÒ»Ò³²Ëµ¥----------------------------------//
+    //----------------------------ç¬¬ä¸€é¡µèœå•----------------------------------//
   case Oscillo:
     j=menu.menu_index[menu.current];
     Cur_Limit=PopMenu1_Limit[j];
@@ -841,7 +841,7 @@ void Show_PopMenu(u8 Cur_Item)
     case WINDOWS:
       index++;
       Windows_Flag |=UPD;
-      Update_Windows();  //´°¿ÚÎ»ÖÃ´¦Àí£¬popmenu1_valueÓĞ¸üĞÂ
+      Update_Windows();  //çª—å£ä½ç½®å¤„ç†ï¼Œpopmenu1_valueæœ‰æ›´æ–°
       sprintf((char*)ptr3,"%3d",PopMenu1_Value[WIN_Posi]);
       strcat((char*)ptr3,"  ");
       memcpy(&ptr,ptr3,5);
@@ -852,7 +852,7 @@ void Show_PopMenu(u8 Cur_Item)
     }
     PMenu_Pop(Cur_Limit,Cur_Item,ptr1,10,ptr);
     break;
-    //---------------------------µÚ¶şÒ³²Ëµ¥----------------------------------//
+    //---------------------------ç¬¬äºŒé¡µèœå•----------------------------------//
   case Measure:
     j=menu.menu_index[menu.current];
     Cur_Limit=3;
@@ -862,10 +862,10 @@ void Show_PopMenu(u8 Cur_Item)
     memcpy(&ptr[LEN],(u8*)&MeasItem[PopMenu2_Value[index++]],LEN-4);
     ptr[2*LEN-2]=0;
     memcpy(&ptr[2*LEN],(u8*)&Swintch1[PopMenu2_Value[index]],LEN-4);
-    if(j<5) //×îºóÒ»Ïî£¬µç³ØµçÑ¹ÏîÄ¿ÎŞ×Ó´°¿Ú
+    if(j<5) //æœ€åä¸€é¡¹ï¼Œç”µæ± ç”µå‹é¡¹ç›®æ— å­çª—å£
     PMenu_Pop(Cur_Limit,Cur_Item,ptr1,10,ptr);
     break;
-    //---------------------------µÚÈıÒ³²Ëµ¥-----------------------------------//
+    //---------------------------ç¬¬ä¸‰é¡µèœå•-----------------------------------//
   case Option:
     item=menu.menu_index[menu.current]; 
     j=Item_Base[menu.current]+item;
@@ -933,7 +933,7 @@ void Show_PopMenu(u8 Cur_Item)
 }
 
 /*******************************************************************************
-ÏÔÊ¾µÚ¶şÒ³²âÁ¿²Ëµ¥ 
+æ˜¾ç¤ºç¬¬äºŒé¡µæµ‹é‡èœå• 
 *******************************************************************************/
 void Show_Measure(void)
 {
@@ -964,7 +964,7 @@ void Show_Measure(void)
     if(k==5){
       DispStr6x8(Sx+2, Sy,  PRN, "         ");
       Sx=Menu_X+6;
-      DispStr6x8(Sx+2, Sy, SYMB, "':");         //ÏÔÊ¾µç³Ø·ûºÅ 
+      DispStr6x8(Sx+2, Sy, SYMB, "':");         //æ˜¾ç¤ºç”µæ± ç¬¦å· 
       Sx=Menu_X+21;
       Sy=ITEM_Y-rowh;
       if(__Info(P_VUSB)){
@@ -982,16 +982,16 @@ void Show_Measure(void)
     Sy=ITEM_Y-rowh;
     if(k<5)PrintStr(PRN, "       ");
     MeasureStr(source,type);
-    //===»­Í¨µÀÑÕÉ«====¿Éµ÷ÓÃDreaw_Circle_S()»­Ô²½Ç  
+    //===ç”»é€šé“é¢œè‰²====å¯è°ƒç”¨Dreaw_Circle_S()ç”»åœ†è§’  
     Sx=Menu_X+8;Sy=ITEM_Y-rowh+3;
     if(k<5){
       DispStr6x8(Sx, Sy, PRN, NumStr);    
-      Draw_Circle_S(CH_Col[source], Menu_X, ITEM_Y-rowh, 28, 6);//»­ÏîÄ¿À¸ÑÕÉ«
+      Draw_Circle_S(CH_Col[source], Menu_X, ITEM_Y-rowh, 28, 6);//ç”»é¡¹ç›®æ é¢œè‰²
     }
     else if(k==5) Draw_Circle_S(CH_Col[source], Menu_X, ITEM_Y-rowh+14, 14, 6);
     //==============
     rowh++;
-    x=Menu_X+2; //Menu¼ä¸ôºÚÏß
+    x=Menu_X+2; //Menué—´éš”é»‘çº¿
     y=ITEM_Y-rowh;
     if(k<5)
       for(j=0; j<58; j++){
@@ -1003,7 +1003,7 @@ void Show_Measure(void)
 }
 
 /*******************************************************************************
-´°¿ÚÄ¿Â¼´¦Àí 
+çª—å£ç›®å½•å¤„ç† 
 *******************************************************************************/
 void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
 {
@@ -1015,17 +1015,17 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
     Label_Flag|=UPD;
   }
   switch (menu.current){
-  //------------------------------µÚÒ»Ò³²Ëµ¥----------------------------------//
+  //------------------------------ç¬¬ä¸€é¡µèœå•----------------------------------//
   case Oscillo:
     j=menu.menu_index[menu.current];
     index=PopMenu1_Base[j]+Cur_PopItem-1;
-    //---------------¼ÓÄ£Ê½---------------
+    //---------------åŠ æ¨¡å¼---------------
     if (mode==add){ 
-     // +++++++++index²»ÎªThresholdÊ±++++++++++++++++
+     // +++++++++indexä¸ä¸ºThresholdæ—¶++++++++++++++++
       if(index != TRI_Ch1){   
-        if(index>TRI_Fit)index++; //ÒòÎª¹ıÁËtri2£¬ËùÒÔindex+1
+        if(index>TRI_Fit)index++; //å› ä¸ºè¿‡äº†tri2ï¼Œæ‰€ä»¥index+1
         limit=Popmenu1_Limit1[index]-step;
-        if(index==CH1_Posi){     //Ch1Î»ÖÃÉÏµ÷Ä£Ê½
+        if(index==CH1_Posi){     //Ch1ä½ç½®ä¸Šè°ƒæ¨¡å¼
           if((PopMenu1_Value[CH1_Posi]<195)
              &&((PopMenu1_Value[TRI_Ch1]+PopMenu1_Value[CH1_Posi])>195+step)){
             PopMenu1_Value[TRI_Ch1]--;
@@ -1033,7 +1033,7 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
           }else if(PopMenu1_Value[CH1_Posi]<limit)
             PopMenu1_Value[CH1_Posi]++;
         }
-        else if(index==CH2_Posi){//Ch2Î»ÖÃÉÏµ÷Ä£Ê½
+        else if(index==CH2_Posi){//Ch2ä½ç½®ä¸Šè°ƒæ¨¡å¼
           if((PopMenu1_Value[CH2_Posi]<195)
              &&((PopMenu1_Value[TRI_Ch2]+PopMenu1_Value[CH2_Posi])>195+step)){
             PopMenu1_Value[TRI_Ch2]--;
@@ -1042,7 +1042,7 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
             PopMenu1_Value[CH2_Posi]++;
         }
        else if(index==WIN_Posi){
-         switch(PopMenu1_Value[WIN_Depth]){ //²»Í¬²ÉÑùÉî¶ÈWIN_PosiµÄÏŞÖÆ
+         switch(PopMenu1_Value[WIN_Depth]){ //ä¸åŒé‡‡æ ·æ·±åº¦WIN_Posiçš„é™åˆ¶
          case 0:
            limit = 774-55; 
            break;
@@ -1062,27 +1062,27 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
            else if(PopMenu1_Value[index]<limit)PopMenu1_Value[index]+=5;
          }
        } 
-        else if(PopMenu1_Value[index]<limit){   //ÆäËûÑ¡ÏîÉÏµ÷Ä£Ê½
+        else if(PopMenu1_Value[index]<limit){   //å…¶ä»–é€‰é¡¹ä¸Šè°ƒæ¨¡å¼
           temp = PopMenu1_Value[TIM_Base];
           if(step!=0) PopMenu1_Value[index]+=step;
           else        PopMenu1_Value[index]++;
           if((temp==1)&&(PopMenu1_Value[TIM_Base]==2))__Ctrl(SMPL_MODE, SIMULTANEO);
           if(PopMenu1_Value[TRI_Fit])Key_S_Time = 300;
           else                       Key_S_Time = 0;
-        }else if(PopMenu3_Value[SYS_ItemCyc]) {//Ñ¡ÏîÑ­»·Ä£Ê½
+        }else if(PopMenu3_Value[SYS_ItemCyc]) {//é€‰é¡¹å¾ªç¯æ¨¡å¼
           if((index!=CH1_Vol)&&(index!=CH2_Vol)&&(index!=TIM_Base))
             PopMenu1_Value[index]=PopMenu1_Limit2[index];
         }
       }
-      //++++++++indexÎªThresholdÊ±+++++++++++
+      //++++++++indexä¸ºThresholdæ—¶+++++++++++
       else{           
-        if(PopMenu1_Value[TRI_Ch]){   //triggerÎªch2ÊÇ£¬¶ÔÓ¦µÄÖµ´¦Àí  
+        if(PopMenu1_Value[TRI_Ch]){   //triggerä¸ºch2æ˜¯ï¼Œå¯¹åº”çš„å€¼å¤„ç†  
           if((PopMenu1_Value[TRI_Ch2]+PopMenu1_Value[CH2_Posi])<195+step){
             if(step!=0) PopMenu1_Value[TRI_Ch2]+=step;
             else        PopMenu1_Value[TRI_Ch2]++;
           }
         }
-        else{                         //triggerÎªch1ÊÇ£¬¶ÔÓ¦µÄÖµ´¦Àí
+        else{                         //triggerä¸ºch1æ˜¯ï¼Œå¯¹åº”çš„å€¼å¤„ç†
           if((PopMenu1_Value[TRI_Ch1]+PopMenu1_Value[CH1_Posi])<195+step){
             if(step!=0) PopMenu1_Value[TRI_Ch1]+=step;
             else        PopMenu1_Value[TRI_Ch1]++;
@@ -1090,9 +1090,9 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
         }
       }     
     }
-    //-------------¼õÄ£Ê½ ------------------
+    //-------------å‡æ¨¡å¼ ------------------
     else{
-      if(index != TRI_Ch1){           // index²»ÎªThresholdÊ±
+      if(index != TRI_Ch1){           // indexä¸ä¸ºThresholdæ—¶
         if(index>TRI_Fit)index++;
         limit=PopMenu1_Limit2[index]+step;
         
@@ -1132,8 +1132,8 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
             PopMenu1_Value[index]=Popmenu1_Limit1[index];
         }
       }
-      else{                                // indexÎªThresholdÊ±
-        if(PopMenu1_Value[TRI_Ch]){        //triggerÎªch2ÊÇ£¬¶ÔÓ¦µÄÖµ´¦Àí  
+      else{                                // indexä¸ºThresholdæ—¶
+        if(PopMenu1_Value[TRI_Ch]){        //triggerä¸ºch2æ˜¯ï¼Œå¯¹åº”çš„å€¼å¤„ç†  
           if((PopMenu1_Value[TRI_Ch2]+PopMenu1_Value[CH2_Posi])>5+step){
             if(step!=0) PopMenu1_Value[TRI_Ch2]-=step;
             else        PopMenu1_Value[TRI_Ch2]--;
@@ -1147,10 +1147,10 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
         }         
       } 
     }
-    if(index==CH1_Vol || index == CH2_Vol) Update[V1F] |= UPD ;  //¸üĞÂV1-V2
+    if(index==CH1_Vol || index == CH2_Vol) Update[V1F] |= UPD ;  //æ›´æ–°V1-V2
     if(index==TIM_Base)                    Update[T1F] |= UPD ;
     break;
- //------------------------------µÚ¶şÒ³²Ëµ¥----------------------------------//
+ //------------------------------ç¬¬äºŒé¡µèœå•----------------------------------//
  case Measure:
       j=menu.menu_index[menu.current];
       index=3*j+Cur_PopItem-1;               //popmenu2_base[j]
@@ -1171,7 +1171,7 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
         }
       }
     break;
- //------------------------------µÚÈıÒ³²Ëµ¥----------------------------------//   
+ //------------------------------ç¬¬ä¸‰é¡µèœå•----------------------------------//   
   case Option:
       item=menu.menu_index[menu.current];  
       index=PopMenu3_Base[item]+Cur_PopItem-1;
@@ -1205,7 +1205,7 @@ void PMenu_Proc(u8 mode,u8 Cur_Item,u8 step)
   Update_Proc();
 }
 /*******************************************************************************
-Ö÷²Ëµ¥ÏîÄ¿´¦Àí£¬µ¥»÷°´¼ü´¦Àí
+ä¸»èœå•é¡¹ç›®å¤„ç†ï¼Œå•å‡»æŒ‰é”®å¤„ç†
 *******************************************************************************/
 void Item_Proc(u8 mode)
 {
@@ -1213,17 +1213,17 @@ void Item_Proc(u8 mode)
   
   u16 j, index;
   menu.iflag|=UPD;  
-  switch (menu.current){                  //µ±Ãæ²Ëµ¥Ò³
-//------------------------------µÚÒ»Ò³²Ëµ¥------------------------------------//  
+  switch (menu.current){                  //å½“é¢èœå•é¡µ
+//------------------------------ç¬¬ä¸€é¡µèœå•------------------------------------//  
   case Oscillo:
-    j=menu.menu_index[menu.current];      //µ±Ç°²Ëµ¥ÏîÄ¿
-    index=PopMenu1_Base[j];               //µ±Ç°×Ó´°¿ÚµÚÒ»Ïî
+    j=menu.menu_index[menu.current];      //å½“å‰èœå•é¡¹ç›®
+    index=PopMenu1_Base[j];               //å½“å‰å­çª—å£ç¬¬ä¸€é¡¹
     
     switch (j){    
     case TRIGGER: 
       index+=2;
-    case CH1:       Update[V1F] |= UPD ;  //¸üĞÂV1-V2
-    case CH2:       Update[V1F] |= UPD ;  //¸üĞÂV1-V2
+    case CH1:       Update[V1F] |= UPD ;  //æ›´æ–°V1-V2
+    case CH2:       Update[V1F] |= UPD ;  //æ›´æ–°V1-V2
     case TIMEBASE:  Update[T1F] |= UPD ;
       if(mode==add){
         
@@ -1257,9 +1257,9 @@ void Item_Proc(u8 mode)
       break;  
     }
     break;
-//------------------------------µÚ¶şÒ³²Ëµ¥------------------------------------//     
+//------------------------------ç¬¬äºŒé¡µèœå•------------------------------------//     
   case Measure:
-    j=menu.menu_index[menu.current];        //µ±Ç°²Ëµ¥ÏîÄ¿
+    j=menu.menu_index[menu.current];        //å½“å‰èœå•é¡¹ç›®
     index = j*3+1;
     if(mode==add){
       if(PopMenu2_Value[index]<PopMenu2_Limit1[1])
@@ -1273,29 +1273,29 @@ void Item_Proc(u8 mode)
       else if(PopMenu3_Value[SYS_MenuCyc])
           PopMenu2_Value[index] = PopMenu2_Limit1[index];
     }    
-    if(menu.menu_flag == 1)Show_Measure();                         //Ë¢ĞÂÏÔÊ¾
+    if(menu.menu_flag == 1)Show_Measure();                         //åˆ·æ–°æ˜¾ç¤º
     break;
- //------------------------------µÚÈıÒ³²Ëµ¥-----------------------------------//    
+ //------------------------------ç¬¬ä¸‰é¡µèœå•-----------------------------------//    
   case Option:
     break;
   default:
     break;
   }
-  Update_Proc();                            //Ë¢ĞÂµ¥»÷²Ù×÷
+  Update_Proc();                            //åˆ·æ–°å•å‡»æ“ä½œ
 }
 
 /*******************************************************************************
-×Ó²Ëµ¥´¹Ö±»¬¶¯´¦Àí
+å­èœå•å‚ç›´æ»‘åŠ¨å¤„ç†
 *******************************************************************************/
 void Vertical_Slide(u8 mode)
 {
   u16 j, index;
   
-  switch (menu.current){                    //µ±Ãæ²Ëµ¥Ò³
-//------------------------------µÚÒ»Ò³²Ëµ¥------------------------------------//  
+  switch (menu.current){                    //å½“é¢èœå•é¡µ
+//------------------------------ç¬¬ä¸€é¡µèœå•------------------------------------//  
   case Oscillo:
-    j=menu.menu_index[menu.current];       //µ±Ç°²Ëµ¥ÏîÄ¿
-    index=PopMenu1_Base[j]+1;              //µ±Ç°×Ó´°¿ÚµÚÒ»Ïî
+    j=menu.menu_index[menu.current];       //å½“å‰èœå•é¡¹ç›®
+    index=PopMenu1_Base[j]+1;              //å½“å‰å­çª—å£ç¬¬ä¸€é¡¹
     
     switch (j){    
     case TRIGGER: 
@@ -1389,7 +1389,7 @@ void Vertical_Slide(u8 mode)
 }
 
 /*******************************************************************************
-µ¥Ò»¶ÔÓ¦¸üĞÂ´¦Àí 
+å•ä¸€å¯¹åº”æ›´æ–°å¤„ç† 
 *******************************************************************************/
 void Update_Proc(void)
 {
@@ -1399,7 +1399,7 @@ void Update_Proc(void)
     Label_Flag|=UPD;
   }
   switch (menu.current){
-//------------------------------µÚÒ»Ò³²Ëµ¥------------------------------------//
+//------------------------------ç¬¬ä¸€é¡µèœå•------------------------------------//
   case Oscillo:
     j=menu.menu_index[menu.current];
     index=PopMenu1_Base[j];
@@ -1412,22 +1412,22 @@ void Update_Proc(void)
         if(PopMenu1_Value[CH1_Vol]>3)
           KindA  = HV;
         else   
-          KindA  = LV;                //Ch1Ñ¡ÔñµÍÑ¹»ò¸ßÑ¹Á¿³Ì
+          KindA  = LV;                //Ch1é€‰æ‹©ä½å‹æˆ–é«˜å‹é‡ç¨‹
         StateA =  (PopMenu1_Value[CH1_Vol]>6)?ACT: GND; 
         
-        CouplA = (PopMenu1_Value[CH1_Coupl])? AC : DC;                      // AC);  //AC/DCñîºÏ·½Ê½
+        CouplA = (PopMenu1_Value[CH1_Coupl])? AC : DC;                      // AC);  //AC/DCè€¦åˆæ–¹å¼
         
-      __Ctrl(AiRANGE, KindA+CouplA+StateA);             //Ch1×´Ì¬Ë¢ĞÂ
+      __Ctrl(AiRANGE, KindA+CouplA+StateA);             //Ch1çŠ¶æ€åˆ·æ–°
       }
-      ParamTab[P1x2]=2*(PopMenu1_Value[CH1_Posi]);      //Ch1ÓÎ±êÎ»ÖÃ 
+      ParamTab[P1x2]=2*(PopMenu1_Value[CH1_Posi]);      //Ch1æ¸¸æ ‡ä½ç½® 
       ParamTab[W1F]=PopMenu1_Value[CH1_Enable]? L_HID : B_HID;  //Ch1 show_hide 
-      AiPosi(PopMenu1_Value[CH1_Posi]);                 //Ch1Ó²¼ş¶ÔÓ¦Î»ÖÃ
+      AiPosi(PopMenu1_Value[CH1_Posi]);                 //Ch1ç¡¬ä»¶å¯¹åº”ä½ç½®
       k=(PopMenu1_Value[TRI_Ch])?PopMenu1_Value[TRI_Ch2]:PopMenu1_Value[TRI_Ch1];
       l=(PopMenu1_Value[TRI_Ch])?ParamTab[P2x2]:ParamTab[P1x2]; 
       ParamTab[VTx2]=l+2*k;
       ParamTab[VTC]=CH_Col[PopMenu1_Value[TRI_Ch]];
       ParamTab[VTF]=(PopMenu1_Value[TRI_Enable])? W_HID : L_HID;
-      if(Cur_PopItem==2)Update[W1F]|=UPD;               //ÓÎ±êË¢ĞÂ±êÖ¾
+      if(Cur_PopItem==2)Update[W1F]|=UPD;               //æ¸¸æ ‡åˆ·æ–°æ ‡å¿—
       break;
     case CH2:
       if((Status != STOP)){
@@ -1436,10 +1436,10 @@ void Update_Proc(void)
         if(PopMenu1_Value[CH2_Vol]>3)
           KindB  = HV;
         else   
-          KindB  = LV;                //Ch1Ñ¡ÔñµÍÑ¹»ò¸ßÑ¹Á¿³Ì
+          KindB  = LV;                //Ch1é€‰æ‹©ä½å‹æˆ–é«˜å‹é‡ç¨‹
         StateB =  (PopMenu1_Value[CH2_Vol]>6)?ACT: GND; 
         
-        CouplB = (PopMenu1_Value[CH2_Coupl])? AC : DC;                      // AC);  //AC/DCñîºÏ·½Ê½
+        CouplB = (PopMenu1_Value[CH2_Coupl])? AC : DC;                      // AC);  //AC/DCè€¦åˆæ–¹å¼
         
       __Ctrl(BiRANGE, KindB+CouplB+StateB);
       }
@@ -1459,7 +1459,7 @@ void Update_Proc(void)
       if(Cur_PopItem==2)Update[W3F]|=UPD;
       break;
     case TIMEBASE:
-      Set_Base(PopMenu1_Value[TIM_Base]);              //Ó²¼şÉèÖÃÉ¨ÃèÊ±»ùµµÎ»
+      Set_Base(PopMenu1_Value[TIM_Base]);              //ç¡¬ä»¶è®¾ç½®æ‰«ææ—¶åŸºæ¡£ä½
       break;
     case TRIGGER:
       k=(PopMenu1_Value[TRI_Ch])?PopMenu1_Value[TRI_Ch2]:PopMenu1_Value[TRI_Ch1];
@@ -1485,7 +1485,7 @@ void Update_Proc(void)
       if(Cur_PopItem==5)Update[V2F]|=UPD;
       if(Cur_PopItem==1)Update[T1F]|=UPD;
       if(Cur_PopItem==2)Update[T2F]|=UPD;
-      if(Cur_PopItem==6)Update[V1F]|=UPD ;            //¸üĞÂV1-V2
+      if(Cur_PopItem==6)Update[V1F]|=UPD ;            //æ›´æ–°V1-V2
       break;
     case WINDOWS:
       index++;
@@ -1505,13 +1505,13 @@ void Update_Proc(void)
           break;  
         }
       ParamTab[T0F] =!PopMenu1_Value[WIN_Enable];
-      if(Status != STOP)ADC_Start();                    //ÖØĞÂ¿ªÊ¼ADCÉ¨Ãè²ÉÑù
+      if(Status != STOP)ADC_Start();                    //é‡æ–°å¼€å§‹ADCæ‰«æé‡‡æ ·
       break;
     default:
       break;
     }
     break;
-//------------------------------µÚ¶şÒ³²Ëµ¥------------------------------------//   
+//------------------------------ç¬¬äºŒé¡µèœå•------------------------------------//   
   case Measure:
     j=menu.menu_index[menu.current];
     switch(j){
@@ -1519,7 +1519,7 @@ void Update_Proc(void)
       break;
     }
     break;
-//------------------------------µÚÈıÒ³²Ëµ¥------------------------------------//    
+//------------------------------ç¬¬ä¸‰é¡µèœå•------------------------------------//    
   case Option: 
     j= 7+6+menu.menu_index[menu.current];
     index=PopMenu3_Base[menu.menu_index[menu.current]];
@@ -1527,15 +1527,15 @@ void Update_Proc(void)
     case FILE: 
       break;
     case WAVE:      
-      if(Cur_PopItem==1){                                    //²¨ĞÎÀàĞÍÑ¡Ïî
-        if(PopMenu3_Value[WAVE_Type]==0){                    //Âö³å
+      if(Cur_PopItem==1){                                    //æ³¢å½¢ç±»å‹é€‰é¡¹
+        if(PopMenu3_Value[WAVE_Type]==0){                    //è„‰å†²
           __Ctrl(OUT_PSC, FPSC[PopMenu3_Value[WAVE_Freq]]);  // 72MHz/72 = 1MHz 
           __Ctrl(OUT_ARR, FARR[PopMenu3_Value[WAVE_Freq]]);  // 1MHz/100 = 10KHz 
           __Ctrl(OUT_WTH, FARR[PopMenu3_Value[WAVE_Freq]]*PopMenu3_Value[WAVE_Duty]/10); 
-          __Ctrl(OUT_MOD, PULSED);                           // Éè¶¨Âö³åÊä³öÄ£Ê½
+          __Ctrl(OUT_MOD, PULSED);                           // è®¾å®šè„‰å†²è¾“å‡ºæ¨¡å¼
         }
-        else{                                         //Ä£Äâ²¨ĞÎÊä³ö
-         if(PopMenu3_Value[WAVE_Freq] > MAX_FREQ){    //Ä£Äâ²¨ĞÎÊä³ö²»³¬¹ı20KHz
+        else{                                         //æ¨¡æ‹Ÿæ³¢å½¢è¾“å‡º
+         if(PopMenu3_Value[WAVE_Freq] > MAX_FREQ){    //æ¨¡æ‹Ÿæ³¢å½¢è¾“å‡ºä¸è¶…è¿‡20KHz
              PopMenu3_Value[WAVE_Freq] = MAX_FREQ ;   //20KHz
           }
           __Ctrl(OUT_MOD, DISABLE);
@@ -1547,7 +1547,7 @@ void Update_Proc(void)
           }
           __Ctrl(OUT_MOD, ANALOG);
           PopMenu3_Value[WAVE_Duty] = 5; //Duty =50% 
-          Show_PopMenu(Cur_PopItem);     //µ±Êä³ö²¨ĞÎ²»Îª·½²¨Ê±£¬DutyË¢ĞÂÎª50%   
+          Show_PopMenu(Cur_PopItem);     //å½“è¾“å‡ºæ³¢å½¢ä¸ä¸ºæ–¹æ³¢æ—¶ï¼ŒDutyåˆ·æ–°ä¸º50%   
         }
       }
       if(Cur_PopItem==2){
@@ -1562,14 +1562,14 @@ void Update_Proc(void)
           }
           __Ctrl(OUT_MOD, DISABLE);
           {
-            __Ctrl(OUT_CNT, 180);                 // Ä£ÄâÊä³öÖÜÆÚ(Ã¿ÖÜÆÚ180µã)
+            __Ctrl(OUT_CNT, 180);                 // æ¨¡æ‹Ÿè¾“å‡ºå‘¨æœŸ(æ¯å‘¨æœŸ180ç‚¹)
             TIM_DA->PSC = Dac_Psc[PopMenu3_Value[WAVE_Freq]] - 1;
             __Ctrl(DAC_TIM, Dac_Tim[PopMenu3_Value[WAVE_Freq]]);  
             __Ctrl(OUT_BUF, __Info(22+PopMenu3_Value[WAVE_Type]));    
           }
           __Ctrl(OUT_MOD, ANALOG);
           PopMenu3_Value[WAVE_Duty] = 5;   //Duty =50% 
-          Show_PopMenu(Cur_PopItem);      //µ±Êä³ö²¨ĞÎ²»Îª·½²¨Ê±£¬DutyË¢ĞÂÎª50% 
+          Show_PopMenu(Cur_PopItem);      //å½“è¾“å‡ºæ³¢å½¢ä¸ä¸ºæ–¹æ³¢æ—¶ï¼ŒDutyåˆ·æ–°ä¸º50% 
         }
       }
       if(Cur_PopItem==3){
@@ -1598,7 +1598,7 @@ void Update_Proc(void)
   }  
 }  
 /*******************************************************************************
-ÏÔÊ¾²Ëµ¥´°¿Ú 
+æ˜¾ç¤ºèœå•çª—å£ 
 *******************************************************************************/
 void PMenu_Pop(u8 item,u8 current,u8* str1, u8 str_num, u8* str2)
 {
@@ -1632,7 +1632,7 @@ void PMenu_Pop(u8 item,u8 current,u8* str1, u8 str_num, u8* str2)
   PopCnt = POP_TIME;        
 }
 /*******************************************************************************
-ÎÄ¼ş²Ëµ¥´°¿Ú 
+æ–‡ä»¶èœå•çª—å£ 
 *******************************************************************************/
 void FMenu_Pop(u8 item,u8 current,u8* str1)
 {
@@ -1665,7 +1665,7 @@ void FMenu_Pop(u8 item,u8 current,u8* str1)
 }
 
 /*******************************************************************************
-²Ëµ¥Òş²Ø±êÖ¾ 
+èœå•éšè—æ ‡å¿— 
 *******************************************************************************/
 void Menu_Hide(void)
 {
@@ -1684,7 +1684,7 @@ void Menu_Hide(void)
   } 
 }
 /*******************************************************************************
- Update_Label: ÓÎ±êÎ»ÖÃÏÔÊ¾
+ Update_Label: æ¸¸æ ‡ä½ç½®æ˜¾ç¤º
 *******************************************************************************/
 void Update_Label(void)
 {
@@ -1693,7 +1693,7 @@ void Update_Label(void)
   if(!(Label_Flag & UPD))return;
   Windows_Pop=0;
   Label_Flag &=~ UPD;
-  x=0;y=19;   //×óÀ¸²Á³ı
+  x=0;y=19;   //å·¦æ æ“¦é™¤
   for(i=0;i<7;i++){
     SetPosi(x++, y);
     for(j=0; j<204; j++)SetPixel(DAR);//
@@ -1750,7 +1750,7 @@ void Update_Label(void)
     Sx=12*8; 
     Update[V2F] &=~ UPD ;
   }
-    //NORMÃ»´¥·¢Ê±£¬µ×¶Ë²âÁ¿Öµ²»¸üĞÂ
+    //NORMæ²¡è§¦å‘æ—¶ï¼Œåº•ç«¯æµ‹é‡å€¼ä¸æ›´æ–°
   if((PopMenu1_Value[TRI_Sync] == NORM)&&(Trigger_k < 0));  
   else{
     Print_dM_Info(INV, 0, 12*6+5 , TITLE_L);
@@ -1760,7 +1760,7 @@ void Update_Label(void)
 }
 
 /*******************************************************************************
-ÔËĞĞ¡¢ÔİÍ£×´Ì¬¸üĞÂ 
+è¿è¡Œã€æš‚åœçŠ¶æ€æ›´æ–° 
 *******************************************************************************/
 void Update_Status(void)
 {
@@ -1769,27 +1769,27 @@ void Update_Status(void)
   Sy=TITLE_H+2;
   
   if(Status==STOP){
-    Draw_Circle_D(RED, Title_Posi_X[6]-3, TITLE_H+2, 11, 2, 5*6-1);//Ç°¾°±ß¿ò
+    Draw_Circle_D(RED, Title_Posi_X[6]-3, TITLE_H+2, 11, 2, 5*6-1);//å‰æ™¯è¾¹æ¡†
     SetColor(DAR,RED);
     PrintStr6x8(INV,(u8*)&Mode[5] );
   }
   else{
-    Draw_Circle_D(GRN, Title_Posi_X[6]-3, TITLE_H+2, 11, 2, 5*6-1);//Ç°¾°±ß¿ò
+    Draw_Circle_D(GRN, Title_Posi_X[6]-3, TITLE_H+2, 11, 2, 5*6-1);//å‰æ™¯è¾¹æ¡†
     index=PopMenu1_Base[TRIGGER];
     SetColor(DAR,GRN);
     PrintStr6x8(INV,(u8*)&Mode[PopMenu1_Value[index]] );//"AUTO"
   }
 }
 /*******************************************************************************
-¸üĞÂ»º³åÇø´°¿ÚÎ»ÖÃ 
+æ›´æ–°ç¼“å†²åŒºçª—å£ä½ç½® 
 *******************************************************************************/
 void Update_Windows(void)
 {
   u16  x0,x,y,i,j,Width;
   Depth =  DEPTH[PopMenu1_Value[WIN_Depth]];
   Width =(215*300)/Depth;
-  if(menu.menu_index[menu.current]==6 && Cur_PopItem==2){  //DepthÑ¡Ïî
-    if(KeyIn == K_RIGHT || KeyIn == K_LEFT){  //Ñ¡ÏîÓĞ±ä¶¯Ê±¸Ä±äÔ¤´¥·¢Î»ÖÃ
+  if(menu.menu_index[menu.current]==6 && Cur_PopItem==2){  //Depthé€‰é¡¹
+    if(KeyIn == K_RIGHT || KeyIn == K_LEFT){  //é€‰é¡¹æœ‰å˜åŠ¨æ—¶æ”¹å˜é¢„è§¦å‘ä½ç½®
       switch(PopMenu1_Value[WIN_T0]){
       case 0:
         PopMenu1_Value[WIN_Posi]= 0;
@@ -1800,7 +1800,7 @@ void Update_Windows(void)
         x0=10+(Depth/2-125)*247/Depth;
         break;
       case 2:
-        PopMenu1_Value[WIN_Posi]= Depth-300-5; //-5 ³¬³ö²ÉÑùÉî¶È
+        PopMenu1_Value[WIN_Posi]= Depth-300-5; //-5 è¶…å‡ºé‡‡æ ·æ·±åº¦
         x0=10+(Depth-300-5)*250/Depth;
         break;
       }
@@ -1825,34 +1825,34 @@ void Update_Windows(void)
   else if( PopMenu1_Value[WIN_T0]==2){
     if(menu.menu_index[menu.current]==6 && Cur_PopItem==4){
       if(KeyIn == K_RIGHT || KeyIn == K_LEFT)
-        PopMenu1_Value[WIN_Posi]= Depth-300-5;//-5 ³¬³ö²ÉÑùÉî¶È
+        PopMenu1_Value[WIN_Posi]= Depth-300-5;//-5 è¶…å‡ºé‡‡æ ·æ·±åº¦
       x0=10+(Depth-300-5)*250/Depth;
     }
     else x0=10+(PopMenu1_Value[WIN_Posi])*250/Depth;
   }
-  if(Windows_Flag & UPD){  //Ë¢ĞÂ´°¿Ú
+  if(Windows_Flag & UPD){  //åˆ·æ–°çª—å£
     Windows_Flag&=~UPD;
     x=10;
     y=15;
-    for(i=0;i<250;i++){    //»º³åÇøÌõ
+    for(i=0;i<250;i++){    //ç¼“å†²åŒºæ¡
       SetPosi(x++, y);
       SetPixel(DAR);
       for(j=0; j<2; j++)SetPixel(RED);
       SetPixel(DAR);     
     }
-    x = x0;               //µ±Ç°´°¿ÚÔÚ»º³åÇøÎ»ÖÃ
+    x = x0;               //å½“å‰çª—å£åœ¨ç¼“å†²åŒºä½ç½®
     y=15;   
     for(i=0;i<Width;i++){
       SetPosi(x++, y);
       for(j=0; j<4; j++)SetPixel(GRN);
     }
   }
-  else if(Windows_Flag == 0){    //Çå³ıĞ¡´°¿Ú
+  else if(Windows_Flag == 0){    //æ¸…é™¤å°çª—å£
     Clr_WavePosi(DAR);
   }
 }
 /*******************************************************************************
-²âÁ¿
+æµ‹é‡
 *******************************************************************************/
 void MeasureStr(u8 Source, u8 Item)
 {
@@ -1869,13 +1869,13 @@ void MeasureStr(u8 Source, u8 Item)
   }else Dpth = DEPTH[PopMenu1_Value[WIN_Depth]];
   
   switch (Item){
-  case 0: // Freq  ´æÎªÎó²î
+  case 0: // Freq  å­˜ä¸ºè¯¯å·®
     if(Source == CH1)FTmp=EdgeA*25*1000/2;
     else             FTmp=EdgeB*25*1000/2;
     if(PopMenu1_Value[TIM_Base]<9)FTmp= FTmp*1000000;
     else if(PopMenu1_Value[TIM_Base]<18)FTmp= FTmp*1000;
     FTmp=FTmp/Ts[PopMenu1_Value[TIM_Base]]/Dpth;
-    if(PopMenu1_Value[TIM_Base]<2) Temp=2*FTmp; //½»´í¹¤×÷Ä£Ê½ Depth/2 ËùÒÔ*2
+    if(PopMenu1_Value[TIM_Base]<2) Temp=2*FTmp; //äº¤é”™å·¥ä½œæ¨¡å¼ Depth/2 æ‰€ä»¥*2
     else Temp=FTmp;
     Value2Str(NumStr, Temp, (u8*)FSTR, 3, UNSIGN); break;
   case 1: // Duty
@@ -1963,7 +1963,7 @@ void MeasureStr(u8 Source, u8 Item)
   }  
 }
 /*******************************************************************************
-µç³ØµçÁ¿¸üĞÂ
+ç”µæ± ç”µé‡æ›´æ–°
 *******************************************************************************/
 void Battery_update(void)
 {
@@ -1975,16 +1975,16 @@ void Battery_update(void)
   DispStr6x8(Title_Posi_X[0], TITLE_H+2, INV+SYMB, str);
 }
 /*******************************************************************************
-µç³ØµçÁ¿ÏÔÊ¾
+ç”µæ± ç”µé‡æ˜¾ç¤º
 *******************************************************************************/
 void Battery_Show(void)
 {
   SetColor(DAR, GRN);  
   Draw_Circle_D(Foreground, Title_Posi_X[0]-3, TITLE_H+2, 11, 2, 4*6-2);
-  DispStr6x8(Title_Posi_X[0], TITLE_H+2, INV+SYMB, ";*@");           //µç³Ø°ëÂú
+  DispStr6x8(Title_Posi_X[0], TITLE_H+2, INV+SYMB, ";*@");           //ç”µæ± åŠæ»¡
 }
 /*******************************************************************************
-  ÏÔÊ¾±£´æ²ÎÊıÌáÊ¾µ¯³ö´°
+  æ˜¾ç¤ºä¿å­˜å‚æ•°æç¤ºå¼¹å‡ºçª—
 *******************************************************************************/
 void Param_Pop(u8* str)
 {
@@ -2001,7 +2001,7 @@ void Param_Pop(u8* str)
   Pop_STR(Px,Py,INV, " No "); 
 }
 /*******************************************************************************
- T1-T2µÄ²îÖµ
+ T1-T2çš„å·®å€¼
 *******************************************************************************/
 void Print_dT_Info(u8 Wink)
 {
@@ -2018,7 +2018,7 @@ void Print_dT_Info(u8 Wink)
   DispStr6x8(270, TITLE_L, Wink, NumStr);
 }
 /*******************************************************************************
- V1-V2µÄ²îÖµ
+ V1-V2çš„å·®å€¼
 *******************************************************************************/
 void Print_dV_Info(u8 Wink)
 {
@@ -2037,7 +2037,7 @@ void Print_dV_Info(u8 Wink)
   DispStr6x8(4*6, TITLE_L, Wink, NumStr);
 }
 /*******************************************************************************
-µ×À¸ÏÔÊ¾²âÁ¿Öµ
+åº•æ æ˜¾ç¤ºæµ‹é‡å€¼
 *******************************************************************************/
 void Print_dM_Info(u8 Wink , u8  Num, u16 Posi_x, u16 Posi_y)
 {
@@ -2055,7 +2055,7 @@ void Print_dM_Info(u8 Wink , u8  Num, u16 Posi_x, u16 Posi_y)
   DispStr6x8(Posi_x+5*6, Posi_y, Wink, NumStr);
 }
 /*******************************************************************************
-ÎÄ¼ş´æ´¢ÌáÊ¾
+æ–‡ä»¶å­˜å‚¨æç¤º
 *******************************************************************************/
 void DispFileInfo(u8 Info)
 { 
@@ -2066,7 +2066,7 @@ void DispFileInfo(u8 Info)
   DispStr(252, TITLE_L-1, PRN, "             ");
 }
 /*******************************************************************************
-»­ÏîÄ¿À¸µ¥±ßÔ²½Ç¿ò
+ç”»é¡¹ç›®æ å•è¾¹åœ†è§’æ¡†
 *******************************************************************************/
 void Draw_Circle_S(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 Width)
 {
@@ -2088,7 +2088,7 @@ void Draw_Circle_S(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 Width)
   }
 }
 /*******************************************************************************
-»­ÏîÄ¿À¸Ë«±ßÔ²½Ç¿ò
+ç”»é¡¹ç›®æ åŒè¾¹åœ†è§’æ¡†
 *******************************************************************************/
 void Draw_Circle_D(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 Width, u16 Distance)
 {
@@ -2120,7 +2120,7 @@ void Draw_Circle_D(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 Width, u16 Dis
   }
 }
 /*******************************************************************************
-»­Ïî¾ØĞÎ
+ç”»é¡¹çŸ©å½¢
 *******************************************************************************/
 void Draw_Rectangle(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 width)
 {
@@ -2134,7 +2134,7 @@ void Draw_Rectangle(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 width)
   }
 }
 /*******************************************************************************
-»­¿Õ¾ØĞÎ
+ç”»ç©ºçŸ©å½¢
 *******************************************************************************/
 void Draw_RECT(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 width, u8 R )
 {
@@ -2162,7 +2162,7 @@ void Draw_RECT(u16 Col, u16 Posi_x, u16 Posi_y, u16 High, u16 width, u8 R )
 }
 
 /*******************************************************************************
-²Á³ıÓÒÀ¸
+æ“¦é™¤å³æ 
 *******************************************************************************/
 void Clear_Label_R(u16 Col)
 {
@@ -2175,7 +2175,7 @@ void Clear_Label_R(u16 Col)
     }
 }
 /*******************************************************************************
-²Á³ı×óÀ¸
+æ“¦é™¤å·¦æ 
 *******************************************************************************/
 void Clear_Label_L(u16 Col)
 {
@@ -2187,7 +2187,7 @@ void Clear_Label_L(u16 Col)
     } 
   }
 /*******************************************************************************
-²¨ĞÎÊä³ö±í
+æ³¢å½¢è¾“å‡ºè¡¨
 *******************************************************************************/
 u32 WaveOut_Date(u16 type)
 {
@@ -2203,13 +2203,13 @@ u32 WaveOut_Date(u16 type)
   }
 }
 /*******************************************************************************
-Update_Proc_All  È«²¿Ë¢ĞÂ
+Update_Proc_All  å…¨éƒ¨åˆ·æ–°
 *******************************************************************************/
 void Update_Proc_All(void)
 {
   s16 i,k,l,index;
 
-  //------------------------------µÚÒ»Ò³²Ëµ¥------------------------------------//
+  //------------------------------ç¬¬ä¸€é¡µèœå•------------------------------------//
   for(i=0;i<ABOUT;i++){
     index=PopMenu1_Base[i];
     switch (i){
@@ -2220,17 +2220,17 @@ void Update_Proc_All(void)
         if(PopMenu1_Value[CH1_Vol]>3)
           KindA  = HV;
         else   
-          KindA  = LV;                //Ch1Ñ¡ÔñµÍÑ¹»ò¸ßÑ¹Á¿³Ì
+          KindA  = LV;                //Ch1é€‰æ‹©ä½å‹æˆ–é«˜å‹é‡ç¨‹
         StateA =  (PopMenu1_Value[CH1_Vol]>6)?ACT: GND; 
         
-        CouplA = (PopMenu1_Value[CH1_Coupl])? AC : DC;                      // AC);  //AC/DCñîºÏ·½Ê½
+        CouplA = (PopMenu1_Value[CH1_Coupl])? AC : DC;                      // AC);  //AC/DCè€¦åˆæ–¹å¼
         
         
       
-      __Ctrl(AiRANGE, KindA+CouplA+StateA);             //Ch1×´Ì¬Ë¢ĞÂ
-      ParamTab[P1x2]=2*(PopMenu1_Value[CH1_Posi]);      //Ch1ÓÎ±êÎ»ÖÃ 
+      __Ctrl(AiRANGE, KindA+CouplA+StateA);             //Ch1çŠ¶æ€åˆ·æ–°
+      ParamTab[P1x2]=2*(PopMenu1_Value[CH1_Posi]);      //Ch1æ¸¸æ ‡ä½ç½® 
       ParamTab[W1F]=PopMenu1_Value[CH1_Enable]? L_HID : B_HID;//Ch1 show_hide 
-      AiPosi(PopMenu1_Value[CH1_Posi]);                 //Ch1Ó²¼ş¶ÔÓ¦Î»ÖÃ
+      AiPosi(PopMenu1_Value[CH1_Posi]);                 //Ch1ç¡¬ä»¶å¯¹åº”ä½ç½®
       break;
     case CH2:
 
@@ -2239,10 +2239,10 @@ void Update_Proc_All(void)
         if(PopMenu1_Value[CH2_Vol]>3)
           KindB  = HV;
         else   
-          KindB  = LV;                //Ch1Ñ¡ÔñµÍÑ¹»ò¸ßÑ¹Á¿³Ì
+          KindB  = LV;                //Ch1é€‰æ‹©ä½å‹æˆ–é«˜å‹é‡ç¨‹
         StateB =  (PopMenu1_Value[CH2_Vol]>6)?ACT: GND; 
         
-        CouplB = (PopMenu1_Value[CH2_Coupl])? AC : DC;                      // AC);  //AC/DCñîºÏ·½Ê½
+        CouplB = (PopMenu1_Value[CH2_Coupl])? AC : DC;                      // AC);  //AC/DCè€¦åˆæ–¹å¼
         
       __Ctrl(BiRANGE, KindB+CouplB+StateB);
       ParamTab[P2x2]=2*(PopMenu1_Value[CH2_Posi]);
@@ -2254,7 +2254,7 @@ void Update_Proc_All(void)
       ParamTab[P3x2]=2*(PopMenu1_Value[CH3_Posi]);   
       break;
     case TIMEBASE:
-      Set_Base(PopMenu1_Value[TIM_Base]);               // Ó²¼şÉèÖÃÉ¨ÃèÊ±»ùµµÎ»
+      Set_Base(PopMenu1_Value[TIM_Base]);               // ç¡¬ä»¶è®¾ç½®æ‰«ææ—¶åŸºæ¡£ä½
       break;
     case TRIGGER:
       k=(PopMenu1_Value[TRI_Ch])?PopMenu1_Value[TRI_Ch2]:PopMenu1_Value[TRI_Ch1];
@@ -2280,7 +2280,7 @@ void Update_Proc_All(void)
       if(Cur_PopItem==5)Update[V2F]|=UPD;
       if(Cur_PopItem==1)Update[T1F]|=UPD;
       if(Cur_PopItem==2)Update[T2F]|=UPD;
-      if(Cur_PopItem==6)Update[V1F]|=UPD ;                //¸üĞÂV1-V2  
+      if(Cur_PopItem==6)Update[V1F]|=UPD ;                //æ›´æ–°V1-V2  
       break;
     case WINDOWS:
       index++;
@@ -2296,7 +2296,7 @@ void Update_Proc_All(void)
         break;  
       }
       ParamTab[T0F] =!PopMenu1_Value[WIN_Enable];
-      if(Status != STOP)ADC_Start();                     //ÖØĞÂ¿ªÊ¼ADCÉ¨Ãè²ÉÑù
+      if(Status != STOP)ADC_Start();                     //é‡æ–°å¼€å§‹ADCæ‰«æé‡‡æ ·
       break;
     case WAVE:
       if(PopMenu3_Value[WAVE_Type]==0){         

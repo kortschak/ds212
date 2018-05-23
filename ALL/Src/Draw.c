@@ -18,49 +18,49 @@ uc16  Mark_TAB[] ={
   0x000,0x07C,0x082,0x082,0x082,0x044,0x101,    // Mark C
   0x000,0x040,0x040,0x07E,0x040,0x040,0x101};   // Mark T
 
-uc16 SYMB8x14[]={  // ÏÔÊ¾·ûºÅÍ¼ÐÎÊý¾Ý¶¨Òå
+uc16 SYMB8x14[]={  // æ˜¾ç¤ºç¬¦å·å›¾å½¢æ•°æ®å®šä¹‰
   0x0000,0x0000,0x0000,0x0C60,0x0C60,0x0000,0x0000,0x0000, // @ :
-  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4008,0x4008,0x4008, // A ¿Õµç³ØÍ·
-  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008, // B ¿Õµç³ØÉí
-  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x7FF8, // C ¿Õµç³ØÎ²
-  0x0010,0x0030,0x0050,0x0190,0x0310,0x0C10,0x3FF0,0x0000, // D Èý½Ç
-  0x0FC0,0x0840,0x7878,0x4008,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // E Âúµç³ØÍ·
-  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // F Âúµç³ØÉí
-  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x4008,0x7FF8, // G Âúµç³ØÎ²
-  0x0048,0x0088,0x0188,0x0FF8,0x0980,0x0880,0x0840,0x0000, // H ÉÏÉýÑØ
-  0x7FF0,0x7FF0,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // I ×ó±ê³ß¶Ë
-  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // J ÖÐ±ê³ß¶Ë
-  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x7FF0,0x7FF0, // K ÓÒ±ê³ß¶Ë
-  0x0900,0x0880,0x08C0,0x0FF8,0x00C8,0x0088,0x0108,0x0000, // L ÏÂ½µÑØ
-  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4808,0x4408,0x43C8, // M ×ó M ¼ü
-  0x4408,0x4808,0x5FE8,0x4008,0x3FF0,0x0000,0x0000,0x0000, // N ÓÒ M ¼ü
-  0x0F30,0x1990,0x10F0,0x1000,0x10F0,0x1990,0x0F30,0x0000, // O Å·Ä·
-  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // P ×ó P ¼ü
-  0x4008,0x5FE8,0x4008,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // Q ÓÒ P ¼ü
-  0x0000,0x0000,0x3FF0,0x4008,0x4308,0x4308,0x4308,0x5FE8, // R ×ó + ¼ü
-  0x5FE8,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // S ÓÒ + ¼ü
+  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4008,0x4008,0x4008, // A ç©ºç”µæ± å¤´
+  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008, // B ç©ºç”µæ± èº«
+  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x7FF8, // C ç©ºç”µæ± å°¾
+  0x0010,0x0030,0x0050,0x0190,0x0310,0x0C10,0x3FF0,0x0000, // D ä¸‰è§’
+  0x0FC0,0x0840,0x7878,0x4008,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // E æ»¡ç”µæ± å¤´
+  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // F æ»¡ç”µæ± èº«
+  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x4008,0x7FF8, // G æ»¡ç”µæ± å°¾
+  0x0048,0x0088,0x0188,0x0FF8,0x0980,0x0880,0x0840,0x0000, // H ä¸Šå‡æ²¿
+  0x7FF0,0x7FF0,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // I å·¦æ ‡å°ºç«¯
+  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // J ä¸­æ ‡å°ºç«¯
+  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x7FF0,0x7FF0, // K å³æ ‡å°ºç«¯
+  0x0900,0x0880,0x08C0,0x0FF8,0x00C8,0x0088,0x0108,0x0000, // L ä¸‹é™æ²¿
+  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4808,0x4408,0x43C8, // M å·¦ M é”®
+  0x4408,0x4808,0x5FE8,0x4008,0x3FF0,0x0000,0x0000,0x0000, // N å³ M é”®
+  0x0F30,0x1990,0x10F0,0x1000,0x10F0,0x1990,0x0F30,0x0000, // O æ¬§å§†
+  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // P å·¦ P é”®
+  0x4008,0x5FE8,0x4008,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // Q å³ P é”®
+  0x0000,0x0000,0x3FF0,0x4008,0x4308,0x4308,0x4308,0x5FE8, // R å·¦ + é”®
+  0x5FE8,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // S å³ + é”®
   0x0000,0x3800,0x3010,0x3FF0,0x3FF0,0x3010,0x3800,0x0000, // T
-  0x4308,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // U ÓÒ - ¼ü
+  0x4308,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // U å³ - é”®
   0x3F80,0x3FC0,0x0060,0x0030,0x0060,0x3FC0,0x3F80,0x0000, // V
-  0x4308,0x4788,0x4FC8,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // W ÓÒ < ¼ü
-  0x0000,0x0440,0x0280,0x0100,0x0280,0x0440,0x0000,0x0000, // X ³ËºÅ
-  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // Y ÓÒ > ¼ü
-  0x5FE8,0x4FC8,0x4788,0x4308,0x4008,0x3FF0,0x0000,0x0000, // Z ×ó > ¼ü
-  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4F88,0x4048,0x4048, // [ µç³ØÍ·+U
-  0x4048,0x4F88,0x4008,0x4448,0x4A48,0x4A48,0x4A48,0x4988, // \ µç³ØÉí+S
-  0x4008,0x4FC8,0x4A48,0x4A48,0x4A48,0x4588,0x4008,0x7FF8, // ] µç³ØÎ²+B
-  0x0000,0x0420,0x0420,0x1F20,0x0420,0x0420,0x0000,0x0000, // ^ Õý¸ººÅ
-  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // _ ¿Õ¸ñ
-  0x7FF8,0x4008,0x5FE8,0x5208,0x5208,0x5008,0x4008,0x7FF8, // ` ·½¿ò F
+  0x4308,0x4788,0x4FC8,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // W å³ < é”®
+  0x0000,0x0440,0x0280,0x0100,0x0280,0x0440,0x0000,0x0000, // X ä¹˜å·
+  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // Y å³ > é”®
+  0x5FE8,0x4FC8,0x4788,0x4308,0x4008,0x3FF0,0x0000,0x0000, // Z å·¦ > é”®
+  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4F88,0x4048,0x4048, // [ ç”µæ± å¤´+U
+  0x4048,0x4F88,0x4008,0x4448,0x4A48,0x4A48,0x4A48,0x4988, // \ ç”µæ± èº«+S
+  0x4008,0x4FC8,0x4A48,0x4A48,0x4A48,0x4588,0x4008,0x7FF8, // ] ç”µæ± å°¾+B
+  0x0000,0x0420,0x0420,0x1F20,0x0420,0x0420,0x0000,0x0000, // ^ æ­£è´Ÿå·
+  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // _ ç©ºæ ¼
+  0x7FF8,0x4008,0x5FE8,0x5208,0x5208,0x5008,0x4008,0x7FF8, // ` æ–¹æ¡† F
   0x0190,0x0190,0x0010,0x0190,0x0190,0x0010,0x0190,0x0190, // a -- DC
   0x0190,0x0310,0x0310,0x0190,0x00D0,0x00D0,0x0190,0x0310, // b ~_AC
   0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // c x1 
   0x0000,0x0000,0x003C,0x0000,0x003C,0x0024,0x003C,0x0000, // d x10
-  0x7FF0,0x4010,0x4C50,0x5FD0,0x5FD0,0x4050,0x4010,0x7FF0, // e ·½¿ò 1
-  0x7FF0,0x4010,0x48D0,0x59D0,0x5350,0x4E50,0x4010,0x7FF0, // f ·½¿ò 2
-  0x7FF0,0x4010,0x4890,0x5250,0x5250,0x4D90,0x4010,0x7FF0, // g ·½¿ò 3
-  0x7FF0,0x4010,0x5810,0x5FD0,0x5FD0,0x5810,0x4010,0x7FF0, // h ·½¿ò T
-  0x3FE0,0x4010,0x5FD0,0x5210,0x5210,0x5210,0x4010,0x3FE0, // i ·½¿ò FÐ¡
+  0x7FF0,0x4010,0x4C50,0x5FD0,0x5FD0,0x4050,0x4010,0x7FF0, // e æ–¹æ¡† 1
+  0x7FF0,0x4010,0x48D0,0x59D0,0x5350,0x4E50,0x4010,0x7FF0, // f æ–¹æ¡† 2
+  0x7FF0,0x4010,0x4890,0x5250,0x5250,0x4D90,0x4010,0x7FF0, // g æ–¹æ¡† 3
+  0x7FF0,0x4010,0x5810,0x5FD0,0x5FD0,0x5810,0x4010,0x7FF0, // h æ–¹æ¡† T
+  0x3FE0,0x4010,0x5FD0,0x5210,0x5210,0x5210,0x4010,0x3FE0, // i æ–¹æ¡† Få°
   0xFFFF,0xFFFF,0xF39F,0xE01F,0xE01F,0xFF9F,0xFFFF,0xFFFF, // j  1
   0xFFFF,0xF79F,0xE71F,0xCE5F,0xCCDF,0xC19F,0xE39F,0xFFFF, // k  2
   0xFFFF,0xEFBF,0xCD9F,0xDDDF,0xDDDF,0xC01F,0xE23F,0xFFFF, // l  3
@@ -166,8 +166,8 @@ uc16 CHAR8x14[]={
 
 uc16 SYMB10x14[] = { 
   0x0000,0x0000,0x0000,0x0000,0x0C60,0x0C60,0x0000,0x0000,0x0000,0x0000, // @ :
-  0x7FC0,0x90A0,0xBFA0,0x80A0,0x9F20,0xB1A0,0xB1A0,0x9F20,0x8020,0x7FC0, // A  ·½¿ò10£¨x10£©
-  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // B  ¿Õ    £¨x10£©
+  0x7FC0,0x90A0,0xBFA0,0x80A0,0x9F20,0xB1A0,0xB1A0,0x9F20,0x8020,0x7FC0, // A  æ–¹æ¡†10ï¼ˆx10ï¼‰
+  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // B  ç©º    ï¼ˆx10ï¼‰
   0x0000,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x7FF8,0x0000, // C 
   0x0000,0x0010,0x0030,0x0050,0x0190,0x0310,0x0C10,0x3FF0,0x0000,0x0000, // D 
   0x0000,0x0FC0,0x0840,0x7878,0x4008,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x0000, // E 
@@ -269,23 +269,23 @@ uc8 CHAR6x8[] = {
   0x00,0x22,0x36,0x1C,0x36,0x22,    //x    
   0x00,0x39,0x3D,0x05,0x3F,0x3E,    //y    
   0x00,0x32,0x26,0x2E,0x3A,0x36,    //z    
-  0x00,0x19,0x31,0xFF,0xB0,0x98,    //ÉÏÉýÑØ //{
+  0x00,0x19,0x31,0xFF,0xB0,0x98,    //ä¸Šå‡æ²¿ //{
   0x00,0x00,0x00,0xFE,0x00,0x00,    //|      
-  0x00,0xB0,0x98,0xFF,0x19,0x31,    //ÏÂ½µÑØ //}
+  0x00,0xB0,0x98,0xFF,0x19,0x31,    //ä¸‹é™æ²¿ //}
   0x00,0x30,0x60,0x30,0x18,0x30,     //~  
 };
 
 uc8 SYMB6x8[] = { 
   0x00,0x00,0xFA,0xFA,0x00,0x00,    //!
-  0x18,0x38,0x38,0x10,0x10,0x30,    //" usb×ó
-  0x50,0x90,0x98,0xD4,0xD2,0x12,    //# usbÖÐ
-  0x17,0x13,0x10,0x38,0x30,0x10,    //$ usbÓÒ
+  0x18,0x38,0x38,0x10,0x10,0x30,    //" usbå·¦
+  0x50,0x90,0x98,0xD4,0xD2,0x12,    //# usbä¸­
+  0x17,0x13,0x10,0x38,0x30,0x10,    //$ usbå³
   0x00,0x66,0x6C,0x18,0x36,0x66,    //%  
-  0x82,0x82,0x82,0x82,0xBA,0xBA,    //& ¿Õµç³ØÖÐ
-  0x00,0x11,0x33,0x76,0xDC,0x98,    // 'µçÁ¿
-  0x00,0x7E,0x81,0xFF,0xB1,0x99,    // (±ß¿ò¡°M¡±×ó±ß
-  0xB1,0xFF,0x81,0x7E,0x00,0x00,    // )±ß¿ò¡°M¡±ÓÒ±ß 
-  0x82,0xBA,0xBA,0xBA,0xBA,0xBA,    //*Âúµç³ØÖÐ 
+  0x82,0x82,0x82,0x82,0xBA,0xBA,    //& ç©ºç”µæ± ä¸­
+  0x00,0x11,0x33,0x76,0xDC,0x98,    // 'ç”µé‡
+  0x00,0x7E,0x81,0xFF,0xB1,0x99,    // (è¾¹æ¡†â€œMâ€å·¦è¾¹
+  0xB1,0xFF,0x81,0x7E,0x00,0x00,    // )è¾¹æ¡†â€œMâ€å³è¾¹ 
+  0x82,0xBA,0xBA,0xBA,0xBA,0xBA,    //*æ»¡ç”µæ± ä¸­ 
   0x00,0x10,0x10,0x7C,0x10,0x10,    //+  
   0x00,0x00,0x01,0x07,0x06,0x00,    //,  
   0x00,0x10,0x10,0x10,0x10,0x10,    //-  
@@ -302,12 +302,12 @@ uc8 SYMB6x8[] = {
   0x00,0x6C,0xFE,0x92,0xFE,0x6C,    //8  
   0x00,0x70,0xFA,0x8A,0xFE,0x7C,    //9  
   0x00,0x00,0x00,0x24,0x24,0x00,    //:  
-  0x00,0x38,0xEE,0x82,0x82,0x82,    //; ¿Õµç³Ø×ó
-  0x82,0x82,0x82,0x82,0x82,0x82,    //< ¿Õµç³ØÖÐ
-  0x82,0x82,0x82,0x82,0xFE,0x00,    //= ¿Õµç³ØÓÒ
-  0x00,0x38,0xEE,0x82,0xBA,0xBA,    //>Âúµç³Ø×ó 
+  0x00,0x38,0xEE,0x82,0x82,0x82,    //; ç©ºç”µæ± å·¦
+  0x82,0x82,0x82,0x82,0x82,0x82,    //< ç©ºç”µæ± ä¸­
+  0x82,0x82,0x82,0x82,0xFE,0x00,    //= ç©ºç”µæ± å³
+  0x00,0x38,0xEE,0x82,0xBA,0xBA,    //>æ»¡ç”µæ± å·¦ 
   0x00,0x40,0xCA,0x9A,0xF0,0x60,    //? 
-  0xBA,0xBA,0xBA,0x82,0xFE,0x00,    //@Âúµç³ØÓÒ 
+  0xBA,0xBA,0xBA,0x82,0xFE,0x00,    //@æ»¡ç”µæ± å³ 
   0x00,0x3E,0x7E,0xC8,0x7E,0x3E,    //A
   0x00,0xFE,0xFE,0x92,0xFE,0x6C,    //B
   0x00,0x7C,0xFE,0x82,0xC6,0x44,    //C
@@ -334,12 +334,12 @@ uc8 SYMB6x8[] = {
   0x00,0xC6,0xEE,0x38,0xEE,0xC6,    //X
   0x00,0xE0,0xF2,0x1E,0xF2,0xE0,    //Y
   0x00,0xC6,0x8E,0x9A,0xF2,0xE6,    //Z
-  0x00,0x7E,0x81,0xA5,0xF3,0xD3,    //[ ±ß¿ò¡°S¡±×ó±ß
-  0xCF,0xA5,0x81,0x7E,0x00,0x00,    //  ±ß¿ò¡°S¡±ÓÒ±ß
+  0x00,0x7E,0x81,0xA5,0xF3,0xD3,    //[ è¾¹æ¡†â€œSâ€å·¦è¾¹
+  0xCF,0xA5,0x81,0x7E,0x00,0x00,    //  è¾¹æ¡†â€œSâ€å³è¾¹
   0x00,0x0C,0x1C,0x3C,0x1C,0x0C,    //]tri
-  0x00,0x50,0x48,0x7E,0x0A,0x12,    //ÉÏÉýÑØ //^
-  0x00,0x48,0x50,0x7E,0x12,0x0A,    //ÏÂ½µÑØ //_
-  0xBA,0xBA,0xBA,0xBA,0xBA,0xBA,    //`Âúµç³ØÖÐ 
+  0x00,0x50,0x48,0x7E,0x0A,0x12,    //ä¸Šå‡æ²¿ //^
+  0x00,0x48,0x50,0x7E,0x12,0x0A,    //ä¸‹é™æ²¿ //_
+  0xBA,0xBA,0xBA,0xBA,0xBA,0xBA,    //`æ»¡ç”µæ± ä¸­ 
   0x00,0x04,0x2E,0x2A,0x2A,0x1E,    //a    
   0x00,0x7E,0x7E,0x12,0x1E,0x0C,    //b    
   0x00,0x1C,0x3E,0x22,0x22,0x22,    //c    
@@ -366,57 +366,57 @@ uc8 SYMB6x8[] = {
   0x00,0x22,0x36,0x1C,0x36,0x22,    //x    
   0x00,0x39,0x3D,0x05,0x3F,0x3E,    //y    
   0x00,0x32,0x26,0x2E,0x3A,0x36,    //z    
-  0x00,0x00,0xFE,0x7C,0x38,0x10,    //{ ²¥·Å
-  0x00,0xFE,0x00,0xFE,0x00,0x00,    //| ||ÔÝÍ£  
-  0x00,0x1C,0x3E,0x63,0x01,0xF9,    //} ¹Ø»ú×ó       
-  0x01,0x63,0x3E,0x1C,0x00,0x00,    //~ ¹Ø»úÓÒ  
+  0x00,0x00,0xFE,0x7C,0x38,0x10,    //{ æ’­æ”¾
+  0x00,0xFE,0x00,0xFE,0x00,0x00,    //| ||æš‚åœ  
+  0x00,0x1C,0x3E,0x63,0x01,0xF9,    //} å…³æœºå·¦       
+  0x01,0x63,0x3E,0x1C,0x00,0x00,    //~ å…³æœºå³  
 };
 
-// ÏÔÊ¾»º³åÇø VRAM = CCM = 0x10000000~0x10001FFF 8KB
-u16* ParamTab = (u16*)(CCM_ADDR+TAB_PTR); // ÏÔÊ¾±äÁ¿²ÎÊý±í
+// æ˜¾ç¤ºç¼“å†²åŒº VRAM = CCM = 0x10000000~0x10001FFF 8KB
+u16* ParamTab = (u16*)(CCM_ADDR+TAB_PTR); // æ˜¾ç¤ºå˜é‡å‚æ•°è¡¨
 
-// View ´°¿ÚÖÐµÄÏÔÊ¾±äÁ¿²ÎÊý±í³õÊ¼»¯Êý¾Ý
+// View çª—å£ä¸­çš„æ˜¾ç¤ºå˜é‡å‚æ•°è¡¨åˆå§‹åŒ–æ•°æ®
 //+=============+======+======+======+======+======+======+======+======+======+
-//   Ö÷´°±êÖ¾   |  W1F |  W2F |  W3F |  VTF |  V1F |  V2F |  T0F |  T1F |  T2F |  
+//   ä¸»çª—æ ‡å¿—   |  W1F |  W2F |  W3F |  VTF |  V1F |  V2F |  T0F |  T1F |  T2F |  
 //+-------------+------+------+------+------+------+------+------+------+------+
 uc16 PARAM[] =  { L_HID, L_HID, L_HID,  SHOW,  SHOW,  SHOW,  SHOW,  SHOW,  SHOW,
 //+=============+======+======+======+======+======+======+======+======+======+
-//   Ö÷´°±äÁ¿   | P1x2 | P2x2 | P3x2 | VTx2 | V1x2 | V2x2 | T0x1 | T1x1 | T2x1 | 
+//   ä¸»çª—å˜é‡   | P1x2 | P2x2 | P3x2 | VTx2 | V1x2 | V2x2 | T0x1 | T1x1 | T2x1 | 
 //+-------------+------+------+------+------+------+------+------+------+------+
                  160*2,  80*2,  30*2,   220,   350,   50,   125,    50,   225,
 //+=============+======+======+======+======+======+======+======+======+======+
-//   Ö÷´°ÑÕÉ«   |  W1C |  W2C |  W3C |  VTC |  V1C |  V2C |  T0C |  T1C |  T2C | 
+//   ä¸»çª—é¢œè‰²   |  W1C |  W2C |  W3C |  VTC |  V1C |  V2C |  T0C |  T1C |  T2C | 
 //+-------------+------+------+------+------+------+------+------+------+------+
                    CYN,   YEL,   PUR,   CYN,   WHT,   WHT,   ORN,   WHT,   WHT,
 //+=============+======+======+======+======+======+======+======+======+======+
-//   Ö÷´°¸±É«   | W1C_ | W2C_ | W3C_ |      |      | 
+//   ä¸»çª—å‰¯è‰²   | W1C_ | W2C_ | W3C_ |      |      | 
 //+-------------+------+------+------+------+------+------+------+------+------+
                   CYN_,  YEL_,  PUR_, 
 //+=============+======+======+======+======+======+======+======+======+======+
-//   Ö÷´°±äÁ¿   | M_X0 | M_Y0 | M_WX |      |      |      |      |      |      |
+//   ä¸»çª—å˜é‡   | M_X0 | M_Y0 | M_WX |      |      |      |      |      |      |
 //+-------------+------+------+------+------+------+------+------+------+------+
                     7,    20,   251,    
 //+=============+======+======+======+======+======+======+======+======+======+
-//   ×Ó´°±äÁ¿   | POPF | BXx1 | WXx1 | BYx2 | HYx2 |      |      |      |      |
+//   å­çª—å˜é‡   | POPF | BXx1 | WXx1 | BYx2 | HYx2 |      |      |      |      |
 //+-------------+------+------+------+------+------+------+------+------+------+
                   P_HID,  180,   100,    26,   256,
 //+=============+======+======+======+======+======+======+======+======+======+
-//  ×Ó´°µ÷É«°å  | CN=2   CN=4   CN=6   CN=8  CN=10  CN=12  CN=14                 
+//  å­çª—è°ƒè‰²æ¿  | CN=2   CN=4   CN=6   CN=8  CN=10  CN=12  CN=14                 
 //+-------------+------+------+------+------+------+------+------+------+------+
                   CYN,   YEL,   PUR,   GRN,   ORN,   WHT,   DAR,              };
 //+=============+======+======+======+======+======+======+======+======+======+
 
 
-static u16 Nx = 5,   Ny = 5;   // µ¯³ö´°µ±Ç°ÏÔÊ¾Î»ÖÃ
+static u16 Nx = 5,   Ny = 5;   // å¼¹å‡ºçª—å½“å‰æ˜¾ç¤ºä½ç½®
 static s16 Dx = 1,   Dy = 2;
-static u8  Pop_B_Cn, Pop_F_Cn; // µ¯³ö´°µ±Ç°ÏÔÊ¾É«ºÅ
+static u8  Pop_B_Cn, Pop_F_Cn; // å¼¹å‡ºçª—å½“å‰æ˜¾ç¤ºè‰²å·
 
 u8  PopType  = DEMO_POP;
-u16 Sx = 0, Sy = 0;            // Ö÷ÆÁÄ»µ±Ç°ÏÔÊ¾Î»ÖÃ
-u16 Background, Foreground;    // Ö÷ÆÁÄ»µ±Ç°ÏÔÊ¾ÑÕÉ«
+u16 Sx = 0, Sy = 0;            // ä¸»å±å¹•å½“å‰æ˜¾ç¤ºä½ç½®
+u16 Background, Foreground;    // ä¸»å±å¹•å½“å‰æ˜¾ç¤ºé¢œè‰²
 
 /*******************************************************************************
- PopColor: µ¯³ö´°ÑÕÉ«ÉèÖÃ
+ PopColor: å¼¹å‡ºçª—é¢œè‰²è®¾ç½®
 *******************************************************************************/
 void PopColor(u16 Board_Color, u16 Text_Color)
 {
@@ -427,7 +427,7 @@ void PopColor(u16 Board_Color, u16 Text_Color)
   Pop_F_Cn = i;
 }
 /*******************************************************************************
- SetColor: LCDÆÁÄ»ÑÕÉ«ÉèÖÃ
+ SetColor: LCDå±å¹•é¢œè‰²è®¾ç½®
 *******************************************************************************/
 void SetColor(u16 Board_Color, u16 Text_Color)
 {
@@ -435,19 +435,19 @@ void SetColor(u16 Board_Color, u16 Text_Color)
   Foreground = Text_Color;
 }
 /*******************************************************************************
- PopPixel: µ¯³ö´°ÏñËØÉèÖÃ     Color: ÏñËØÑÕÉ«(1/0)  ÏñËØ¶¨Î»: Nx, Ny
+ PopPixel: å¼¹å‡ºçª—åƒç´ è®¾ç½®     Color: åƒç´ é¢œè‰²(1/0)  åƒç´ å®šä½: Nx, Ny
 *******************************************************************************/
 void PopPixel(u8 ColorNum)
 {
   u8  *PopBuf = (u8*)CCM_ADDR+POP_BUF;
 
-  Nx = Nx%ParamTab[PWx1]; Ny = Ny%ParamTab[PHx2]; // Nx, Ny ³¬½çÔò·µ»ØÆðµã
+  Nx = Nx%ParamTab[PWx1]; Ny = Ny%ParamTab[PHx2]; // Nx, Ny è¶…ç•Œåˆ™è¿”å›žèµ·ç‚¹
   u16 i  = Nx*ParamTab[PHx2]/4+ Ny/2;
   if(Ny++%2) PopBuf[i] = (PopBuf[i]&0x0F)|(ColorNum << 4);
   else       PopBuf[i] = (PopBuf[i]&0xF0)| ColorNum;
 }
 /*******************************************************************************
-  OpenPop: »­µ¯³ö´°Íâ¿ò¼°Çå³ýµ¯³ö´°ÄÚÈÝ  ÊäÈë²ÎÊý: PopX, PopY, PopH, PopW, Mod
+  OpenPop: ç”»å¼¹å‡ºçª—å¤–æ¡†åŠæ¸…é™¤å¼¹å‡ºçª—å†…å®¹  è¾“å…¥å‚æ•°: PopX, PopY, PopH, PopW, Mod
 *******************************************************************************/
 void OpenPop(u8 PopX, u8 PopY, u8 PopH, u8 PopW, u8 Mode)
 {
@@ -497,7 +497,7 @@ void OpenPop(u8 PopX, u8 PopY, u8 PopH, u8 PopW, u8 Mode)
   PopPixel(Transpa); PopPixel(Transpa); PopPixel(Transpa);
 }
 /*******************************************************************************
- PopChar: µ¯³ö´°ÄÚÏÔÊ¾×Ö·û/Í¼¿é       Mode = bit0: Normal/Inv, bit1: Char/Symb
+ PopChar: å¼¹å‡ºçª—å†…æ˜¾ç¤ºå­—ç¬¦/å›¾å—       Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void PopChar(u8 Mode, u8 Code)
 {
@@ -516,7 +516,7 @@ void PopChar(u8 Mode, u8 Code)
   }
 }
 /*******************************************************************************
- PopChar6x8: µ¯³ö´°ÄÚÏÔÊ¾×Ö·û/Í¼¿é     Mode = bit0: Normal/Inv, bit1: Char/Symb
+ PopChar6x8: å¼¹å‡ºçª—å†…æ˜¾ç¤ºå­—ç¬¦/å›¾å—     Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void PopChar6x8(u8 Mode, u8 Code)
 {
@@ -537,7 +537,7 @@ void PopChar6x8(u8 Mode, u8 Code)
   }
 }
 /*******************************************************************************
- NoteSTR: µ¯³ö´°ÄÚÏÔÊ¾×Ö·û/Í¼¿é´®      Mode = bit0: Normal/Inv, bit1: Char/Symb
+ NoteSTR: å¼¹å‡ºçª—å†…æ˜¾ç¤ºå­—ç¬¦/å›¾å—ä¸²      Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void Pop_STR(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
 {
@@ -550,7 +550,7 @@ void Pop_STR(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
- NoteSTR86x8: µ¯³ö´°ÄÚÏÔÊ¾×Ö·û/Í¼¿é´®   Mode = bit0: Normal/Inv, bit1: Char/Symb
+ NoteSTR86x8: å¼¹å‡ºçª—å†…æ˜¾ç¤ºå­—ç¬¦/å›¾å—ä¸²   Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void Pop_STR6x8(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
 {
@@ -576,7 +576,7 @@ void Pop_STR6x8(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
- Disp_Char: Ö÷ÆÁÄ»ÏÔÊ¾×Ö·û/Í¼¿é         Mode = bit0: Normal/Inv, bit1: Char/Map
+ Disp_Char: ä¸»å±å¹•æ˜¾ç¤ºå­—ç¬¦/å›¾å—         Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispChar(u8 Mode, u8 Code)
 {
@@ -587,13 +587,13 @@ void DispChar(u8 Mode, u8 Code)
     else            k = Get_TAB_8x14(Code, i);
     if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
     SetPosi(Sx, Sy);
-    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){       //AC/DC±êÖ¾ÏÔÊ¾
+    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){       //AC/DCæ ‡å¿—æ˜¾ç¤º
       for(j=0; j<11; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
         k >>= 1;}
     }
-    else if((Mode & SYMB)&&(Code == 'L' || Code=='H')){ //ÉÏÉýÑØ£¬ÏÂ½µÑØ
+    else if((Mode & SYMB)&&(Code == 'L' || Code=='H')){ //ä¸Šå‡æ²¿ï¼Œä¸‹é™æ²¿
       SetPosi(Sx, Sy);
       for(j=0; j<11; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
@@ -650,7 +650,7 @@ void DispChar10x14(u8 Mode, u8 Code)
   
 }
 /*******************************************************************************
- Disp_Char8x9: Ö÷ÆÁÄ»ÏÔÊ¾×Ö·û/Í¼¿é       Mode = bit0: Normal/Inv, bit1: Char/Map
+ Disp_Char8x9: ä¸»å±å¹•æ˜¾ç¤ºå­—ç¬¦/å›¾å—       Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispChar8x9(u8 Mode, u8 Code)
 {
@@ -661,13 +661,13 @@ void DispChar8x9(u8 Mode, u8 Code)
     else            k = Get_TAB_8x9(Code, i);
     if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
     SetPosi(Sx, Sy);
-    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){      //AC/DC±êÖ¾ÏÔÊ¾
+    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){      //AC/DCæ ‡å¿—æ˜¾ç¤º
       for(j=0; j<10; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
         k >>= 1;}
     }
-    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1¡¢X10±êÖ¾ÏÔÊ¾
+    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1ã€X10æ ‡å¿—æ˜¾ç¤º
       SetPosi(Sx, Sy+9);
       for(j=0; j<5; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
@@ -687,7 +687,7 @@ void DispChar8x9(u8 Mode, u8 Code)
   
 }
 /*******************************************************************************
-  DispStr: Ö÷ÆÁÄ»ÏÔÊ¾×Ö·û/Í¼¿é´®        Mode = bit0: Normal/Inv, bit1: Char/Map
+  DispStr: ä¸»å±å¹•æ˜¾ç¤ºå­—ç¬¦/å›¾å—ä¸²        Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispStr(u16 x0, u16 y0, u8 Mode, u8 *Str)
 {
@@ -707,7 +707,7 @@ void DispStr10x14(u16 x0, u16 y0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
-  DispStr8x9: Ö÷ÆÁÄ»ÏÔÊ¾×Ö·û/Í¼¿é´®      Mode = bit0: Normal/Inv, bit1: Char/Map
+  DispStr8x9: ä¸»å±å¹•æ˜¾ç¤ºå­—ç¬¦/å›¾å—ä¸²      Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispStr8x9(u16 x0, u16 y0, u8 Mode, u8 *Str)
 {
@@ -715,13 +715,13 @@ void DispStr8x9(u16 x0, u16 y0, u8 Mode, u8 *Str)
   Sx = x0; Sy = y0;
   __SetPosi(Sx, Sy);
   for (i=0; i<9; i++) __SetPixel((Mode & INV)? Foreground : Background);
-  Sx++;                                   // Ã¿Ò»¸ö×Ö·û´®Ç°Ôö¼ÓÒ»¿Õ°×ÁÐ
+  Sx++;                                   // æ¯ä¸€ä¸ªå­—ç¬¦ä¸²å‰å¢žåŠ ä¸€ç©ºç™½åˆ—
   while(*Str != 0){
     DispChar8x9(Mode, *Str++);
   }
 }
 /*******************************************************************************
-  List_Pop: ´ò¿ª²Ëµ¥´°
+  List_Pop: æ‰“å¼€èœå•çª—
 *******************************************************************************/
 void List_Pop(void)
 {
@@ -729,7 +729,7 @@ void List_Pop(void)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Close_Pop: ¹Ø±Õ²Ëµ¥´°¼°»á»°´°
+  Close_Pop: å…³é—­èœå•çª—åŠä¼šè¯çª—
 *******************************************************************************/
 void ClosePop(void)
 {
@@ -738,7 +738,7 @@ void ClosePop(void)
   else Demo_Pop();
 }
 /*******************************************************************************
-  Move_Pop: ´ò¿ª¼°ÓÎ¶¯ÑÝÊ¾´°
+  Move_Pop: æ‰“å¼€åŠæ¸¸åŠ¨æ¼”ç¤ºçª—
 *******************************************************************************/
 void MovePop(void)
 {
@@ -753,7 +753,7 @@ void MovePop(void)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Dialog_Pop: µ¯³ö»á»°´°
+  Dialog_Pop: å¼¹å‡ºä¼šè¯çª—
 *******************************************************************************/
 void Dialog_Pop(u8* Str)
 {
@@ -768,7 +768,7 @@ void Dialog_Pop(u8* Str)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Power_Pop: µ¯³ö»á»°´°
+  Power_Pop: å¼¹å‡ºä¼šè¯çª—
 *******************************************************************************/
 void Power_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 {
@@ -776,39 +776,39 @@ void Power_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
   PopColor(DAR,WHT);
   OpenPop(X_Posi, Y_Posi, High, Width, COVER);
   Pop_STR6x8( 4*6, 41, PRN, Str);
-  Pop_STR6x8( 1*6, 29, SYMB,  "{|:");         //²¥·ÅÔÝÍ£Í¼±ê
+  Pop_STR6x8( 1*6, 29, SYMB,  "{|:");         //æ’­æ”¾æš‚åœå›¾æ ‡
   Pop_STR6x8( 5*6, 29, PRN,  "PwrOff Only");
   Pop_STR6x8( 1*6, 17, SYMB,   "[\\:");       //"S" 
   Pop_STR6x8( 5*6, 17, PRN,   "PwrOff & SaveParam");
-  Pop_STR6x8( 1*6, 5,  SYMB,  "}~:");         //¹Ø»úÍ¼±ê
+  Pop_STR6x8( 1*6, 5,  SYMB,  "}~:");         //å…³æœºå›¾æ ‡
   Pop_STR6x8( 5*6, 5,  PRN,  "Exit");
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Dialog_Pop_Cal: µ¯³ö»á»°´°
+  Dialog_Pop_Cal: å¼¹å‡ºä¼šè¯çª—
 *******************************************************************************/
 void Dialog_CalPop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 {
   u16 i;
-  i = (Width - 17*6)/2;                      //Ñ¡Ôñ°´Å¥ÐÐÆðÊ¼Î»ÖÃ
+  i = (Width - 17*6)/2;                      //é€‰æ‹©æŒ‰é’®è¡Œèµ·å§‹ä½ç½®
   PopType |= DAILOG_POP;
   PopColor(WHT,DAR);
   OpenPop(X_Posi, Y_Posi, High, Width, COVER);
   Pop_STR6x8( 1*6, 16, PRN, Str);
-  Pop_STR6x8( i,      4, SYMB,  "[\\");      //¹Ø»úÍ¼±ê
+  Pop_STR6x8( i,      4, SYMB,  "[\\");      //å…³æœºå›¾æ ‡
   Pop_STR6x8( i+ 2*6, 4, PRN,  ":Yes");
-  Pop_STR6x8( i+10*6, 4, SYMB,  "()");       //²¥·ÅÔÝÍ£Í¼±ê
+  Pop_STR6x8( i+10*6, 4, SYMB,  "()");       //æ’­æ”¾æš‚åœå›¾æ ‡
   Pop_STR6x8( i+12*6, 4, PRN,  ":No");
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Product_Pop: µ¯³ö»á»°´°
+  Product_Pop: å¼¹å‡ºä¼šè¯çª—
 *******************************************************************************/
 void Product_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 {
   u16 i;
   u8 ptr[15];
-  i = Width/5;                               //±êÌâÆðÊ¼Î»ÖÃ
+  i = Width/5;                               //æ ‡é¢˜èµ·å§‹ä½ç½®
   PopType |= DAILOG_POP;
   PopColor(DAR,WHT);
   OpenPop(X_Posi, Y_Posi, High, Width, COVER);
@@ -838,7 +838,7 @@ void Product_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  About_Pop: µ¯³ö»á»°´°
+  About_Pop: å¼¹å‡ºä¼šè¯çª—
 *******************************************************************************/
 void About_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 { 
@@ -849,7 +849,7 @@ void About_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  ÏÔÊ¾¹Ø»úÌáÊ¾µ¯³ö´°
+  æ˜¾ç¤ºå…³æœºæç¤ºå¼¹å‡ºçª—
 *******************************************************************************/
 void PwrOff_Pop(void)
 {
@@ -860,7 +860,7 @@ void PwrOff_Pop(void)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  ÌáÊ¾µ¯³ö´°
+  æç¤ºå¼¹å‡ºçª—
 *******************************************************************************/
 void Tips_Pop(u8* Str)
 {
@@ -871,7 +871,7 @@ void Tips_Pop(u8* Str)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  ÏÔÊ¾Demo_PopÌáÊ¾µ¯³ö´°
+  æ˜¾ç¤ºDemo_Popæç¤ºå¼¹å‡ºçª—
 *******************************************************************************/
 void Demo_Pop(void)
 {
@@ -884,7 +884,7 @@ void Demo_Pop(void)
   Pop_STR(4, 10, PRN, "only");
 }
 /*******************************************************************************
-  ´òÓ¡×Ö·û´®
+  æ‰“å°å­—ç¬¦ä¸²
 *******************************************************************************/
 void PrintStr(u8 Mode, u8 *Str)
 {
@@ -892,7 +892,7 @@ void PrintStr(u8 Mode, u8 *Str)
 
   SetPosi(Sx, Sy);
   for (i=0; i<14; i++) SetPixel((Mode & INV)? Foreground : Background);
-  Sx++;                             // Ã¿Ò»¸ö×Ö·û´®Ç°Ôö¼ÓÒ»¿Õ°×ÁÐ
+  Sx++;                             // æ¯ä¸€ä¸ªå­—ç¬¦ä¸²å‰å¢žåŠ ä¸€ç©ºç™½åˆ—
   while(*Str != 0){
     for(i=0; i<8; ++i){
       if(!(Mode & SYMB)) k = Get_TAB_8x14(*Str, i);
@@ -904,13 +904,13 @@ void PrintStr(u8 Mode, u8 *Str)
         else       SetPixel((Mode & INV)? Foreground : Background);
        k >>= 1;
       }
-      Sx++;                        //ÏÔÊ¾Î»ÖÃË®Æ½·½Ïò+1
+      Sx++;                        //æ˜¾ç¤ºä½ç½®æ°´å¹³æ–¹å‘+1
     }
-    Str++;                         //×Ö·û´®Ö¸Õë+1
+    Str++;                         //å­—ç¬¦ä¸²æŒ‡é’ˆ+1
   }
 }
 /*******************************************************************************
-  ´òÓ¡×Ö·û´®6x8
+  æ‰“å°å­—ç¬¦ä¸²6x8
 *******************************************************************************/
 void PrintStr6x8(u8 Mode, u8 *Str)
 {
@@ -926,17 +926,17 @@ void PrintStr6x8(u8 Mode, u8 *Str)
       if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
       SetPosi(Sx, Sy);  SetPixel((Mode & INV)? Foreground : Background);
       SetPosi(Sx, Sy+1);
-      for(j=0; j<10; ++j){  //j<8Ê±²»¿ÕÐÐ£¬j<10¿ÕÁ½ÐÐ   ¼´ÉÏÏÂ¸÷¿ÕÁ½ÐÐ
+      for(j=0; j<10; ++j){  //j<8æ—¶ä¸ç©ºè¡Œï¼Œj<10ç©ºä¸¤è¡Œ   å³ä¸Šä¸‹å„ç©ºä¸¤è¡Œ
         if(k & 1)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
        k >>= 1;
       }
-      Sx++;                 //ÏÔÊ¾Î»ÖÃË®Æ½·½Ïò+1
+      Sx++;                 //æ˜¾ç¤ºä½ç½®æ°´å¹³æ–¹å‘+1
     }
   }
 }
 /*******************************************************************************
-  Label´òÓ¡×Ö·û´®
+  Labelæ‰“å°å­—ç¬¦ä¸²
 *******************************************************************************/
 void PrintStr_Cur(u8 Mode, u8 *Str)
 {
@@ -954,14 +954,14 @@ void PrintStr_Cur(u8 Mode, u8 *Str)
         else       SetPixel((Mode & INV)? Background : Foreground);
        k >>= 1;
       }
-      Sx++;               //ÏÔÊ¾Î»ÖÃË®Æ½·½Ïò+1
+      Sx++;               //æ˜¾ç¤ºä½ç½®æ°´å¹³æ–¹å‘+1
     }
-    Str++;                //×Ö·û´®Ö¸Õë+1
+    Str++;                //å­—ç¬¦ä¸²æŒ‡é’ˆ+1
   }
 }
 
 /*******************************************************************************
- Display_Str: ÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾×Ö·û´®   ÊäÈë: X¡¢Y×ø±ê£¬ÑÕÉ«Öµ£¬×Ö·û´®
+ Display_Str: åœ¨æŒ‡å®šä½ç½®æ˜¾ç¤ºå­—ç¬¦ä¸²   è¾“å…¥: Xã€Yåæ ‡ï¼Œé¢œè‰²å€¼ï¼Œå­—ç¬¦ä¸²
 *******************************************************************************/
 u16 Get_TAB_6x8(u8 Code, u16 Row)
 {
@@ -980,7 +980,7 @@ void DispStr6x8(u16 x0, u16 y0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
- Disp_Char6x8: Ö÷ÆÁÄ»ÏÔÊ¾×Ö·û/Í¼¿é       Mode = bit0: Normal/Inv, bit1: Char/Map
+ Disp_Char6x8: ä¸»å±å¹•æ˜¾ç¤ºå­—ç¬¦/å›¾å—       Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispChar6x8(u8 Mode, u8 Code)
 {
@@ -991,13 +991,13 @@ void DispChar6x8(u8 Mode, u8 Code)
     else            k = Get_TAB_6x8(Code, i);
     if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
     SetPosi(Sx, Sy);
-    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){     //AC/DC±êÖ¾ÏÔÊ¾
+    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){     //AC/DCæ ‡å¿—æ˜¾ç¤º
       for(j=0; j<10; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
         k >>= 1;}
     }
-    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1¡¢X10±êÖ¾ÏÔÊ¾
+    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1ã€X10æ ‡å¿—æ˜¾ç¤º
      SetPosi(Sx, Sy+9);
       for(j=0; j<5; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
@@ -1019,7 +1019,7 @@ void DispChar6x8(u8 Mode, u8 Code)
 }
 
 /*******************************************************************************
- viod Clr_WaveWin(u16 Col)  Çå³ý²¨ÐÎÏÔÊ¾Çø
+ viod Clr_WaveWin(u16 Col)  æ¸…é™¤æ³¢å½¢æ˜¾ç¤ºåŒº
 *******************************************************************************/
 void Clr_WaveWin(u16 Col)
 {
@@ -1034,7 +1034,7 @@ void Clr_WaveWin(u16 Col)
   }
 }
 /*******************************************************************************
- viod Clr_WavePosi(u16 Col)  Çå³ý²¨ÐÎÎ»ÖÃÏÔÊ¾
+ viod Clr_WavePosi(u16 Col)  æ¸…é™¤æ³¢å½¢ä½ç½®æ˜¾ç¤º
 *******************************************************************************/
 void Clr_WavePosi(u16 Col)
 {

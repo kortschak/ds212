@@ -1,5 +1,5 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
- Brief   : µ×²ãÓ²¼şÅäÖÃ                                            Author : bure
+ Brief   : åº•å±‚ç¡¬ä»¶é…ç½®                                            Author : bure
 *******************************************************************************/
 #ifndef __DRIVE_H
 #define __DRIVE_H
@@ -24,7 +24,7 @@ extern u16  Key_S_Time, Vb_Sum, Vbattrey;;
 #define WAIT_TIMES      100000
 
 //=====+========+========+========+========+========+========+========+========+
-//Item:|²úÆ·ĞÍºÅ|Ó²¼ş°æ±¾| MCUĞÍºÅ| LCDĞÍºÅ| LCDĞÍºÅ|FPGAĞÍºÅ| DFU°æ±¾| OEM°æ±¾|
+//Item:|äº§å“å‹å·|ç¡¬ä»¶ç‰ˆæœ¬| MCUå‹å·| LCDå‹å·| LCDå‹å·|FPGAå‹å·| DFUç‰ˆæœ¬| OEMç‰ˆæœ¬|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // RET:|   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
@@ -33,20 +33,20 @@ extern u16  Key_S_Time, Vb_Sum, Vbattrey;;
 
 
 //----------------------------- key code define ------------------------------//
-#define K_RUN           0x02     /* RUN¼ü             */
-#define K_M             0x04     /* Bit2           M¼ü*/
-#define K_UP            0x08     /* Bit3           U¼ü*/
-#define K_DOWN          0x10     /* Bit4           D¼ü*/
-#define K_LEFT          0x20     /* Bit5           L¼ü*/
-#define K_RIGHT         0x40     /* Bit6           R¼ü*/
-#define K_S             0x80     /* Bit7           S¼ü*/
+#define K_RUN           0x02     /* RUNé”®             */
+#define K_M             0x04     /* Bit2           Mé”®*/
+#define K_UP            0x08     /* Bit3           Ué”®*/
+#define K_DOWN          0x10     /* Bit4           Dé”®*/
+#define K_LEFT          0x20     /* Bit5           Lé”®*/
+#define K_RIGHT         0x40     /* Bit6           Ré”®*/
+#define K_S             0x80     /* Bit7           Sé”®*/
 
-#define KEY_DOUBLE_M    0x4000   /*MË«»÷*/
-#define KEY_DOUBLE_S    0x8000   /*SË«»÷*/
+#define KEY_DOUBLE_M    0x4000   /*MåŒå‡»*/
+#define KEY_DOUBLE_S    0x8000   /*SåŒå‡»*/
 
-#define R_HOLD          0x0200   /*RUN³¤°´*/
-#define S_HOLD          0x2000   /*M³¤°´  */
-#define M_HOLD          0x1000   /*S³¤°´  */
+#define R_HOLD          0x0200   /*RUNé•¿æŒ‰*/
+#define S_HOLD          0x2000   /*Mé•¿æŒ‰  */
+#define M_HOLD          0x1000   /*Sé•¿æŒ‰  */
 
 //----------------------------------------------------------------------------//
 void USB_MSD_Config(void);

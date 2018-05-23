@@ -20,7 +20,7 @@ Project Name: DS212
 #include "Lcd.h"
 
 #define Page_Address    0x08007800   
-#define Kpg_Address     0x08007800  /*±£´æĞ£×¼ºóµÄKpg[]ÁãµãÆ«ÒÆºÍÔöÒæÏµÊı */
+#define Kpg_Address     0x08007800  /*ä¿å­˜æ ¡å‡†åçš„Kpg[]é›¶ç‚¹åç§»å’Œå¢ç›Šç³»æ•° */
 
 u8   Cal_Flag   = 1;
 u8   Rest_Flag  = 0;
@@ -64,7 +64,7 @@ extern u8 DiskBuf[4096];
 extern u8  Menu_Temp[5];
 
 /*******************************************************************************
-Color_Num: Çó³öµ±Ç°ÑÕÉ«µÄ¶ÔÓ¦µ÷É«°å±àºÅ
+Color_Num: æ±‚å‡ºå½“å‰é¢œè‰²çš„å¯¹åº”è°ƒè‰²æ¿ç¼–å·
 *******************************************************************************/
 u8 Color_Num(u16 Color)
 {
@@ -86,7 +86,7 @@ u8 Color_Num(u16 Color)
   else                                return 15;
 }
 /*******************************************************************************
- ´ò¿ªÖ¸¶¨À©Õ¹ÃûµÄÎÄ¼ş            ÊäÈë£ºÎÄ¼şÀ©Õ¹Ãû             ·µ»ØÖµ£º0x00=³É¹¦
+ æ‰“å¼€æŒ‡å®šæ‰©å±•åçš„æ–‡ä»¶            è¾“å…¥ï¼šæ–‡ä»¶æ‰©å±•å             è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 void Make_Filename(s16 FileNo,unsigned char* FileName)
 {
@@ -102,7 +102,7 @@ void Make_Filename(s16 FileNo,unsigned char* FileName)
 }
 
 /*******************************************************************************
-Save_Dat: ±£´æµ±Ç°ÆÁÄ»ÏÔÊ¾Í¼ÏñÔ­Ê¼Êı¾İ    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Save_Dat: ä¿å­˜å½“å‰å±å¹•æ˜¾ç¤ºå›¾åƒåŸå§‹æ•°æ®    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Save_Dat(s16 FileNo)
 {
@@ -129,13 +129,13 @@ u8 Save_Dat(s16 FileNo)
   for(i=0; i<3; i++){
     memcpy(DiskBuf+DAT_Var+300*i, V_Buf+TR1_pBUF+300*i, 300);
   } 
-  if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
+  if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
   if(CloseFile(DiskBuf, 512*2, pCluster, pDirAddr)!= OK) return FILE_RW_ERR;
   if(PopMenu3_Value[SAVE_Dat]<99)PopMenu3_Value[SAVE_Dat]++;
   return OK;
 }
 /*******************************************************************************
-Load_Dat: ¼ÓÔØ±£´æ¹ıµÄÆÁÄ»Í¼ÏñÔ­Ê¼Êı¾İ    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Load_Dat: åŠ è½½ä¿å­˜è¿‡çš„å±å¹•å›¾åƒåŸå§‹æ•°æ®    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Load_Dat(s16 FileNo)
 {
@@ -169,7 +169,7 @@ u8 Load_Dat(s16 FileNo)
 }
 
 /*******************************************************************************
-Save_Bmp: ±£´æµ±Ç°ÆÁÄ»ÏÔÊ¾Í¼ÏñÎªBMP¸ñÊ½    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Save_Bmp: ä¿å­˜å½“å‰å±å¹•æ˜¾ç¤ºå›¾åƒä¸ºBMPæ ¼å¼    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Save_Bmp(s16 FileNo)
 {
@@ -185,14 +185,14 @@ u8 Save_Bmp(s16 FileNo)
   Make_Filename(FileNo, pFileName);
   if(OpenFileWr(DiskBuf, pFileName, pCluster, pDirAddr)!=OK) return Rvalue;
   memcpy(DiskBuf, BmpHead, 54);
-  i = 0x0036;                                     // µ÷É«°å´æ·Å¿ªÊ¼µØÖ·
+  i = 0x0036;                                     // è°ƒè‰²æ¿å­˜æ”¾å¼€å§‹åœ°å€
   for(j=0; j<16; ++j){
     DiskBuf[j*4 +i+0]=(BMP_Color[j] & 0xF800)>>8;  // Bule
     DiskBuf[j*4 +i+1]=(BMP_Color[j] & 0x07E0)>>3;  // Green&
     DiskBuf[j*4 +i+2]=(BMP_Color[j] & 0x001F)<<3;  // Red
     DiskBuf[j*4 +i+3]= 0;                          // Alpha
   }
-  i = 0x0076;                                     // Í¼ÏñÊı¾İ¿ªÊ¼´æ·ÅµØÖ·
+  i = 0x0076;                                     // å›¾åƒæ•°æ®å¼€å§‹å­˜æ”¾åœ°å€
   for(y=0; y<240; y++){
     for(x=0; x<320 ; x+=2){
       __SetPosi(x, y); 
@@ -203,8 +203,8 @@ u8 Save_Bmp(s16 FileNo)
       i++;
       if(i>=length){
         i=0;
-        if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-        if(l==0)PrintClk(168,2,(k++ >>1)& 3);         // ½ø¶ÈÖ¸Ê¾
+        if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+        if(l==0)PrintClk(168,2,(k++ >>1)& 3);         // è¿›åº¦æŒ‡ç¤º
         l++;
         if(l>=2)l=0;
       }
@@ -220,7 +220,7 @@ u8 Save_Bmp(s16 FileNo)
 }
 
 /*******************************************************************************
-Open_Bmp: ÔÚÆÁÄ»ÏÔÊ¾Í¼ÏñÎªBMP¸ñÊ½    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Open_Bmp: åœ¨å±å¹•æ˜¾ç¤ºå›¾åƒä¸ºBMPæ ¼å¼    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Open_Bmp(u8 FileNum)
 {
@@ -236,7 +236,7 @@ u8 Open_Bmp(u8 FileNum)
       return FILE_RW_ERR;
     }
      if(ReadFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR;
-     i = 0x0036;                              //µ÷É«°å´æ·Å¿ªÊ¼µØÖ·
+     i = 0x0036;                              //è°ƒè‰²æ¿å­˜æ”¾å¼€å§‹åœ°å€
      for(j=0; j<16; j++){
        BMP_Ag_Color[j]=((DiskBuf[j*4 +i+0]<<8)&0xF800)
                       |((DiskBuf[j*4 +i+1]<<3)&0x07E0)
@@ -245,9 +245,9 @@ u8 Open_Bmp(u8 FileNum)
      width = DiskBuf[0x12];
      high =  DiskBuf[0x16];
      if((width == 250) &&(high == 200) ){
-       Clear_Label_L(DAR);                   //Çå³ş×óÀ¸Í¨µÀĞ¡Í¼±ê
-       Draw_RECT(CYN, 7, 20, 203, 254, 2 );  //»­¿Õ¾ØĞÎ
-       i = 0x0076;                           //Í¼ÏñÊı¾İ¿ªÊ¼´æ·ÅµØÖ·
+       Clear_Label_L(DAR);                   //æ¸…æ¥šå·¦æ é€šé“å°å›¾æ ‡
+       Draw_RECT(CYN, 7, 20, 203, 254, 2 );  //ç”»ç©ºçŸ©å½¢
+       i = 0x0076;                           //å›¾åƒæ•°æ®å¼€å§‹å­˜æ”¾åœ°å€
        for(y=22; y<199+22; y++){
          for(x=9; x<256+9 ; x+=2){
            if(x>249+9);
@@ -273,7 +273,7 @@ u8 Open_Bmp(u8 FileNum)
 }
 
 /*******************************************************************************
-Save_Buf: ±£´æ²É¼¯Êı¾İ»º´æÇøÎªBUF¸ñÊ½    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Save_Buf: ä¿å­˜é‡‡é›†æ•°æ®ç¼“å­˜åŒºä¸ºBUFæ ¼å¼    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Save_Buf(s16 FileNo)
 {
@@ -307,7 +307,7 @@ u8 Save_Buf(s16 FileNo)
   *p++ = PopMenu1_Value[TRI_Ch];
   *p++ = PopMenu1_Value[WIN_Depth];
   
-  if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
+  if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
   
   memset(DiskBuf,0,k);
   
@@ -322,8 +322,8 @@ u8 Save_Buf(s16 FileNo)
       if(i<2)memcpy(DiskBuf,&(Smpl[i*k/2]),k);
       else   memcpy(DiskBuf,&(Smpl[i*k/2+4096]),k);
     }
-    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-    PrintClk(264,2,(l++ >>1) & 3);                              // ½ø¶ÈÖ¸Ê¾
+    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+    PrintClk(264,2,(l++ >>1) & 3);                              // è¿›åº¦æŒ‡ç¤º
   }
   
    
@@ -338,7 +338,7 @@ u8 Save_Buf(s16 FileNo)
 }
 
 /*******************************************************************************
-Load_Buf: ¼ÓÔØ±£´æ¹ıµÄ²É¼¯Êı¾İ»º³åÇø    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Load_Buf: åŠ è½½ä¿å­˜è¿‡çš„é‡‡é›†æ•°æ®ç¼“å†²åŒº    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Load_Buf(s16 FileNo)
 {
@@ -355,7 +355,7 @@ u8 Load_Buf(s16 FileNo)
   n=4;k=4096;
   
    if(ReadFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR;
-  ptr=(u16*)F_Sector;                               //±£´æÏÖ³¡
+  ptr=(u16*)F_Sector;                               //ä¿å­˜ç°åœº
   *ptr++=0xaa55;
   *ptr++=Smpl[0];
   *ptr++=Smpl[1];
@@ -363,7 +363,7 @@ u8 Load_Buf(s16 FileNo)
   *ptr++=PopMenu1_Value[CH2_Vol];
   *ptr++=PopMenu1_Value[WIN_Depth];
   *ptr++=PopMenu1_Value[TIM_Base];              
-  ptr =(u16*)DiskBuf;                              //¶ÁÔ­À´µÄ²ÎÊı
+  ptr =(u16*)DiskBuf;                              //è¯»åŸæ¥çš„å‚æ•°
   PopMenu1_Value[CH1_Posi]  = *ptr++;
   PopMenu1_Value[CH2_Posi]  = *ptr++;
   PopMenu1_Value[CH3_Posi]  = *ptr++;
@@ -397,7 +397,7 @@ u8 Load_Buf(s16 FileNo)
   Status |=  STOP;
   Update_Status();
   Update_Proc_All();
-  Show_Title();                                 //ÏÔÊ¾
+  Show_Title();                                 //æ˜¾ç¤º
   if(Menu_Temp[0] == Oscillo){
     Show_Item_One(CH1);
     Show_Item_One(CH2);
@@ -436,7 +436,7 @@ void make_Vertical(u8 CHn, u8 TRACK, u8* buf, u8* len)
   *len = i+1;
 }
 /*******************************************************************************
-Save_Csv: ±£´æ²É¼¯Êı¾İ»º´æÇøÎªCSV¸ñÊ½    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Save_Csv: ä¿å­˜é‡‡é›†æ•°æ®ç¼“å­˜åŒºä¸ºCSVæ ¼å¼    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Save_Csv(s16 FileNo)
 {
@@ -485,12 +485,12 @@ u8 Save_Csv(s16 FileNo)
   
 
   for(i=0; i<DEPTH[PopMenu1_Value[WIN_Depth]]; i++){
-    temp = ((((Smpl[i])-2048)*Ak)>>12)+100;          // ¼ÆËãµ±Ç°²¨ĞÎµãµÄ»ùÖµ
+    temp = ((((Smpl[i])-2048)*Ak)>>12)+100;          // è®¡ç®—å½“å‰æ³¢å½¢ç‚¹çš„åŸºå€¼
     if(temp > 0){
       if(temp > 200)  track[0] = 199;
       else            track[0] = temp;
     } else            track[0] = 0;
-    temp = ((((Smpl[i+8192])-2048)*Bk)>>12)+100;     // ¼ÆËãµ±Ç°²¨ĞÎµãµÄ»ùÖµ
+    temp = ((((Smpl[i+8192])-2048)*Bk)>>12)+100;     // è®¡ç®—å½“å‰æ³¢å½¢ç‚¹çš„åŸºå€¼
     if(temp > 0){
       if(temp > 200)  track[1] = 199;
       else            track[1] = temp;
@@ -502,28 +502,28 @@ u8 Save_Csv(s16 FileNo)
       if(Num[count] == 0) break;
       DiskBuf[k++] = Num[count];
       if(k >= length){
-        if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-        PrintClk(264,2,(l++ >>1) & 3);                              // ½ø¶ÈÖ¸Ê¾
+        if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+        PrintClk(264,2,(l++ >>1) & 3);                              // è¿›åº¦æŒ‡ç¤º
         k = 0;
       }
     }
     DiskBuf[k++] = 0x2c;
     if(k >= length){
-      if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-      PrintClk(264,2,(l++ >>1)& 3);                               // ½ø¶ÈÖ¸Ê¾
+      if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+      PrintClk(264,2,(l++ >>1)& 3);                               // è¿›åº¦æŒ‡ç¤º
       k = 0;
     }
    }
     DiskBuf[k++] = 0x0d;
     if(k >= length){
-      if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-      PrintClk(264,2,(l++ >>1)& 3);                               // ½ø¶ÈÖ¸Ê¾
+      if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+      PrintClk(264,2,(l++ >>1)& 3);                               // è¿›åº¦æŒ‡ç¤º
       k = 0;
     }
     DiskBuf[k++] = 0x0a;
     if(k >= length){
-      if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-      PrintClk(264,2,(l++ >>1)& 3);                               // ½ø¶ÈÖ¸Ê¾
+      if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+      PrintClk(264,2,(l++ >>1)& 3);                               // è¿›åº¦æŒ‡ç¤º
       k = 0;
     }
   }
@@ -532,8 +532,8 @@ u8 Save_Csv(s16 FileNo)
     DiskBuf[k++]=0x0a;
     memset(&DiskBuf[k],0x20,(length-k));
     k=0;
-    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-    PrintClk(264,2,(l++ >>1)& 3);                               // ½ø¶ÈÖ¸Ê¾
+    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+    PrintClk(264,2,(l++ >>1)& 3);                               // è¿›åº¦æŒ‡ç¤º
   }
   if(CloseFile(DiskBuf, l*length, pCluster, pDirAddr)!= OK) 
     return DISK_RW_ERR;
@@ -542,7 +542,7 @@ u8 Save_Csv(s16 FileNo)
 }
 
 /*******************************************************************************
-Save_Svg: ±£´æ²É¼¯Êı¾İ»º´æÇøÎªBUF¸ñÊ½    ÊäÈë£ºÎÄ¼ş±àºÅ     ·µ»ØÖµ£º0x00=³É¹¦
+Save_Svg: ä¿å­˜é‡‡é›†æ•°æ®ç¼“å­˜åŒºä¸ºBUFæ ¼å¼    è¾“å…¥ï¼šæ–‡ä»¶ç¼–å·     è¿”å›å€¼ï¼š0x00=æˆåŠŸ
 *******************************************************************************/
 u8 Save_Svg(s16 FileNo)
 {
@@ -567,7 +567,7 @@ u8 Save_Svg(s16 FileNo)
   memset(DiskBuf,0,Buf_len);
   Make_Filename(FileNo, pFileName);
   if(OpenFileWr(DiskBuf, pFileName, pCluster, pDirAddr)!=OK) return Rvalue;
-  //SVG ÎÄµµÓĞÄ³Ğ©»ù±¾ÊôĞÔSVG ,Ö¸¶¨Íâ²¿µÄDTD
+  //SVG æ–‡æ¡£æœ‰æŸäº›åŸºæœ¬å±æ€§SVG ,æŒ‡å®šå¤–éƒ¨çš„DTD
   str = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n";
   WriteStr(str, pCluster);
   str = "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n";
@@ -577,14 +577,14 @@ u8 Save_Svg(s16 FileNo)
   WriteVar(DEPTH[PopMenu1_Value[WIN_Depth]], pCluster);
   str = "\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" onload=\"init(evt)\" onmousemove=\"msMove(evt)\">\n";
   WriteStr(str, pCluster);
-  //±³¾°¿ò´óĞ¡ÑÕÉ«
+  //èƒŒæ™¯æ¡†å¤§å°é¢œè‰²
   str = "<path stroke=\"none\" fill=\"black\" d=\"M0,0 H";
   WriteStr(str, pCluster);  
   WriteVar(DEPTH[PopMenu1_Value[WIN_Depth]], pCluster);
   str = " V200 H0 V0\"/>\n";
   WriteStr(str, pCluster);
-  //µ±Ç°´°¿Ú±³¾°
-  str = "<path stroke=\"none\" fill=\"#400040\" d=\"M";  //×ÏÉ«
+  //å½“å‰çª—å£èƒŒæ™¯
+  str = "<path stroke=\"none\" fill=\"#400040\" d=\"M";  //ç´«è‰²
   WriteStr(str, pCluster);
   WriteVar(PopMenu1_Value[WIN_Posi], pCluster);
   str = ",0 H";
@@ -595,7 +595,7 @@ u8 Save_Svg(s16 FileNo)
   WriteVar(PopMenu1_Value[WIN_Posi]+300, pCluster);
   str = "  V0\"/>\n";
   WriteStr(str, pCluster);
-  //±³¾°Íø¸ñ
+  //èƒŒæ™¯ç½‘æ ¼
   for (y=0; y<=200; y+=25){
     //<path stroke="#404040" d="M0,0 H4096"/>
     str = "<path stroke=\"#404040\" d=\"M0,";
@@ -615,7 +615,7 @@ u8 Save_Svg(s16 FileNo)
     str = ",0 V200\"/>\n";
     WriteStr(str, pCluster);
   }
-  //Í¨µÀAÊı¾İ
+  //é€šé“Aæ•°æ®
   str = "<path stroke=\"cyan\" fill=\"none\" stroke-width=\"1\" d=\"";
   WriteStr(str, pCluster);
   for (i=0; i<=DEPTH[PopMenu1_Value[WIN_Depth]]; i++){
@@ -635,7 +635,7 @@ u8 Save_Svg(s16 FileNo)
   }
   str = "\"/>\n";
   WriteStr(str, pCluster);
-  //Í¨µÀBÊı¾İ
+  //é€šé“Bæ•°æ®
   str = "<path stroke=\"yellow\" fill=\"none\" stroke-width=\"1\" d=\"";
   WriteStr(str, pCluster);
   for (i=0; i<=DEPTH[PopMenu1_Value[WIN_Depth]]; i++){
@@ -655,7 +655,7 @@ u8 Save_Svg(s16 FileNo)
   }
   str = "\"/>\n";
   WriteStr(str, pCluster);
-  //ÓÒ¶ËµµÎ»£¬Ê±»ùÊı¾İ
+  //å³ç«¯æ¡£ä½ï¼Œæ—¶åŸºæ•°æ®
   str = "<text font-family=\"Arial\" x=\"638\" y=\"170\" fill=\"cyan\" font-size=\"18\" text-anchor=\"end\" id=\"CH1s\">CH1: ";
   WriteStr(str, pCluster);
   if(PopMenu1_Value[CH1_Probe])str = (u8*)Vol_10X[PopMenu1_Value[CH1_Vol]];
@@ -698,7 +698,7 @@ u8 Save_Svg(s16 FileNo)
   str = "<text font-family=\"Arial\" x=\"2\" y=\"195\" fill=\"yellow\" font-size=\"18\" text-anchor=\"start\" id=\"CH2\"> </text>\n";
   WriteStr(str, pCluster);
   //===============================
-  //±äÁ¿
+  //å˜é‡
   s16 Posi1 = 199-PopMenu1_Value[CH1_Posi];
   s16 Posi2 = 199-PopMenu1_Value[CH2_Posi];
   //===============================
@@ -793,8 +793,8 @@ u8 Save_Svg(s16 FileNo)
   str = "</svg>\n";
   WriteStr(str, pCluster);
  
-  if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
-  PrintClk(264,2,(l++ >>1)& 3);                               // ½ø¶ÈÖ¸Ê¾
+  if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
+  PrintClk(264,2,(l++ >>1)& 3);                               // è¿›åº¦æŒ‡ç¤º
  
   if(CloseFile(DiskBuf, Svg_Cnt, pCluster, pDirAddr)!= OK) 
     return DISK_RW_ERR;
@@ -816,8 +816,8 @@ void WriteStr(u8* Str, u16* pClu)
     Addr = Addr + Length;
     Svg_Cnt = Svg_Cnt+ Length;
     if(Addr >=Buf_len){
-      if(ProgFileSec(DiskBuf, pClu)!= OK) {}; // Ğ´ÈëÊı¾İ
-      PrintClk(264,2,(Clk_Cnt++ >>1)& 3);     // ½ø¶ÈÖ¸Ê¾
+      if(ProgFileSec(DiskBuf, pClu)!= OK) {}; // å†™å…¥æ•°æ®
+      PrintClk(264,2,(Clk_Cnt++ >>1)& 3);     // è¿›åº¦æŒ‡ç¤º
       temp_len = Addr -Buf_len;
       temp_addr = Length - temp_len;
       Addr = 0;
@@ -843,8 +843,8 @@ void WriteVar(u16 Var, u16* pClu)
     Addr = Addr + Length;
     Svg_Cnt = Svg_Cnt+ Length;
     if(Addr >=Buf_len){
-      if(ProgFileSec(DiskBuf, pClu)!= OK) {}; // Ğ´ÈëÊı¾İ
-      //PrintClk(264,2,(Clk_Cnt++ >>1)& 3);     // ½ø¶ÈÖ¸Ê¾
+      if(ProgFileSec(DiskBuf, pClu)!= OK) {}; // å†™å…¥æ•°æ®
+      //PrintClk(264,2,(Clk_Cnt++ >>1)& 3);     // è¿›åº¦æŒ‡ç¤º
       temp_len = Addr -Buf_len;
       temp_addr = Length - temp_len;
       Addr = 0;
@@ -870,7 +870,7 @@ void WriteVar_u64(u64 Var, u16* pClu)
     Addr = Addr + Length;
     Svg_Cnt = Svg_Cnt+ Length;
     if(Addr >=Buf_len){
-      if(ProgFileSec(DiskBuf, pClu)!= OK) {}; // Ğ´ÈëÊı¾İ
+      if(ProgFileSec(DiskBuf, pClu)!= OK) {}; // å†™å…¥æ•°æ®
       temp_len = Addr -Buf_len;
       temp_addr = Length - temp_len;
       Addr = 0;
@@ -882,7 +882,7 @@ void WriteVar_u64(u64 Var, u16* pClu)
     }
   }
 /*******************************************************************************
- Save_Parameter: ±£´æµ±Ç°µÄ¹¤×÷²ÎÊı µ½ÄÚ²¿Flash               Return: 0= Success
+ Save_Parameter: ä¿å­˜å½“å‰çš„å·¥ä½œå‚æ•° åˆ°å†…éƒ¨Flash               Return: 0= Success
 *******************************************************************************/
 u8 Save_Parameter(void)           
 {
@@ -913,7 +913,7 @@ u8 Save_Parameter(void)
 }
 
 /*******************************************************************************
-Read_Parameter: ´ÓÄÚ²¿FLASH¶Á³ö²ÎÊıÓò
+Read_Parameter: ä»å†…éƒ¨FLASHè¯»å‡ºå‚æ•°åŸŸ
 *******************************************************************************/
 void Read_Parameter(void)  
 {
@@ -933,7 +933,7 @@ void Read_Parameter(void)
   return ;
 }
 /*******************************************************************************
- Save_Kpg: ±£´æĞ£×¼²ÎÊı                          Return: 0= Success
+ Save_Kpg: ä¿å­˜æ ¡å‡†å‚æ•°                          Return: 0= Success
 *******************************************************************************/
 u8 Save_Kpg(void)
 {
@@ -959,7 +959,7 @@ u8 Save_Kpg(void)
   return j;
 }
 /*******************************************************************************
-Read_Kpg: ´ÓFLASH¶Á³öĞ£×¼²ÎÊı
+Read_Kpg: ä»FLASHè¯»å‡ºæ ¡å‡†å‚æ•°
 *******************************************************************************/
 void Read_Kpg(void)
 {
@@ -970,11 +970,11 @@ void Read_Kpg(void)
   ptr=(u16*)Kpg_Address;
   if(*ptr++!=0x0300) return ;
   Cal_Flag = *ptr++;
-  for(i=0;i< 6;i++) Kpg[i] = *ptr++;  //CH_A,CH_B ÁãµãÆ«ÒÆ
+  for(i=0;i< 6;i++) Kpg[i] = *ptr++;  //CH_A,CH_B é›¶ç‚¹åç§»
   return ;
 }
 /*******************************************************************************
-Read_Kpg: ´ÓFLASH¶Á³öĞ£×¼²ÎÊı
+Read_Kpg: ä»FLASHè¯»å‡ºæ ¡å‡†å‚æ•°
 *******************************************************************************/
 void Read_CalFlag(void)
 {
@@ -988,7 +988,7 @@ void Read_CalFlag(void)
 }
 
 /*******************************************************************************
- Print_Clk: ½ø¶ÈÖ¸Ê¾
+ Print_Clk: è¿›åº¦æŒ‡ç¤º
 *******************************************************************************/
 void PrintClk(u16 x0, u16 y0, u8 Phase)
 {
@@ -1008,7 +1008,7 @@ void PrintClk(u16 x0, u16 y0, u8 Phase)
   }
 }
 /*******************************************************************************
- Save_Parameter: ±£´æµ±Ç°µÄ¹¤×÷²ÎÊı   µ½UÅÌ                   Return: 0= Success
+ Save_Parameter: ä¿å­˜å½“å‰çš„å·¥ä½œå‚æ•°   åˆ°Uç›˜                   Return: 0= Success
 *******************************************************************************/
 u8 Save_Param(void)            
 {
@@ -1028,51 +1028,51 @@ u8 Save_Param(void)
 #endif 
   
   switch (OpenFileRd(DiskBuf, Filename, pCluster, pDirAddr)){
-  case OK:                                                     //Ô­WPTÎÄ¼ş´æÔÚ
+  case OK:                                                     //åŸWPTæ–‡ä»¶å­˜åœ¨
     Tmp[0] = *pCluster;
-    //Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  //×ª³ÉBAKÎÄ¼ş
+    //Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  //è½¬æˆBAKæ–‡ä»¶
 #if   defined (APP1)
-  Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  //×ª³ÉBAKÎÄ¼ş
+  Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  //è½¬æˆBAKæ–‡ä»¶
 #elif defined (APP2) 
-  Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = '2';  //×ª³ÉBAKÎÄ¼ş
+  Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = '2';  //è½¬æˆBAKæ–‡ä»¶
 #endif 
     if(OpenFileWr(DiskBuf, Filename, pCluster, pDirAddr)!= OK)
       return DISK_RW_ERR;
     if(ReadFileSec(DiskBuf, Tmp     )!= OK) return FILE_RW_ERR;
-    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR;//±£´æBAKÎÄ¼ş
+    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR;//ä¿å­˜BAKæ–‡ä»¶
     if(CloseFile(DiskBuf, 512, pCluster, pDirAddr)!= OK) 
       return FILE_RW_ERR;
-  case NEW:                                                    //Ô­WPTÎÄ¼ş²»´æÔÚ
-    //Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = 'R';  //´´½¨WPTÎÄ¼ş
+  case NEW:                                                    //åŸWPTæ–‡ä»¶ä¸å­˜åœ¨
+    //Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = 'R';  //åˆ›å»ºWPTæ–‡ä»¶
 #if   defined (APP1)
-  Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = 'R';  //´´½¨WPTÎÄ¼ş
+  Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = 'R';  //åˆ›å»ºWPTæ–‡ä»¶
 #elif defined (APP2) 
-  Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = '2';  //´´½¨WPTÎÄ¼ş
+  Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = '2';  //åˆ›å»ºWPTæ–‡ä»¶
 #endif 
     if(OpenFileWr(DiskBuf, Filename, pCluster, pDirAddr)!= OK) 
       return DISK_RW_ERR;
     memset(DiskBuf, 0, 512);
-    *ptr++ =(menu.current <<8)+ Versions;           //±£´æ²ÎÊı±í°æ±¾ºÅ¼°µ±Ç°Ò³
+    *ptr++ =(menu.current <<8)+ Versions;           //ä¿å­˜å‚æ•°è¡¨ç‰ˆæœ¬å·åŠå½“å‰é¡µ
     *ptr++=Status;
     for(i=0;i<10;i++) *ptr++=menu.menu_index[i];
     for(i=0;i<PopMenu1_Len;i++) *ptr++=PopMenu1_Value[i];
     for(i=0;i<PopMenu2_Len;i++) *ptr++=PopMenu2_Value[i];
     for(i=0;i<PopMenu3_Len;i++) *ptr++=PopMenu3_Value[i];
 
-    for(i=0; i<511; i++)  Sum += DiskBuf[i];  // ¼ÆËã²ÎÊı±íĞ£ÑéºÍ
+    for(i=0; i<511; i++)  Sum += DiskBuf[i];  // è®¡ç®—å‚æ•°è¡¨æ ¡éªŒå’Œ
     DiskBuf[511] = (~Sum)+ 1;
-    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
+    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR; // å†™å…¥æ•°æ®
     if(CloseFile(DiskBuf, 512, pCluster, pDirAddr)!= OK) 
       return FILE_RW_ERR;
     
-    Save_Flag = 1; //±£´æ²ÎÊı±êÖ¾Î»
+    Save_Flag = 1; //ä¿å­˜å‚æ•°æ ‡å¿—ä½
     
     return OK;
     default:  return FILE_RW_ERR;
   }
 }
 /*******************************************************************************
- Save_One_Param: ±£´æµ±Ç°µÄ¹¤×÷²ÎÊı       µ½UÅÌ               Return: 0= Success
+ Save_One_Param: ä¿å­˜å½“å‰çš„å·¥ä½œå‚æ•°       åˆ°Uç›˜               Return: 0= Success
 *******************************************************************************/
 u8 Save_One_Param(u8 Page, u8 Num)             
 {
@@ -1085,11 +1085,11 @@ u8 Save_One_Param(u8 Page, u8 Num)
   u32 pDirAddr[1]; 
   
   
-  switch(Page){                           //¶ÁÈ¡Ö®Ç°±£´æµÄ²ÎÊı
+  switch(Page){                           //è¯»å–ä¹‹å‰ä¿å­˜çš„å‚æ•°
     case Oscillo:
       Temp[0] = PopMenu1_Value[Num]; 
-      if(Load_Param())Restore_OrigVal();  //Èç¹û±£´æ²ÎÊıÔò¶ÁÈ¡£¬Ã»ÓĞ»Ö¸´³ö³§²ÎÊı
-      else PopMenu1_Value[Num] = Temp[0]; //±£´æÒªµ¥¶À±£´æµÄ²ÎÊı
+      if(Load_Param())Restore_OrigVal();  //å¦‚æœä¿å­˜å‚æ•°åˆ™è¯»å–ï¼Œæ²¡æœ‰æ¢å¤å‡ºå‚å‚æ•°
+      else PopMenu1_Value[Num] = Temp[0]; //ä¿å­˜è¦å•ç‹¬ä¿å­˜çš„å‚æ•°
       break;
     case Measure:
       Temp[0] = PopMenu2_Value[Num];
@@ -1097,8 +1097,8 @@ u8 Save_One_Param(u8 Page, u8 Num)
       else PopMenu2_Value[Num] = Temp[0];
       break;
     case Option:
-      for(j=0;j<7;j++){                   //±£´æ7¸ö²ÎÊı
-        //Temp[0] = PopMenu3_Value[Num];  //±£´æÒ»¸ö²ÎÊı
+      for(j=0;j<7;j++){                   //ä¿å­˜7ä¸ªå‚æ•°
+        //Temp[0] = PopMenu3_Value[Num];  //ä¿å­˜ä¸€ä¸ªå‚æ•°
         Temp[j] = PopMenu3_Value[Num+j];
       }
       if(Load_Param())Restore_OrigVal();
@@ -1107,9 +1107,9 @@ u8 Save_One_Param(u8 Page, u8 Num)
          //PopMenu3_Value[Num] = Temp[0];
           PopMenu3_Value[Num+j] = Temp[j];
         }
-         //»Ö¸´³ö³§Ã»±£´æÊ±£¬BmpĞòºÅÎªÎ´»Ö¸´Ç°ĞòºÅ£»
+         //æ¢å¤å‡ºå‚æ²¡ä¿å­˜æ—¶ï¼ŒBmpåºå·ä¸ºæœªæ¢å¤å‰åºå·ï¼›
         if((Rest_Flag==1) && (Save_Flag==0))
-          for(j=0;j<7;j++){//±£´æ7¸ö²ÎÊı
+          for(j=0;j<7;j++){//ä¿å­˜7ä¸ªå‚æ•°
             PopMenu3_Value[SAVE_Bmp+j] = BmpNum[j];
           }
       }
@@ -1124,22 +1124,22 @@ u8 Save_One_Param(u8 Page, u8 Num)
   Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = '2';
 #endif 
   switch (OpenFileRd(DiskBuf, Filename, pCluster, pDirAddr)){
-  case OK:                                                     // Ô­WPTÎÄ¼ş´æÔÚ
+  case OK:                                                     // åŸWPTæ–‡ä»¶å­˜åœ¨
     Tmp[0] = *pCluster;
-    //Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  // ×ª³ÉBAKÎÄ¼ş
+    //Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  // è½¬æˆBAKæ–‡ä»¶
 #if   defined (APP1)
-    Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  // ×ª³ÉBAKÎÄ¼ş
+    Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = 'K';  // è½¬æˆBAKæ–‡ä»¶
 #elif defined (APP2) 
-    Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = '2';  // ×ª³ÉBAKÎÄ¼ş
+    Filename[8] = 'B'; Filename[9] = 'A'; Filename[10] = '2';  // è½¬æˆBAKæ–‡ä»¶
 #endif
     if(OpenFileWr(DiskBuf, Filename, pCluster, pDirAddr)!= OK)
       return DISK_RW_ERR;
     if(ReadFileSec(DiskBuf, Tmp     )!= OK) return FILE_RW_ERR;
-    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR;  // ±£´æBAKÎÄ¼ş
+    if(ProgFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR;  // ä¿å­˜BAKæ–‡ä»¶
     if(CloseFile(DiskBuf, 512, pCluster, pDirAddr)!= OK) 
       return FILE_RW_ERR;/**/
-  case NEW:                                                   // Ô­WPTÎÄ¼ş²»´æÔÚ
-    //Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = 'R'; // ´´½¨WPTÎÄ¼ş
+  case NEW:                                                   // åŸWPTæ–‡ä»¶ä¸å­˜åœ¨
+    //Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = 'R'; // åˆ›å»ºWPTæ–‡ä»¶
 #if   defined (APP1)
     Filename[8] = 'P'; Filename[9] = 'A'; Filename[10] = 'R';
 #elif defined (APP2) 
@@ -1149,17 +1149,17 @@ u8 Save_One_Param(u8 Page, u8 Num)
       return DISK_RW_ERR;
     memset(DiskBuf, 0, 512);
     
-    *ptr++ =(menu.current <<8)+ Versions;           // ±£´æ²ÎÊı±í°æ±¾ºÅ¼°µ±Ç°Ò³
+    *ptr++ =(menu.current <<8)+ Versions;           // ä¿å­˜å‚æ•°è¡¨ç‰ˆæœ¬å·åŠå½“å‰é¡µ
     *ptr++=Status;
     for(i=0;i<10;i++) *ptr++=menu.menu_index[i];
     for(i=0;i<PopMenu1_Len;i++) *ptr++=PopMenu1_Value[i];
     for(i=0;i<PopMenu2_Len;i++) *ptr++=PopMenu2_Value[i];
     for(i=0;i<PopMenu3_Len;i++) *ptr++=PopMenu3_Value[i];
     
-    for(i=0; i<511; i++)  Sum += DiskBuf[i];  // ¼ÆËã²ÎÊı±íĞ£ÑéºÍ
+    for(i=0; i<511; i++)  Sum += DiskBuf[i];  // è®¡ç®—å‚æ•°è¡¨æ ¡éªŒå’Œ
     DiskBuf[511] = (~Sum)+ 1;
     if(ProgFileSec(DiskBuf, pCluster)!= OK) 
-      return FILE_RW_ERR; // Ğ´ÈëÊı¾İ
+      return FILE_RW_ERR; // å†™å…¥æ•°æ®
     if(CloseFile(DiskBuf, 512, pCluster, pDirAddr)!= OK) 
       return FILE_RW_ERR;
     return OK;
@@ -1167,7 +1167,7 @@ u8 Save_One_Param(u8 Page, u8 Num)
   }
 }
 /*******************************************************************************
-Load_Parameter: ¼ÓÔØÖ®Ç°µÄ¹¤×÷²ÎÊı     ´ÓUÅÌ                  Return: 0= Success
+Load_Parameter: åŠ è½½ä¹‹å‰çš„å·¥ä½œå‚æ•°     ä»Uç›˜                  Return: 0= Success
 *******************************************************************************/
 u8 Load_Param(void) 
 { 
@@ -1191,11 +1191,11 @@ u8 Load_Param(void)
   else
   {
     if(ReadFileSec(DiskBuf, pCluster)!= OK) return FILE_RW_ERR;
-    if(Versions !=(*ptr & 0xFF)) return VER_ERR;  // °æ±¾³ö´í·µ»Ø
+    if(Versions !=(*ptr & 0xFF)) return VER_ERR;  // ç‰ˆæœ¬å‡ºé”™è¿”å›
     for(i=0; i<512; ++i) Sum += DiskBuf[i];
-    if(Sum != 0) return SUM_ERR;                  // Ğ£ÑéºÍ³ö´í·µ»Ø
+    if(Sum != 0) return SUM_ERR;                  // æ ¡éªŒå’Œå‡ºé”™è¿”å›
     
-    menu.current =(*ptr++ >>8);                   // ¼ÓÔØÖ®Ç°µÄ Current Title
+    menu.current =(*ptr++ >>8);                   // åŠ è½½ä¹‹å‰çš„ Current Title
     ptr++;
     for(i=0;i<10;i++) menu.menu_index[i]=*ptr++;
     for(i=0;i<PopMenu1_Len;i++) PopMenu1_Value[i] =*ptr++;
@@ -1207,7 +1207,7 @@ u8 Load_Param(void)
 }
 
 /*******************************************************************************
-Restore_OrigVal     »Ö¸´³ö³§²ÎÊı
+Restore_OrigVal     æ¢å¤å‡ºå‚å‚æ•°
 *******************************************************************************/
 void Restore_OrigVal(void)
 {
@@ -1223,7 +1223,7 @@ void Restore_OrigVal(void)
     for(i=0;i<PopMenu3_Len;i++) PopMenu3_Value[i] =PopMenu3_CValue[i];
 }
 /*******************************************************************************
-Load_File_Num(u8 Tpye)   ÊäÈë£ºÎÄ¼şÀàĞÍ     ·µ»ØÖµ£ºÎÄ¼ş±àºÅ
+Load_File_Num(u8 Tpye)   è¾“å…¥ï¼šæ–‡ä»¶ç±»å‹     è¿”å›å€¼ï¼šæ–‡ä»¶ç¼–å·
 *******************************************************************************/
 s16 Load_File_Num(u8 Tpye)
 {
@@ -1283,7 +1283,7 @@ s16 Load_File_Num(u8 Tpye)
   return FileNo;
 }
 /*******************************************************************************
-void File_Num(void)   ÊäÈë£ºÎÄ¼şÀàĞÍ     ·µ»ØÖµ£ºÎÄ¼ş±àºÅ
+void File_Num(void)   è¾“å…¥ï¼šæ–‡ä»¶ç±»å‹     è¿”å›å€¼ï¼šæ–‡ä»¶ç¼–å·
 *******************************************************************************/
 void File_Num(void)   
 {

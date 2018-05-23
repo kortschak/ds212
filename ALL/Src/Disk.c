@@ -36,13 +36,13 @@
 #define DATA_CNT       6
 #define F_TYPE         7
 #define F_FLAG         8
-#define SEG_DATA       9               /* Í¨ĞÅ°ü»º³åÇø 9~26 ¹²17×Ö½Ú*/
+#define SEG_DATA       9               /* é€šä¿¡åŒ…ç¼“å†²åŒº 9~26 å…±17å­—èŠ‚*/
 
 void Disk_SecWr(u8* pBuf, u32 DiskAddr);
 void Disk_SecRd(u8* pBuf, u32 DiskAddr);
 u8   Char2Nib(u8 x);
-u8   *SecBuf, *Var, *Data;   u32* V32; // ´ÅÅÌ¹¤×÷ÇøÖ¸Õë
-u8   DiskBuf[SECTOR_SIZE+32+28];       // USB ´ÅÅÌ¹¤×÷Êı¾İÇø
+u8   *SecBuf, *Var, *Data;   u32* V32; // ç£ç›˜å·¥ä½œåŒºæŒ‡é’ˆ
+u8   DiskBuf[SECTOR_SIZE+32+28];       // USB ç£ç›˜å·¥ä½œæ•°æ®åŒº
 
 extern u16 Smpl[0x4000];
 
