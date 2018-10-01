@@ -8,8 +8,8 @@
     IMPORT    __SetPosi
     IMPORT    __SendPixels
 
-BACKGROUND    = 0x0000         ;// 背景底色
-GRID_COLOR    = 0x7BEF         ;// 背景网格线的颜色
+BACKGROUND    = 0x0000         ;// Background color
+GRID_COLOR    = 0x7BEF         ;// Background grid line color
 WR            = 0x020          ;// Gpio Pin 5
 P_HID         = 0x01
 L_HID         = 0x02
@@ -29,9 +29,9 @@ CH_C          = P_TAB+2*2      ;// Wave Track#3 Flag
 CCHA          = P_TAB+2*18     ;// Wave Track#1 Color
 CCHB          = P_TAB+2*19     ;// Wave Track#2 Color
 CCHC          = P_TAB+2*20     ;// Wave Track#3 Color
-M_X0          = P_TAB+2*30     ;// 波形显示窗的起始位置 X0
-M_Y0          = P_TAB+2*31     ;// 波形显示窗的起始位置 Y0
-M_WX          = P_TAB+2*32     ;// 波形显示窗的水平宽度 WX
+M_X0          = P_TAB+2*30     ;// Starting position of waveform display window X0
+M_Y0          = P_TAB+2*31     ;// Starting position of waveform display window Y0
+M_WX          = P_TAB+2*32     ;// Horizontal width of waveform display window WX
 POPF          = P_TAB+2*33     ;// Pop Flag
 PXx1          = P_TAB+2*34     ;// Pop X Position
 PWx1          = P_TAB+2*35     ;// Pop Width
@@ -52,7 +52,7 @@ PHx2          = P_TAB+2*37     ;// Pop Hight *2
     EXPORT  Align11
 
 ;//=============================================================================
-;//                  View 窗口波形显示相关汇编语言子程序
+;//                  "Window waveforms display" related assembly language subroutines
 ;//=============================================================================
 ;// void __DrawWindow(u32 VRAM_Addr)
 ;//=============================================================================
@@ -61,34 +61,34 @@ PHx2          = P_TAB+2*37     ;// Pop Hight *2
     NOP.W
 __DrawWindow
     PUSH    {R4-R12,LR}
-    NOP.W                      ;// R0: VRAM 起始指针
-    LDRH    R1,  [R0, #M_WX]   ;// 弹出窗口的水平开始位置
-    MOV     R2,  #0            ;// 列计数初始值
-    LDRH    R11, [R0, #PXx1]   ;// 弹出窗口的水平开始位置
-    LDRH    R12, [R0, #PWx1]   ;// 弹出窗口的水平宽度
-    ADD     R12, R11, R12      ;// 弹出窗口的水平结束位置
-    ADD     R10,  R0,  #P_BUF  ;// 出窗口缓冲区指针初始值
+    NOP.W                      ;// R0: VRAM starting pointer
+    LDRH    R1,  [R0, #M_WX]   ;// The horizontal start position of the popup window.
+    MOV     R2,  #0            ;// Column count initial value
+    LDRH    R11, [R0, #PXx1]   ;// The horizontal start position of the popup window.
+    LDRH    R12, [R0, #PWx1]   ;// The horizontal width of the popup window
+    ADD     R12, R11, R12      ;// The horizontal end of the popup window
+    ADD     R10,  R0,  #P_BUF  ;// Pop-up window buffer pointer initial value
 
-;//----------- 画背景 ----------//
+;//----------- Painting background ----------//
 Draw_Loop
     CMP     R2,  #0
     ITT     EQ
-    BLEQ    Buld_0             ;// 建立外沿列缓冲区的背景数据 
+    BLEQ    Buld_0             ;// Create background data for out-of-row column buffers.
     BEQ     Draw_Wave
     ADDS    R3,  R1, #2        ;// WIDTH+2
     CMP     R2,  R3
     ITT     EQ
-    BLEQ    Buld_0             ;// 建立外沿列缓冲区的背景数据
+    BLEQ    Buld_0             ;// Create background data for out-of-row column buffers.
     BEQ     Draw_Wave
 
     CMP     R2,  #1
     ITT     EQ
-    BLEQ    Buld_1             ;// 建立边线列缓冲区的背景数据
+    BLEQ    Buld_1             ;// Create background data for edge column buffers.
     BEQ     Draw_Wave
     ADDS    R3,  R1, #1        ;// WIDTH+1
     CMP     R2,  R3
     ITT     EQ
-    BLEQ    Buld_1             ;// 建立边线列缓冲区的背景数据
+    BLEQ    Buld_1             ;// Create background data for edge column buffers.
     BEQ     Draw_Wave
 
     SUBS    R3,  R2, #1
@@ -97,7 +97,7 @@ Draw_Loop
     MULS    R5,  R5, R6
     SUBS    R5,  R3, R5
     ITT     EQ
-    BLEQ    Buld_4             ;// 建立格线列缓冲区的背景数据
+    BLEQ    Buld_4             ;// Create background data for grid column buffers.
     BEQ     Draw_Wave
 
     MOVS    R6,  #5
@@ -105,110 +105,110 @@ Draw_Loop
     MULS    R5,  R5, R6
     SUBS    R5,  R3, R5
     ITT     EQ
-    BLEQ    Buld_3             ;// 建立格点列缓冲区的背景数据
+    BLEQ    Buld_3             ;// Create background data for the grid column buffer.
     BEQ     Draw_Wave
-    BL      Buld_2             ;// 建立格内列缓冲区的背景数据
+    BL      Buld_2             ;// Create background data for the geography column buffer.
 
-;//--------- 画波形曲线 --------//
+;//--------- Draw waveform curve --------//
 Draw_Wave
-    CMP     R2,  #3            ;// 从3~299
+    CMP     R2,  #3            ;// From 3~299
     BCC     Horizontal
     CMP     R2,  R1            ;// WIDTH
     BCS     Horizontal
 
-    LDRH    R3,  [R0, #CH_A]   ;// 取 CH_A 波形曲线的消隐标志
+    LDRH    R3,  [R0, #CH_A]   ;// Take the blanking flag of the CH_A waveform.
     TST     R3,  #W_HID
     ITTT    EQ
-    MOVEQ   R3,  #CCHA         ;// R3 = CH_A 波形曲线颜色表偏移
+    MOVEQ   R3,  #CCHA         ;// R3 = CH_A waveform color table offset.
     ADDEQ   R4,  R0, #A_BUF
     BLEQ    Draw_Analog
 
-    LDRH    R3,  [R0, #CH_B]   ;// 取 CH_B 波形曲线的消隐标志
+    LDRH    R3,  [R0, #CH_B]   ;// Take CH_B waveform blanking flag.
     TST     R3,  #W_HID
     ITTT    EQ
-    MOVEQ   R3,  #CCHB         ;// R3 = CH_B 波形曲线颜色表偏移
+    MOVEQ   R3,  #CCHB         ;// R3 = CH_B waveform color table offset.
     ADDEQ   R4,  R0, #B_BUF
     BLEQ    Draw_Analog
 
-    LDRH    R3,  [R0, #CH_C]   ;// 取 CH_C 波形曲线的消隐标志
+    LDRH    R3,  [R0, #CH_C]   ;// Take CH_C waveform blanking flag.
     TST     R3,  #W_HID
     ITTT    EQ
-    MOVEQ   R3,  #CCHC         ;// R3 = CH_C 波形曲线颜色表偏移
+    MOVEQ   R3,  #CCHC         ;// R3 = CH_C waveform color table offset.
     ADDEQ   R4,  R0, #C_BUF
     BLEQ    Draw_Analog
 
-;//------- 画水平方向游标 ------//
+;//------- Draw horizontal direction cursor ------//
 Horizontal
     CMP     R2,  #0
     ITT     EQ
-    BLEQ    Cursor_0           ;// 外沿列画游标端点
+    BLEQ    Cursor_0           ;// Draw the cursor endpoint on the outer edge of the column.
     BEQ     Vertical
     ADDS    R3,  R1, #2        ;// WIDTH+2
     CMP     R2,  R3             
     ITT     EQ
-    BLEQ    Cursor_0           ;// 外沿列画游标端点
+    BLEQ    Cursor_0           ;// Draw the cursor endpoint on the outer edge of the column.
     BEQ     Vertical
 
     CMP     R2,  #1
     ITT     EQ
-    BLEQ    Cursor_1           ;// 边线列画游标端点
+    BLEQ    Cursor_1           ;// Draw edge column cursor endpoints.
     BEQ     Vertical
     ADDS    R3,  R1, #1        ;// WIDTH+1
     CMP     R2,  R3             
     ITT     EQ
-    BLEQ    Cursor_1           ;// 边线列画游标端点
+    BLEQ    Cursor_1           ;// Draw edge column cursor endpoints.
     BEQ     Vertical
 
     CMP     R2,  #2
     ITT     EQ
-    BLEQ    Cursor_2           ;// 内沿列画游标端点
+    BLEQ    Cursor_2           ;// Draw cursor endpoints on inner edge columns.
     BEQ     Vertical
     CMP     R2,  R1            ;// WIDTH 
     IT      EQ
-    BLEQ    Cursor_2           ;// 内沿列画游标端点
+    BLEQ    Cursor_2           ;// Draw cursor endpoints on inner edge columns.
     BEQ     Vertical
-    BL      Cursor_3           ;// 其余列画游标线
+    BL      Cursor_3           ;// Cursor lines for the remaining columns.
 
-;//------- 画垂直方向游标 ------//
+;//------- Draw vertical cursors ------//
 Vertical
     BL      Cursor_4
 
-;//--------- 画弹出窗口 --------//
+;//--------- Draw a pop-up window --------//
 
-    LDRH    R3,  [R0, #POPF]   ;// 取弹出窗口的消隐标志
+    LDRH    R3,  [R0, #POPF]   ;// Take the pop-up window blanking flag.
     TST     R3,  #P_HID
     BNE     Send
-    CMP     R2,  R11           ;// 判断弹出窗口列处理开始
+    CMP     R2,  R11           ;// Conditional pop-up window column processing begins.
     BLT     Send
-    CMP     R2,  R12           ;// 判断弹出窗口列处理结束
+    CMP     R2,  R12           ;// Conditional pop-up window column processing ends.
     IT      LT
-    BLLT    Draw_Pop           ;// 列计数在弹出窗口内
+    BLLT    Draw_Pop           ;// Column count in pop-up window.
 
-;//--------- 显示列数据 --------//
+;//--------- Display column data --------//
 Send
-    BL      Send_LCD           ;// 从缓冲区传送一列数据到 LCD
+    BL      Send_LCD           ;// Transfer a column of data from the buffer to LCD.
     ADDS    R3,  R1, #2        ;// WIDTH+2
     CMP     R2,  R3             
     ITT     NE
     ADDNE   R2,  R2, #1
-    BNE     Draw_Loop          ;// 处理下1列显示数据
+    BNE     Draw_Loop          ;// Process the next column of display data.
 
     POP     {R4-R12,PC}
 ;//=============================================================================
-; Draw_Analog(R2:Col, R3:ColorNum, R4:pDat)   画模拟波形曲线  Used: R3-R7
+; Draw_Analog(R2:Col, R3:ColorNum, R4:pDat)   Draw analog waveform curve  Used: R3-R7
 ;//=============================================================================
     NOP.W
     NOP.W
     NOP
 Draw_Analog
     ADD     R4,  R4, R2
-    LDRB    R5,  [R4]          ;// 取当前列波形数据数据 n1
-    LDRB    R4,  [R4, #-1]     ;// 取上一列波形数据数据 n0
+    LDRB    R5,  [R4]          ;// Take the current column waveform data, n1.
+    LDRB    R4,  [R4, #-1]     ;// Take the previous column waveform data, n0
 Analog0
-    CMP     R4,  #199          ;// 上端截尾 R4 >= 200
+    CMP     R4,  #199          ;// Truncate at the top R4 >= 200
     IT      HI
     BXHI    LR
-    CMP     R4,  #0            ;// 下端截尾 R4 = 0
+    CMP     R4,  #0            ;// Truncate at the bottom R4 = 0
     IT      EQ
     BXEQ    LR
 
@@ -216,211 +216,211 @@ Analog0
     ITTEE   CS                 ;// R5 = | n1 - n0 |
     MOVCS   R6,  R4
     SUBCS   R5,  R5, R4
-    MOVCC   R6,  R5            ;// n1, n0 中最小的送 R6
+    MOVCC   R6,  R5            ;// Put n1, n0 minimum result into R6.
     SUBCC   R5,  R4, R5
 
-    CMP     R6,  #198          ;// 起点超上界则消隐 R6 > 198
+    CMP     R6,  #198          ;// Blanking if starting point is beyond the upper boundary (R6 > 198).
     IT      HI
     BXHI    LR
     ADDS    R4,  R5, R6
-    CMP     R4,  #198          ;// 终点超上界则限幅 R6 > 198
+    CMP     R4,  #198          ;// Limiting if end point is beyond the upper boundary (R4 > 198).
     IT      HI
     RSBHI   R5,  R6, #198
     BGT     Analog2
 
-    CMP     R4,  #1            ;// 终点超下界则消隐 R4 <= 1
+    CMP     R4,  #1            ;// Blanking if end point is beyond the low boundary (R4 <= 1).
     IT      LS
     BXLS    LR
-    CMP     R6,  #2            ;// 起点超下界则限幅 R6 <= 2
+    CMP     R6,  #2            ;// Limiting if starting point is beyond the low boundary (R6 <= 2).
     ITTT    LS
     MOVLS   R6,  #2
     SUBLS   R5,  R4, #2
     BLS     Analog2
 
-    CMP     R5,  #0            ;// 水平线加粗
+    CMP     R5,  #0            ;// Horizontal line bold
     ITT     EQ
     SUBEQ   R6,  R6, #1
     ADDEQ   R5,  R5, #2
 
 Analog2
-    CMP     R5,  #20           ;// 选择颜色
+    CMP     R5,  #20           ;// Choose the color.
     IT      GE
-    ADDGE   R3,  R3, #18       ;// 选择低亮度颜色组
+    ADDGE   R3,  R3, #18       ;// Select low brightness color group.
     LDRH    R3,  [R0, R3]
 
     LSL     R6,  R6, #1
-    ADD     R6,  R0, R6        ;// 确定显示位置
+    ADD     R6,  R0, R6        ;// Determine the display position.
 Align00    
 Analog3
-    STRH    R3,  [R6], #2      ;// 画波形点
+    STRH    R3,  [R6], #2      ;// Draw waveform points.
     SUBS    R5,  R5, #1
     BCS     Analog3
     BX      LR
 ;//=============================================================================
-; Cursor_4(R1:pTab, R2:Col)// 外沿列画游标端点  Used: R3-R8
+; Cursor_4(R1:pTab, R2:Col)// Draw the cursor endpoint on the outer edge of the column  Used: R3-R8
 ;//=============================================================================
     NOP.W
 Cursor_4
-    MOVS    R3,  #P_TAB+6*2    ;// 6~8项为垂直方向游标
+    MOVS    R3,  #P_TAB+6*2    ;// 6-8 items are vertical cursors.
 Cursor40
     MOV     R4,  R0
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的消隐标志
+    LDRH    R5,  [R0, R3]      ;// Take the cursor variable blanking flag.
     TST     R5,  #D_HID
-    BNE     Cursor49           ;// 是游标消隐转
+    BNE     Cursor49           ;// Is cursor blanking?
 Cursor41
     ADDS    R3,  R3, #9*2
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的显示位置
+    LDRH    R5,  [R0, R3]      ;// Take the position of cursor variable.
     ADDS    R3,  R3, #9*2
-    LDRH    R6,  [R0, R3]      ;// 取该游标变量的显示颜色
-    SUBS    R3,  R3, #18*2     ;// 恢复变量表指针
+    LDRH    R6,  [R0, R3]      ;// Take the display color of cursor variable.
+    SUBS    R3,  R3, #18*2     ;// Restore variable table pointer.
 
     SUBS    R8,  R5, #2
-    CMP     R2,  R8            ;// 画左外沿行游标端点
+    CMP     R2,  R8            ;// Draw left outer edge cursor endpoint.
     BNE     Cursor42
-    STRH    R6,  [R4]          ;// 画左下外沿
+    STRH    R6,  [R4]          ;// Draw left lower edge.
     ADDS    R4,  R4, #404
-    STRH    R6,  [R4]          ;// 画左上外沿
+    STRH    R6,  [R4]          ;// Draw left outer edge.
     B       Cursor49
 Cursor42
     ADDS    R8,  R8, #1
-    CMP     R2,  R8            ;// 画左边线行游标端点
+    CMP     R2,  R8            ;// Draw left line cursor endpoint.
     BNE     Cursor43
-    STRH    R6,  [R4], #2      ;// 画左下外沿
-    STRH    R6,  [R4]          ;// 画左下边线
+    STRH    R6,  [R4], #2      ;// Draw left lower edge.
+    STRH    R6,  [R4]          ;// Draw the lower left line.
     ADDS    R4,  R4, #400
-    STRH    R6,  [R4], #2      ;// 画左上边线
-    STRH    R6,  [R4]          ;// 画左上外沿
+    STRH    R6,  [R4], #2      ;// Draw the top left line.
+    STRH    R6,  [R4]          ;// Draw left outer edge.
     B       Cursor49
 Cursor43
     ADDS    R8,  R8, #1
-    CMP     R2,  R8            ;// 画游标端点, 画游标线
+    CMP     R2,  R8            ;// Draw cursor vertices and cursor lines.
     BNE     Cursor45
-    STRH    R6,  [R4], #2      ;// 画下外沿线
-    STRH    R6,  [R4], #2      ;// 画下边线更
-    STRH    R6,  [R4]          ;// 画下内沿线
+    STRH    R6,  [R4], #2      ;// Draw along the outer line.
+    STRH    R6,  [R4], #2      ;// Draw lower edge.
+    STRH    R6,  [R4]          ;// Draw inner line.
     ADDS    R4,  R4, #396
-    STRH    R6,  [R4], #2      ;// 画上内沿线
-    STRH    R6,  [R4], #2      ;// 画上边线
-    STRH    R6,  [R4]          ;// 画上外沿线
+    STRH    R6,  [R4], #2      ;// Draw on the inside.
+    STRH    R6,  [R4], #2      ;// Draw line.
+    STRH    R6,  [R4]          ;// Draw along the line.
 
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的消隐标志
+    LDRH    R5,  [R0, R3]      ;// Take the cursor variable blanking flag.
     TST     R5,  #2
-    BNE     Cursor45           ;// 是游标线消隐则转
+    BNE     Cursor45           ;// Is the cursor line blanking?
     MOVS    R4,  R0
     ADDS    R7,  R4, #400
 Align01    
 Cursor44
-    STRH    R6,  [R4], #8      ;// 画游标线
+    STRH    R6,  [R4], #8      ;// Draw cursor line.
     CMP     R7,  R4
     BCS     Cursor44
     B       Cursor49
 Cursor45
     ADDS    R8,  R8, #1
-    CMP     R2,  R8            ;// 画右边线行游标端点
+    CMP     R2,  R8            ;// Draw the right line cursor end point.
     BNE     Cursor46
-    STRH    R6,  [R4], #2      ;// 画右下外沿
-    STRH    R6,  [R4]          ;// 画右下边线
+    STRH    R6,  [R4], #2      ;// Draw right lower edge.
+    STRH    R6,  [R4]          ;// Draw the lower right line.
     ADDS    R4,  R4, #400
-    STRH    R6,  [R4], #2      ;// 画右上边线
-    STRH    R6,  [R4]          ;// 画右上外沿
+    STRH    R6,  [R4], #2      ;// Draw upper right line.
+    STRH    R6,  [R4]          ;// Draw upper right edge.
     B       Cursor49
 Cursor46
     ADDS    R8,  R8, #1
-    CMP     R2,  R8            ;// 画右外沿行游标端点
+    CMP     R2,  R8            ;// Draw right outer edge cursor end point.
     BNE     Cursor49
-    STRH    R6,  [R4]          ;// 画右下外沿
+    STRH    R6,  [R4]          ;// Draw right lower edge.
     ADDS    R4,  R4, #404
-    STRH    R6,  [R4]          ;// 画右上外沿
+    STRH    R6,  [R4]          ;// Draw upper right edge.
 Cursor49
     ADDS    R3,  R3, #1*2
     CMP     R3,  #P_TAB+9*2    ;//10
     BNE     Cursor40
     BX      LR
 ;//=============================================================================
-; Cursor_3(R1:pTab, R2:Col)// 画其余列游标线  Used: R3-R6
+; Cursor_3(R1:pTab, R2:Col)// Draw the remaining cursor lines  Used: R3-R6
 ;//=============================================================================
     NOP
 Align02    
 Cursor_3
-    MOVS    R3,  #P_TAB+5*2    ;// 0~5项为水平方向游标
+    MOVS    R3,  #P_TAB+5*2    ;// 0-5 items are horizontal cursors.
     MOVS    R4,  R0
 Cursor31
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的消隐标志
+    LDRH    R5,  [R0, R3]      ;// Take the cursor variable blanking flag.
     TST     R5,  #L_HID
-    BNE     Cursor32           ;// 是游标线消隐则转
+    BNE     Cursor32           ;// Is the cursor line blanking?
     SUBS    R5,  R2, #1
     ANDS    R5,  R5, #3
-    BNE     Cursor32           ;// 是游标线虚线位置则转
+    BNE     Cursor32           ;// Loop if cursor line is the dotted line position.
     ADDS    R3,  R3, #9*2
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的显示位置
+    LDRH    R5,  [R0, R3]      ;// Take the display position of the cursor variable.
     ADDS    R4,  R0, R5
     ADDS    R3,  R3, #9*2
-    LDRH    R6,  [R0, R3]      ;// 取该游标变量的显示颜色
-    STRH    R6,  [R4]          ;// 画游标线
-    SUBS    R3,  R3, #18*2     ;// 恢复变量表指针
+    LDRH    R6,  [R0, R3]      ;// Take the display color of this cursor variable.
+    STRH    R6,  [R4]          ;// Draw cursor line.
+    SUBS    R3,  R3, #18*2     ;// Restore variable table pointer.
 Cursor32
     SUBS    R3,  R3, #1*2
     CMP     R3,  #P_TAB     
-    BPL     Cursor31           ;// 处理下1个游标端点
+    BPL     Cursor31           ;// Process the next cursor endpoint.
     BX      LR
 ;//=============================================================================
-; Cursor_0(R1:pTab, R2:Col)// 画外沿列游标端点  Used: R3-R6
+; Cursor_0(R1:pTab, R2:Col)// Draw outer edge column cursor endpoints  Used: R3-R6
 ;//=============================================================================
     NOP
 Align03
 Cursor_0
-    MOVS    R3,  #P_TAB+5*2    ;// 0~5项为水平方向游标
+    MOVS    R3,  #P_TAB+5*2    ;// 0-5 items are horizontal cursors.
     MOVS    R4,  R0
 Cursor01
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的消隐标志
+    LDRH    R5,  [R0, R3]      ;// Take the cursor variable blanking flag.
     TST     R5,  #1
-    BNE     Cursor02           ;// 是游标端点消隐则转
+    BNE     Cursor02           ;// Is cursor vertex blanking?
     ADDS    R3,  R3, #9*2
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的显示位置
+    LDRH    R5,  [R0, R3]      ;// Take the display position of the cursor variable.
     ADDS    R4,  R0, R5
     ADDS    R3,  R3, #9*2
-    LDRH    R6,  [R0, R3]      ;// 取该游标变量的显示颜色
+    LDRH    R6,  [R0, R3]      ;// Take the display color of this cursor variable.
     SUB     R4,  R4, #4
     STRH    R6,  [R4], #2
     STRH    R6,  [R4], #2
-    STRH    R6,  [R4], #2      ;// 画外沿列游标端点
+    STRH    R6,  [R4], #2      ;// Draw outer edge column cursor endpoints.
     STRH    R6,  [R4], #2
     STRH    R6,  [R4], #2
-    SUBS    R3,  R3, #18*2     ;// 恢复变量表指针
+    SUBS    R3,  R3, #18*2     ;// Restore variable table pointer.
 Cursor02
     SUBS    R3,  R3, #1*2
     CMP     R3,  #P_TAB       
-    BPL     Cursor01           ;// 处理下1个游标端点
+    BPL     Cursor01           ;// Process the next cursor endpoint.
     BX      LR
 ;//=============================================================================
-; Cursor_1(R1:pTab, R2:Col)// 画边线列游标端点  Used: R3-R6
+; Cursor_1(R1:pTab, R2:Col)// Draw edge column cursor endpoints  Used: R3-R6
 ;//=============================================================================
     NOP.W
 Align04
 Cursor_1
-    MOVS    R3,  #P_TAB+5*2    ;// 0~5项为水平方向游标
+    MOVS    R3,  #P_TAB+5*2    ;// 0-5 items are horizontal cursors.
     MOVS    R4,  R0
 Cursor11
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的消隐标志
+    LDRH    R5,  [R0, R3]      ;// Take the cursor variable blanking flag.
     TST     R5,  #1
-    BNE     Cursor12           ;// 是游标端点消隐则转
+    BNE     Cursor12           ;// Is cursor vertex blanking?
     ADDS    R3,  R3, #9*2
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的显示位置
+    LDRH    R5,  [R0, R3]      ;// Take the display position of the cursor variable.
     ADDS    R4,  R0, R5
     ADDS    R3,  R3, #9*2
-    LDRH    R6,  [R0, R3]      ;// 取该游标变量的显示颜色
+    LDRH    R6,  [R0, R3]      ;// Take the display color of this cursor variable.
     SUBS    R4,  R4, #2
     STRH    R6,  [R4], #2
-    STRH    R6,  [R4], #2      ;// 画边线列游标端点
+    STRH    R6,  [R4], #2      ;// Draw edge column cursor endpoints/
     STRH    R6,  [R4], #2
-    SUBS    R3,  R3, #18*2     ;// 恢复变量表指针
+    SUBS    R3,  R3, #18*2     ;// Restore variable table pointer.
 Cursor12
     SUBS    R3,  R3, #1*2
     CMP     R3,  #P_TAB     
-    BPL     Cursor11           ;// 处理下1个游标端点
+    BPL     Cursor11           ;// Process the next cursor endpoint.
     BX      LR
 ;//=============================================================================
-; Cursor_2(R1:pTab, R2:Col)// 画内沿列游标端点  Used: R3-R6
+; Cursor_2(R1:pTab, R2:Col)// Draw inner edge column cursor endpoints  Used: R3-R6
 ;//=============================================================================
     NOP.W
     NOP.W
@@ -428,44 +428,44 @@ Cursor12
     NOP
 Align05
 Cursor_2
-    MOVS    R3,  #P_TAB+5*2    ;// 0~5项为水平方向游标
+    MOVS    R3,  #P_TAB+5*2    ;// 0-5 items are horizontal cursors.
     MOVS    R4,  R0
 Cursor21
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的消隐标志
+    LDRH    R5,  [R0, R3]      ;// Take the cursor variable blanking flag.
     TST     R5,  #1
-    BNE     Cursor22           ;// 是游标端点消隐则转
+    BNE     Cursor22           ;// Is cursor vertex blanking?
     ADDS    R3,  R3, #9*2
-    LDRH    R5,  [R0, R3]      ;// 取该游标变量的显示位置
+    LDRH    R5,  [R0, R3]      ;// Take the display position of the cursor variable.
     ADDS    R4,  R0, R5
     ADDS    R3,  R3, #9*2
-    LDRH    R6,  [R0, R3]      ;// 取该游标变量的显示颜色
-    STRH    R6,  [R4]          ;// 画内沿列游标端点
-    SUBS    R3,  R3, #18*2     ;// 恢复变量表指针
+    LDRH    R6,  [R0, R3]      ;// Take the display color of this cursor variable.
+    STRH    R6,  [R4]          ;// Draw inner edge column cursor endpoints.
+    SUBS    R3,  R3, #18*2     ;// Restore variable table pointer.
 Cursor22
     SUBS    R3,  R3, #1*2
     CMP     R3,  #P_TAB   
-    BPL     Cursor21           ;// 处理下1个游标端点
+    BPL     Cursor21           ;// Process the next cursor endpoint.
     BX      LR
 ;//=============================================================================
 ;// R0:pDat, R1:pTab, R2:Col, R3:Var, R4:pBuf, R5:Cnt, R6:Tmp,
 ;//=============================================================================
-; void Fill_Base(R3 = u32 Color)// 列缓冲区填底色 RET: R4=R0+2   Used: R3-R5
+; void Fill_Base(R3 = u32 Color)// Fill the background colour of column buffer RET: R4=R0+2   Used: R3-R5
 ;//=============================================================================
     NOP
     EXPORT  Fill_Base
 Fill_Base
     MOV.W   R4,  R0
-    MOV.W   R5,  #102          ;// 1+202行/2 共404 Bytes
+    MOV.W   R5,  #102          ;// 1 + 202/2 lines of 404 bytes.
 Align06    
 Fill_Loop_0
-    STR     R3,  [R4], #4      ;// 传送完成后指针加4
+    STR     R3,  [R4], #4      ;// Pointer plus 4 after transfer is completed.
     SUBS    R5,  #1
     BNE     Fill_Loop_0
-    ADD     R4,  R0, #2        ;// 指针对齐
-    MOV     R3,  #GRID_COLOR   ;// 预装载网格颜色值
+    ADD     R4,  R0, #2        ;// Pointer alignment.
+    MOV     R3,  #GRID_COLOR   ;// Preloaded grid color values.
     BX      LR
 ;//=============================================================================
-; Draw_Pop(R0:pWork) // 画弹出窗口                                  Used: R3-R8
+; Draw_Pop(R0:pWork) // Draw a pop-up window                                  Used: R3-R8
 ;//=============================================================================
     NOP.W
     NOP.W
@@ -473,99 +473,99 @@ Fill_Loop_0
     NOP
 Align07
 Draw_Pop
-    LDRH    R5,  [R0, #PYx2]   ;// 取弹出窗口的垂直开始位置
+    LDRH    R5,  [R0, #PYx2]   ;// Take the vertical start position of the pop-up window.
     ADDS    R5,   R0,  R5
-    LDRH    R6,  [R0, #PHx2]   ;// 取弹出窗口的垂直高度
-    ADD     R7,   R0, #PHx2    ;// HYx2+2 是存放颜色表指针 CPTR
+    LDRH    R6,  [R0, #PHx2]   ;// Take the vertical height of the pop-up window.
+    ADD     R7,   R0, #PHx2    ;// HYx2+2 is a storage color table pointer, CPTR.
 Pop_Loop
-    LDRH    R4,  [R10], #2     ;// 取 Pop 数据(双字节共4个点)
+    LDRH    R4,  [R10], #2     ;// Take Pop data (2 bytes, 4 points in total).
     ANDS    R3,  R4,  #0x0E
-    ITT     NE                 ;// 是0号透明色则跳过
-    LDRHNE  R3,  [R7, R3]      ;// 查表取1~7号色
-    STRHNE  R3,  [R5]          ;// 画第1点
+    ITT     NE                 ;// Skipped if transparent color.
+    LDRHNE  R3,  [R7, R3]      ;// Check the table to take 1-7 colors.
+    STRHNE  R3,  [R5]          ;// Picture 1.
     ADDS    R5,  R5,  #2
     LSR     R4,  R4,  #4
     ANDS    R3,  R4,  #0x0E
-    ITT     NE                 ;// 是0号透明色则跳过
-    LDRHNE  R3,  [R7, R3]      ;// 查表取1~7号色
-    STRHNE  R3,  [R5]          ;// 画第2点
+    ITT     NE                 ;// Skipped if transparent color.
+    LDRHNE  R3,  [R7, R3]      ;// Check the table to take 1-7 colors.
+    STRHNE  R3,  [R5]          ;// Picture 2.
     ADDS    R5,  R5,  #2
     LSR     R4,  R4,  #4
     ANDS    R3,  R4,  #0x0E
-    ITT     NE                 ;// 是0号透明色则跳过
-    LDRHNE  R3,  [R7, R3]      ;// 查表取1~7号色
-    STRHNE  R3,  [R5]          ;// 画第3点
+    ITT     NE                 ;// Skipped if transparent color.
+    LDRHNE  R3,  [R7, R3]      ;// Check the table to take 1-7 colors.
+    STRHNE  R3,  [R5]          ;// Picture 3.
     ADDS    R5,  R5,  #2
     LSR     R4,  R4,  #4
     ANDS    R3,  R4,  #0x0E
-    ITT     NE                 ;// 是0号透明色则跳过
-    LDRHNE  R3,  [R7, R3]      ;// 查表取1~7号色
-    STRHNE  R3,  [R5]          ;// 画第4点
+    ITT     NE                 ;// Skipped if transparent color.
+    LDRHNE  R3,  [R7, R3]      ;// Check the table to take 1-7 colors.
+    STRHNE  R3,  [R5]          ;// Picture 4.
     ADDS    R5,  R5, #2
     SUBS    R6,  R6, #8
     BNE     Pop_Loop
-    BX      LR                 ;// 该列显示完成
+    BX      LR                 ;// Complete the current column display.
     NOP
 ;//=============================================================================
-; void Buld_0(R4 = u16* pCol)   // 建立外沿列缓冲区的背景数据 Used: R3-R5
+; void Buld_0(R4 = u16* pCol)   // Create background data for out-of-row column buffers Used: R3-R5
 ;//=============================================================================
 Buld_0
-    MOV     R3,  #BACKGROUND   ;// 背景颜色
+    MOV     R3,  #BACKGROUND   ;// background color
     B       Fill_Base
 ;//=============================================================================
-; void Buld_2(R4 = u16* pCol)   // 建立格内列缓冲区的背景数据 Used: R3-R6
+; void Buld_2(R4 = u16* pCol)   // Create background data for grid inner column buffer Used: R3-R6
 ;//=============================================================================
 Buld_2
     MOV     R6,  LR
-    MOV     R3,  #BACKGROUND   ;// 背景颜色
+    MOV     R3,  #BACKGROUND   ;// background color
     BL      Fill_Base
-    STRH    R3,  [R4, #400]    ;// 上边线
-    STRH    R3,  [R4]          ;// 下边线
+    STRH    R3,  [R4, #400]    ;// upper line
+    STRH    R3,  [R4]          ;// lower line
     BX      R6
 ;//=============================================================================
-; void Buld_4(R4 = u16* pCol)   // 建立格线列缓冲区的背景数据
+; void Buld_4(R4 = u16* pCol)   // Create background data for grid column buffers
 ;//=============================================================================
     NOP.W
     NOP
 Buld_4
     MOV     R6,  LR
-    MOV     R3,  #BACKGROUND   ;// 背景颜色
+    MOV     R3,  #BACKGROUND   ;// background color
     BL      Fill_Base
-    MOVS    R5,  #41           ;// 41点  P_TAB
+    MOVS    R5,  #41           ;// 41 points  P_TAB
 Align08    
 Loop7
-    STRH    R3, [R4], #5*2     ;// 每5行画1格点
+    STRH    R3, [R4], #5*2     ;// Draw 1 grid point for every 5 lines.
     SUBS    R5,  R5,  #1
     BNE     Loop7
     BX      R6
 ;//=============================================================================
-; void Buld_3(R4 = u16* pCol)   // 建立格点列缓冲区的背景数据 Used: R3-R6
+; void Buld_3(R4 = u16* pCol)   // Create background data for the grid column buffer Used: R3-R6
 ;//=============================================================================
     NOP.W
     NOP.W
     NOP
 Buld_3
     MOV     R6,  LR
-    MOV     R3,  #BACKGROUND   ;// 背景颜色
+    MOV     R3,  #BACKGROUND   ;// background color
     BL      Fill_Base
-    MOVS    R5,  #9            ;// 9格点
+    MOVS    R5,  #9            ;// 9 grid points
 Align09    
 Loop3
-    STRH    R3, [R4], #50      ;// 每25行画1格点
+    STRH    R3, [R4], #50      ;// Draw 1 grid point for every 25 lines.
     SUBS    R5,  R5,  #1
     BNE     Loop3
     BX      R6
 ;//=============================================================================
-; void Buld_1(R4 = u16* pCol)   // 建立边线列缓冲区的背景数据 Used: R3-R6
+; void Buld_1(R4 = u16* pCol)   // Create background data for edge column buffers Used: R3-R6
 ;//=============================================================================
 Buld_1
     MOV     R6,  LR
     MOV.W   R3,  #GRID_COLOR
-    MOVT    R3,  #GRID_COLOR   ;// 为提高传输效率，取32bits格线颜色
+    MOVT    R3,  #GRID_COLOR   ;// To improve transmission efficiency, take 32bit color
     BL      Fill_Base          ;// RET: R4=R0+2
-    MOV     R3,  #BACKGROUND   ;// 背景颜色
+    MOV     R3,  #BACKGROUND   ;// background color
     STRH    R3,  [R4, #402]            
-    STRH    R3,  [R4, #-2]     ;// 下边线外留空白
+    STRH    R3,  [R4, #-2]     ;// Leave blank on the bottom line.
     BX      R6
 ;//=============================================================================
 ; void __Mem32Fill(u32* pMem, u32 Data, u32 n)
@@ -581,7 +581,7 @@ __Mem32Fill
     BNE     __Mem32Fill  
     BX      LR         
 ;//=============================================================================
-; void Send_LCD(u16* pBuf, u16 Row) // 送一列缓冲区数据到 LCD     Used: R3-R8
+; void Send_LCD(u16* pBuf, u16 Row) // Send a column of buffer data to LCD     Used: R3-R8
 ;//=============================================================================
     NOP.W
     NOP

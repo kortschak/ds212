@@ -7,7 +7,7 @@
 
 #include "STM32F30x.h"
 
-//========== 波形显示窗口相关定义 ===========
+//========== Waveform display window related definitions ===========
 
 #define LCD_X1     0
 #define LCD_X2     319
@@ -24,13 +24,13 @@
 #define WIDTH      300
 #define WIDTH_MINI 251
 
-//================= 显示方式 =================
+//================= Display method =================
 #define PRN        0x00
-#define INV        0x10   /* Bit4: 0/1 = NORM/INV   正常/反衬*/
-#define SYMB       0x20   /* Bit5: O/1 = CHAR/SYMB  字符/图块*/
-#define VOID       0x40   /* Bit6: 0/1 = REAL/VOID  实线/虚线*/
+#define INV        0x10   /* Bit4: 0/1 = NORM/INV   normal/contrast*/
+#define SYMB       0x20   /* Bit5: O/1 = CHAR/SYMB  character/blocks*/
+#define VOID       0x40   /* Bit6: 0/1 = REAL/VOID  solid line/dotted line*/
 
-//============= 调色板色彩定义 ===============
+//============= Palette color definition ===============
 #define CYN        0xFFE0  /* 0*/
 #define PUR        0xF81F  /* 1*/
 #define YEL        0x07FF  /* 2*/
@@ -50,38 +50,38 @@
 #define GRAY       0x7BEF
 #define RED_       0x631F
 
-// 窗口参数表中参数定义 
+// Parameter definition in window parameter table
 //==============+======+======+======+======+======+======+======+======+======+
-//参数标志定位  | CH_A | CH_B | CH_C | VT线 | V1线 | V2线 | T0线 | T1线 | T2线 |    
+//Parameter marker positioning  | CH_A | CH_B | CH_C | VT line | V1 line | V2 line | T0 line | T1 line | T2 line |
 //--------------+------+------+------+------+------+------+------+------+------+
 enum            {  W1F,   W2F,   W3F,   VTF,   V1F,   V2F,   T0F,   T1F,   T2F,
 //==============+======+======+======+======+======+======+======+======+======+
-// 显示变量定位 | A零位| B零位| C零位| VT位 | V1位 | V2位 | T0位 | T1位 | T2位 |    
+// Display variable positioning | A zero position | B zero position | C zero position | VT position | V1 position | V2 position | T0 position | T1 position | T2 position |
 //--------------+------+------+------+------+------+------+------+------+------+
                   P1x2,  P2x2,  P3x2,  VTx2,  V1x2,  V2x2,  T0x1,  T1x1,  T2x1,
 //==============+======+======+======+======+======+======+======+======+======+
-// 显示颜色定位 | A主色| B主色| C主色| VT色 | V1色 | V2色 | T0色 | T1色 | T2色 |    
+// Display color location | A main color| B main color| C main color| VT color | V1 color | V2 color | T0 color | T1 color | T2 color |
 //--------------+------+------+------+------+------+------+------+------+------+
                    W1C,   W2C,   W3C,   VTC,   V1C,   V2C,   T0C,   T1C,   T2C,
 //==============+======+======+======+======+======+======+======+======+======+
-// 显示颜色定位 | A副色| B副色| C副色|      |      |      |      |      |      |    
+// Display color location | A secondary color| B secondary color| C secondary color|      |      |      |      |      |      |
 //--------------+------+------+------+------+------+------+------+------+------+
                   W1C_,  W2C_,  W3C_,   
 //==============+======+======+======+======+======+======+======+======+======+
-// 主窗参数定位 | x位置| y位置| x宽度|      |      |      |      |
+// Main window parameter positioning | x position | y position | x width |      |      |      |      |
 //--------------+------+------+------+------+------+------+------+------+------+
                   M_X0,  M_Y0,  M_WX,                        
 //==============+======+======+======+======+======+======+======+======+======+
-// 子窗参数定位 | 标志 | x位置| x宽度| y位置| y宽度|      |      |      |      |
+// Sub-window parameter positioning | Logo | x position | x width | y position | y width |      |      |      |      |
 //--------------+------+------+------+------+------+------+------+------+------+
                   POPF,  PXx1,  PWx1,  PYx2,  PHx2,                        
 //==============+======+======+======+======+======+======+======+======+======+
-//  子窗调色板  |  #1  |  #2  |  #3  |  #4  |  #5  |  #6  |  #7  |      |
+//  Sub-window palette  |  #1  |  #2  |  #3  |  #4  |  #5  |  #6  |  #7  |      |
 //--------------+------+------+------+------+------+------+------+------+------+
                   POP_CN, };
 //==============+======+======+======+======+======+======+======+======+======+
 
-//=========== 显示窗口标志定义 =============
+//=========== Display window flag definition =============
 
 #define SHOW        0x00       /* All Show*/
 #define D_HID       0x01       /* Endp Hide*/
@@ -90,7 +90,7 @@ enum            {  W1F,   W2F,   W3F,   VTF,   V1F,   V2F,   T0F,   T1F,   T2F,
 #define B_HID       0x06       /* Line & Wave Hide*/
 #define A_HID       0x07       /* End Dot & Line & Wave Hide*/
 
-//=========== Pop子窗口标志定义 =============
+//=========== Pop-up subwindow mark definition =============
 
 #define P_HID       0x01       /* Pop Hide*/
 #define LIST_POP    0x02       /**/
@@ -102,10 +102,10 @@ enum            {  W1F,   W2F,   W3F,   VTF,   V1F,   V2F,   T0F,   T1F,   T2F,
 #define COVER       1
 #define TRNSI       0
 
-//=========== Pop子窗口自动关闭时间 =============
+//=========== Pop-up subwindow auto close time =============
 #define   POP_TIME   5000 /* ms */
 
-//============== 显示参数定义 ==================
+//============== Display parameter definition ==================
 
 #define CCM_ADDR   0x10000000
 #define POP_SIZE   6692

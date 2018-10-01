@@ -18,49 +18,49 @@ uc16  Mark_TAB[] ={
   0x000,0x07C,0x082,0x082,0x082,0x044,0x101,    // Mark C
   0x000,0x040,0x040,0x07E,0x040,0x040,0x101};   // Mark T
 
-uc16 SYMB8x14[]={  // 显示符号图形数据定义
+uc16 SYMB8x14[]={  // Display symbol graphic data definitions
   0x0000,0x0000,0x0000,0x0C60,0x0C60,0x0000,0x0000,0x0000, // @ :
-  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4008,0x4008,0x4008, // A 空电池头
-  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008, // B 空电池身
-  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x7FF8, // C 空电池尾
-  0x0010,0x0030,0x0050,0x0190,0x0310,0x0C10,0x3FF0,0x0000, // D 三角
-  0x0FC0,0x0840,0x7878,0x4008,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // E 满电池头
-  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // F 满电池身
-  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x4008,0x7FF8, // G 满电池尾
-  0x0048,0x0088,0x0188,0x0FF8,0x0980,0x0880,0x0840,0x0000, // H 上升沿
-  0x7FF0,0x7FF0,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // I 左标尺端
-  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // J 中标尺端
-  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x7FF0,0x7FF0, // K 右标尺端
-  0x0900,0x0880,0x08C0,0x0FF8,0x00C8,0x0088,0x0108,0x0000, // L 下降沿
-  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4808,0x4408,0x43C8, // M 左 M 键
-  0x4408,0x4808,0x5FE8,0x4008,0x3FF0,0x0000,0x0000,0x0000, // N 右 M 键
-  0x0F30,0x1990,0x10F0,0x1000,0x10F0,0x1990,0x0F30,0x0000, // O 欧姆
-  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // P 左 P 键
-  0x4008,0x5FE8,0x4008,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // Q 右 P 键
-  0x0000,0x0000,0x3FF0,0x4008,0x4308,0x4308,0x4308,0x5FE8, // R 左 + 键
-  0x5FE8,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // S 右 + 键
+  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4008,0x4008,0x4008, // A Empty battery head
+  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008, // B Empty battery body
+  0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x7FF8, // C Empty battery tail
+  0x0010,0x0030,0x0050,0x0190,0x0310,0x0C10,0x3FF0,0x0000, // D Triangle
+  0x0FC0,0x0840,0x7878,0x4008,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // E Full battery head
+  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8, // F Full battery body
+  0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x4008,0x7FF8, // G Full battery tail
+  0x0048,0x0088,0x0188,0x0FF8,0x0980,0x0880,0x0840,0x0000, // H Rising edge
+  0x7FF0,0x7FF0,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // I Left scale end
+  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x0400,0x0800, // J Middle scale end
+  0x0400,0x0200,0x0100,0x0080,0x0100,0x0200,0x7FF0,0x7FF0, // K Right scale end
+  0x0900,0x0880,0x08C0,0x0FF8,0x00C8,0x0088,0x0108,0x0000, // L Falling edge
+  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4808,0x4408,0x43C8, // M Left M key
+  0x4408,0x4808,0x5FE8,0x4008,0x3FF0,0x0000,0x0000,0x0000, // N Right M key
+  0x0F30,0x1990,0x10F0,0x1000,0x10F0,0x1990,0x0F30,0x0000, // O Ohm
+  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // P Left P key
+  0x4008,0x5FE8,0x4008,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // Q Right P key
+  0x0000,0x0000,0x3FF0,0x4008,0x4308,0x4308,0x4308,0x5FE8, // R Left + key
+  0x5FE8,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // S Right + key
   0x0000,0x3800,0x3010,0x3FF0,0x3FF0,0x3010,0x3800,0x0000, // T
-  0x4308,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // U 右 - 键
+  0x4308,0x4308,0x4308,0x4308,0x4008,0x3FF0,0x0000,0x0000, // U Right - key
   0x3F80,0x3FC0,0x0060,0x0030,0x0060,0x3FC0,0x3F80,0x0000, // V
-  0x4308,0x4788,0x4FC8,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // W 右 < 键
-  0x0000,0x0440,0x0280,0x0100,0x0280,0x0440,0x0000,0x0000, // X 乘号
-  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // Y 右 > 键
-  0x5FE8,0x4FC8,0x4788,0x4308,0x4008,0x3FF0,0x0000,0x0000, // Z 左 > 键
-  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4F88,0x4048,0x4048, // [ 电池头+U
-  0x4048,0x4F88,0x4008,0x4448,0x4A48,0x4A48,0x4A48,0x4988, // \ 电池身+S
-  0x4008,0x4FC8,0x4A48,0x4A48,0x4A48,0x4588,0x4008,0x7FF8, // ] 电池尾+B
-  0x0000,0x0420,0x0420,0x1F20,0x0420,0x0420,0x0000,0x0000, // ^ 正负号
-  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // _ 空格
-  0x7FF8,0x4008,0x5FE8,0x5208,0x5208,0x5008,0x4008,0x7FF8, // ` 方框 F
+  0x4308,0x4788,0x4FC8,0x5FE8,0x4008,0x3FF0,0x0000,0x0000, // W Right < key
+  0x0000,0x0440,0x0280,0x0100,0x0280,0x0440,0x0000,0x0000, // X Multiplication sign
+  0x0000,0x0000,0x3FF0,0x4008,0x5FE8,0x4FC8,0x4788,0x4308, // Y Right > key
+  0x5FE8,0x4FC8,0x4788,0x4308,0x4008,0x3FF0,0x0000,0x0000, // Z Left > key
+  0x0FC0,0x0840,0x7878,0x4008,0x4008,0x4F88,0x4048,0x4048, // [ Battery head + U
+  0x4048,0x4F88,0x4008,0x4448,0x4A48,0x4A48,0x4A48,0x4988, // \ Battery body +S
+  0x4008,0x4FC8,0x4A48,0x4A48,0x4A48,0x4588,0x4008,0x7FF8, // ] Battery tail + B
+  0x0000,0x0420,0x0420,0x1F20,0x0420,0x0420,0x0000,0x0000, // ^ Sign
+  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // _ Space
+  0x7FF8,0x4008,0x5FE8,0x5208,0x5208,0x5008,0x4008,0x7FF8, // ` Box  F
   0x0190,0x0190,0x0010,0x0190,0x0190,0x0010,0x0190,0x0190, // a -- DC
   0x0190,0x0310,0x0310,0x0190,0x00D0,0x00D0,0x0190,0x0310, // b ~_AC
   0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // c x1 
   0x0000,0x0000,0x003C,0x0000,0x003C,0x0024,0x003C,0x0000, // d x10
-  0x7FF0,0x4010,0x4C50,0x5FD0,0x5FD0,0x4050,0x4010,0x7FF0, // e 方框 1
-  0x7FF0,0x4010,0x48D0,0x59D0,0x5350,0x4E50,0x4010,0x7FF0, // f 方框 2
-  0x7FF0,0x4010,0x4890,0x5250,0x5250,0x4D90,0x4010,0x7FF0, // g 方框 3
-  0x7FF0,0x4010,0x5810,0x5FD0,0x5FD0,0x5810,0x4010,0x7FF0, // h 方框 T
-  0x3FE0,0x4010,0x5FD0,0x5210,0x5210,0x5210,0x4010,0x3FE0, // i 方框 F小
+  0x7FF0,0x4010,0x4C50,0x5FD0,0x5FD0,0x4050,0x4010,0x7FF0, // e Box  1
+  0x7FF0,0x4010,0x48D0,0x59D0,0x5350,0x4E50,0x4010,0x7FF0, // f Box  2
+  0x7FF0,0x4010,0x4890,0x5250,0x5250,0x4D90,0x4010,0x7FF0, // g Box  3
+  0x7FF0,0x4010,0x5810,0x5FD0,0x5FD0,0x5810,0x4010,0x7FF0, // h Box  T
+  0x3FE0,0x4010,0x5FD0,0x5210,0x5210,0x5210,0x4010,0x3FE0, // i Box  F small
   0xFFFF,0xFFFF,0xF39F,0xE01F,0xE01F,0xFF9F,0xFFFF,0xFFFF, // j  1
   0xFFFF,0xF79F,0xE71F,0xCE5F,0xCCDF,0xC19F,0xE39F,0xFFFF, // k  2
   0xFFFF,0xEFBF,0xCD9F,0xDDDF,0xDDDF,0xC01F,0xE23F,0xFFFF, // l  3
@@ -166,8 +166,8 @@ uc16 CHAR8x14[]={
 
 uc16 SYMB10x14[] = { 
   0x0000,0x0000,0x0000,0x0000,0x0C60,0x0C60,0x0000,0x0000,0x0000,0x0000, // @ :
-  0x7FC0,0x90A0,0xBFA0,0x80A0,0x9F20,0xB1A0,0xB1A0,0x9F20,0x8020,0x7FC0, // A  方框10（x10）
-  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // B  空    （x10）
+  0x7FC0,0x90A0,0xBFA0,0x80A0,0x9F20,0xB1A0,0xB1A0,0x9F20,0x8020,0x7FC0, // A  Box 10（x10）
+  0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000, // B  Blank （x10）
   0x0000,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x4008,0x7FF8,0x0000, // C 
   0x0000,0x0010,0x0030,0x0050,0x0190,0x0310,0x0C10,0x3FF0,0x0000,0x0000, // D 
   0x0000,0x0FC0,0x0840,0x7878,0x4008,0x5FE8,0x5FE8,0x5FE8,0x5FE8,0x0000, // E 
@@ -269,23 +269,23 @@ uc8 CHAR6x8[] = {
   0x00,0x22,0x36,0x1C,0x36,0x22,    //x    
   0x00,0x39,0x3D,0x05,0x3F,0x3E,    //y    
   0x00,0x32,0x26,0x2E,0x3A,0x36,    //z    
-  0x00,0x19,0x31,0xFF,0xB0,0x98,    //上升沿 //{
+  0x00,0x19,0x31,0xFF,0xB0,0x98,    //Rising edge //{
   0x00,0x00,0x00,0xFE,0x00,0x00,    //|      
-  0x00,0xB0,0x98,0xFF,0x19,0x31,    //下降沿 //}
+  0x00,0xB0,0x98,0xFF,0x19,0x31,    //Falling edge //}
   0x00,0x30,0x60,0x30,0x18,0x30,     //~  
 };
 
 uc8 SYMB6x8[] = { 
   0x00,0x00,0xFA,0xFA,0x00,0x00,    //!
-  0x18,0x38,0x38,0x10,0x10,0x30,    //" usb左
-  0x50,0x90,0x98,0xD4,0xD2,0x12,    //# usb中
-  0x17,0x13,0x10,0x38,0x30,0x10,    //$ usb右
+  0x18,0x38,0x38,0x10,0x10,0x30,    //" usb left
+  0x50,0x90,0x98,0xD4,0xD2,0x12,    //# usb middle
+  0x17,0x13,0x10,0x38,0x30,0x10,    //$ usb right
   0x00,0x66,0x6C,0x18,0x36,0x66,    //%  
-  0x82,0x82,0x82,0x82,0xBA,0xBA,    //& 空电池中
-  0x00,0x11,0x33,0x76,0xDC,0x98,    // '电量
-  0x00,0x7E,0x81,0xFF,0xB1,0x99,    // (边框“M”左边
-  0xB1,0xFF,0x81,0x7E,0x00,0x00,    // )边框“M”右边 
-  0x82,0xBA,0xBA,0xBA,0xBA,0xBA,    //*满电池中 
+  0x82,0x82,0x82,0x82,0xBA,0xBA,    //& Empty battery middle
+  0x00,0x11,0x33,0x76,0xDC,0x98,    //' Battery level
+  0x00,0x7E,0x81,0xFF,0xB1,0x99,    //( Border "M" left
+  0xB1,0xFF,0x81,0x7E,0x00,0x00,    //) Border "M" right
+  0x82,0xBA,0xBA,0xBA,0xBA,0xBA,    //* Full battery middle
   0x00,0x10,0x10,0x7C,0x10,0x10,    //+  
   0x00,0x00,0x01,0x07,0x06,0x00,    //,  
   0x00,0x10,0x10,0x10,0x10,0x10,    //-  
@@ -302,12 +302,12 @@ uc8 SYMB6x8[] = {
   0x00,0x6C,0xFE,0x92,0xFE,0x6C,    //8  
   0x00,0x70,0xFA,0x8A,0xFE,0x7C,    //9  
   0x00,0x00,0x00,0x24,0x24,0x00,    //:  
-  0x00,0x38,0xEE,0x82,0x82,0x82,    //; 空电池左
-  0x82,0x82,0x82,0x82,0x82,0x82,    //< 空电池中
-  0x82,0x82,0x82,0x82,0xFE,0x00,    //= 空电池右
-  0x00,0x38,0xEE,0x82,0xBA,0xBA,    //>满电池左 
+  0x00,0x38,0xEE,0x82,0x82,0x82,    //; Empty battery left
+  0x82,0x82,0x82,0x82,0x82,0x82,    //< Empty battery middle
+  0x82,0x82,0x82,0x82,0xFE,0x00,    //= Empty battery right
+  0x00,0x38,0xEE,0x82,0xBA,0xBA,    //> Full battery left
   0x00,0x40,0xCA,0x9A,0xF0,0x60,    //? 
-  0xBA,0xBA,0xBA,0x82,0xFE,0x00,    //@满电池右 
+  0xBA,0xBA,0xBA,0x82,0xFE,0x00,    //@ Full battery right
   0x00,0x3E,0x7E,0xC8,0x7E,0x3E,    //A
   0x00,0xFE,0xFE,0x92,0xFE,0x6C,    //B
   0x00,0x7C,0xFE,0x82,0xC6,0x44,    //C
@@ -334,12 +334,12 @@ uc8 SYMB6x8[] = {
   0x00,0xC6,0xEE,0x38,0xEE,0xC6,    //X
   0x00,0xE0,0xF2,0x1E,0xF2,0xE0,    //Y
   0x00,0xC6,0x8E,0x9A,0xF2,0xE6,    //Z
-  0x00,0x7E,0x81,0xA5,0xF3,0xD3,    //[ 边框“S”左边
-  0xCF,0xA5,0x81,0x7E,0x00,0x00,    //  边框“S”右边
-  0x00,0x0C,0x1C,0x3C,0x1C,0x0C,    //]tri
-  0x00,0x50,0x48,0x7E,0x0A,0x12,    //上升沿 //^
-  0x00,0x48,0x50,0x7E,0x12,0x0A,    //下降沿 //_
-  0xBA,0xBA,0xBA,0xBA,0xBA,0xBA,    //`满电池中 
+  0x00,0x7E,0x81,0xA5,0xF3,0xD3,    //[ Border "S" left
+  0xCF,0xA5,0x81,0x7E,0x00,0x00,    //  Border "S" right
+  0x00,0x0C,0x1C,0x3C,0x1C,0x0C,    //] tri
+  0x00,0x50,0x48,0x7E,0x0A,0x12,    //  Rising edge //^
+  0x00,0x48,0x50,0x7E,0x12,0x0A,    //  Falling edge //_
+  0xBA,0xBA,0xBA,0xBA,0xBA,0xBA,    //` Full battery middle
   0x00,0x04,0x2E,0x2A,0x2A,0x1E,    //a    
   0x00,0x7E,0x7E,0x12,0x1E,0x0C,    //b    
   0x00,0x1C,0x3E,0x22,0x22,0x22,    //c    
@@ -366,57 +366,57 @@ uc8 SYMB6x8[] = {
   0x00,0x22,0x36,0x1C,0x36,0x22,    //x    
   0x00,0x39,0x3D,0x05,0x3F,0x3E,    //y    
   0x00,0x32,0x26,0x2E,0x3A,0x36,    //z    
-  0x00,0x00,0xFE,0x7C,0x38,0x10,    //{ 播放
-  0x00,0xFE,0x00,0xFE,0x00,0x00,    //| ||暂停  
-  0x00,0x1C,0x3E,0x63,0x01,0xF9,    //} 关机左       
-  0x01,0x63,0x3E,0x1C,0x00,0x00,    //~ 关机右  
+  0x00,0x00,0xFE,0x7C,0x38,0x10,    //{ Play
+  0x00,0xFE,0x00,0xFE,0x00,0x00,    //| ||Pause
+  0x00,0x1C,0x3E,0x63,0x01,0xF9,    //} Shut down left
+  0x01,0x63,0x3E,0x1C,0x00,0x00,    //~ Shut down right
 };
 
-// 显示缓冲区 VRAM = CCM = 0x10000000~0x10001FFF 8KB
-u16* ParamTab = (u16*)(CCM_ADDR+TAB_PTR); // 显示变量参数表
+// Display Buffer VRAM = CCM = 0x10000000-0x10001FFF 8KB
+u16* ParamTab = (u16*)(CCM_ADDR+TAB_PTR); // Display variable parameter list
 
-// View 窗口中的显示变量参数表初始化数据
+// Initialization values of display variable parameter table in window
 //+=============+======+======+======+======+======+======+======+======+======+
-//   主窗标志   |  W1F |  W2F |  W3F |  VTF |  V1F |  V2F |  T0F |  T1F |  T2F |  
+//   Main window logo | W1F | W2F | W3F | VTF | V1F | V2F | T0F | T1F | T2F |
 //+-------------+------+------+------+------+------+------+------+------+------+
 uc16 PARAM[] =  { L_HID, L_HID, L_HID,  SHOW,  SHOW,  SHOW,  SHOW,  SHOW,  SHOW,
 //+=============+======+======+======+======+======+======+======+======+======+
-//   主窗变量   | P1x2 | P2x2 | P3x2 | VTx2 | V1x2 | V2x2 | T0x1 | T1x1 | T2x1 | 
+//   Main window variable   | P1x2 | P2x2 | P3x2 | VTx2 | V1x2 | V2x2 | T0x1 | T1x1 | T2x1 |
 //+-------------+------+------+------+------+------+------+------+------+------+
                  160*2,  80*2,  30*2,   220,   350,   50,   125,    50,   225,
 //+=============+======+======+======+======+======+======+======+======+======+
-//   主窗颜色   |  W1C |  W2C |  W3C |  VTC |  V1C |  V2C |  T0C |  T1C |  T2C | 
+//   Main window color   |  W1C |  W2C |  W3C |  VTC |  V1C |  V2C |  T0C |  T1C |  T2C |
 //+-------------+------+------+------+------+------+------+------+------+------+
                    CYN,   YEL,   PUR,   CYN,   WHT,   WHT,   ORN,   WHT,   WHT,
 //+=============+======+======+======+======+======+======+======+======+======+
-//   主窗副色   | W1C_ | W2C_ | W3C_ |      |      | 
+//   Main window sub-color   | W1C_ | W2C_ | W3C_ |      |      |
 //+-------------+------+------+------+------+------+------+------+------+------+
                   CYN_,  YEL_,  PUR_, 
 //+=============+======+======+======+======+======+======+======+======+======+
-//   主窗变量   | M_X0 | M_Y0 | M_WX |      |      |      |      |      |      |
+//   Main window variable   | M_X0 | M_Y0 | M_WX |      |      |      |      |      |      |
 //+-------------+------+------+------+------+------+------+------+------+------+
                     7,    20,   251,    
 //+=============+======+======+======+======+======+======+======+======+======+
-//   子窗变量   | POPF | BXx1 | WXx1 | BYx2 | HYx2 |      |      |      |      |
+//   Sub-window variable   | POPF | BXx1 | WXx1 | BYx2 | HYx2 |      |      |      |      |
 //+-------------+------+------+------+------+------+------+------+------+------+
                   P_HID,  180,   100,    26,   256,
 //+=============+======+======+======+======+======+======+======+======+======+
-//  子窗调色板  | CN=2   CN=4   CN=6   CN=8  CN=10  CN=12  CN=14                 
+//  Sub-window palette  | CN=2   CN=4   CN=6   CN=8  CN=10  CN=12  CN=14
 //+-------------+------+------+------+------+------+------+------+------+------+
                   CYN,   YEL,   PUR,   GRN,   ORN,   WHT,   DAR,              };
 //+=============+======+======+======+======+======+======+======+======+======+
 
 
-static u16 Nx = 5,   Ny = 5;   // 弹出窗当前显示位置
+static u16 Nx = 5,   Ny = 5;   // Pop-up window current display position.
 static s16 Dx = 1,   Dy = 2;
-static u8  Pop_B_Cn, Pop_F_Cn; // 弹出窗当前显示色号
+static u8  Pop_B_Cn, Pop_F_Cn; // Pop-up window currently showing color number.
 
 u8  PopType  = DEMO_POP;
-u16 Sx = 0, Sy = 0;            // 主屏幕当前显示位置
-u16 Background, Foreground;    // 主屏幕当前显示颜色
+u16 Sx = 0, Sy = 0;            // Home screen current display position.
+u16 Background, Foreground;    // Home screen current color.
 
 /*******************************************************************************
- PopColor: 弹出窗颜色设置
+ PopColor: Pop-up color settings
 *******************************************************************************/
 void PopColor(u16 Board_Color, u16 Text_Color)
 {
@@ -427,7 +427,7 @@ void PopColor(u16 Board_Color, u16 Text_Color)
   Pop_F_Cn = i;
 }
 /*******************************************************************************
- SetColor: LCD屏幕颜色设置
+ SetColor: LCD screen color settings
 *******************************************************************************/
 void SetColor(u16 Board_Color, u16 Text_Color)
 {
@@ -435,19 +435,19 @@ void SetColor(u16 Board_Color, u16 Text_Color)
   Foreground = Text_Color;
 }
 /*******************************************************************************
- PopPixel: 弹出窗像素设置     Color: 像素颜色(1/0)  像素定位: Nx, Ny
+ PopPixel: Pop-up pixel settings Color: Pixel Color (1/0) Pixel Positioning: Nx, Ny
 *******************************************************************************/
 void PopPixel(u8 ColorNum)
 {
   u8  *PopBuf = (u8*)CCM_ADDR+POP_BUF;
 
-  Nx = Nx%ParamTab[PWx1]; Ny = Ny%ParamTab[PHx2]; // Nx, Ny 超界则返回起点
+  Nx = Nx%ParamTab[PWx1]; Ny = Ny%ParamTab[PHx2]; // Nx, Ny is returned to the starting point.
   u16 i  = Nx*ParamTab[PHx2]/4+ Ny/2;
   if(Ny++%2) PopBuf[i] = (PopBuf[i]&0x0F)|(ColorNum << 4);
   else       PopBuf[i] = (PopBuf[i]&0xF0)| ColorNum;
 }
 /*******************************************************************************
-  OpenPop: 画弹出窗外框及清除弹出窗内容  输入参数: PopX, PopY, PopH, PopW, Mod
+  OpenPop: Draw pop-up frame and clear pop-up contents Input parameters: PopX, PopY, PopH, PopW, Mod
 *******************************************************************************/
 void OpenPop(u8 PopX, u8 PopY, u8 PopH, u8 PopW, u8 Mode)
 {
@@ -497,7 +497,7 @@ void OpenPop(u8 PopX, u8 PopY, u8 PopH, u8 PopW, u8 Mode)
   PopPixel(Transpa); PopPixel(Transpa); PopPixel(Transpa);
 }
 /*******************************************************************************
- PopChar: 弹出窗内显示字符/图块       Mode = bit0: Normal/Inv, bit1: Char/Symb
+ PopChar: Pop-up window display character/Blocks       Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void PopChar(u8 Mode, u8 Code)
 {
@@ -516,7 +516,7 @@ void PopChar(u8 Mode, u8 Code)
   }
 }
 /*******************************************************************************
- PopChar6x8: 弹出窗内显示字符/图块     Mode = bit0: Normal/Inv, bit1: Char/Symb
+ PopChar6x8: Pop-up window display character/Blocks     Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void PopChar6x8(u8 Mode, u8 Code)
 {
@@ -537,7 +537,7 @@ void PopChar6x8(u8 Mode, u8 Code)
   }
 }
 /*******************************************************************************
- NoteSTR: 弹出窗内显示字符/图块串      Mode = bit0: Normal/Inv, bit1: Char/Symb
+ NoteSTR: Pop-up window display character/Block string      Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void Pop_STR(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
 {
@@ -550,7 +550,7 @@ void Pop_STR(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
- NoteSTR86x8: 弹出窗内显示字符/图块串   Mode = bit0: Normal/Inv, bit1: Char/Symb
+ NoteSTR86x8: Pop-up window display character/Block string   Mode = bit0: Normal/Inv, bit1: Char/Symb
 *******************************************************************************/
 void Pop_STR6x8(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
 {
@@ -576,7 +576,7 @@ void Pop_STR6x8(u16 Nx0, u16 Ny0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
- Disp_Char: 主屏幕显示字符/图块         Mode = bit0: Normal/Inv, bit1: Char/Map
+ Disp_Char: Main screen display characters/Blocks         Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispChar(u8 Mode, u8 Code)
 {
@@ -587,13 +587,13 @@ void DispChar(u8 Mode, u8 Code)
     else            k = Get_TAB_8x14(Code, i);
     if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
     SetPosi(Sx, Sy);
-    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){       //AC/DC标志显示
+    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){       //AC/DC logo display
       for(j=0; j<11; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
         k >>= 1;}
     }
-    else if((Mode & SYMB)&&(Code == 'L' || Code=='H')){ //上升沿，下降沿
+    else if((Mode & SYMB)&&(Code == 'L' || Code=='H')){ //Rising edge，Falling edge
       SetPosi(Sx, Sy);
       for(j=0; j<11; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
@@ -650,7 +650,7 @@ void DispChar10x14(u8 Mode, u8 Code)
   
 }
 /*******************************************************************************
- Disp_Char8x9: 主屏幕显示字符/图块       Mode = bit0: Normal/Inv, bit1: Char/Map
+ Disp_Char8x9: Main screen display characters/Blocks       Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispChar8x9(u8 Mode, u8 Code)
 {
@@ -661,13 +661,13 @@ void DispChar8x9(u8 Mode, u8 Code)
     else            k = Get_TAB_8x9(Code, i);
     if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
     SetPosi(Sx, Sy);
-    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){      //AC/DC标志显示
+    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){      //AC/DC logo display
       for(j=0; j<10; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
         k >>= 1;}
     }
-    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1、X10标志显示
+    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1, X10 flag display
       SetPosi(Sx, Sy+9);
       for(j=0; j<5; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
@@ -687,7 +687,7 @@ void DispChar8x9(u8 Mode, u8 Code)
   
 }
 /*******************************************************************************
-  DispStr: 主屏幕显示字符/图块串        Mode = bit0: Normal/Inv, bit1: Char/Map
+  DispStr: Main screen display characters/Block string        Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispStr(u16 x0, u16 y0, u8 Mode, u8 *Str)
 {
@@ -707,7 +707,7 @@ void DispStr10x14(u16 x0, u16 y0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
-  DispStr8x9: 主屏幕显示字符/图块串      Mode = bit0: Normal/Inv, bit1: Char/Map
+  DispStr8x9: Main screen display characters/Block string      Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispStr8x9(u16 x0, u16 y0, u8 Mode, u8 *Str)
 {
@@ -715,13 +715,13 @@ void DispStr8x9(u16 x0, u16 y0, u8 Mode, u8 *Str)
   Sx = x0; Sy = y0;
   __SetPosi(Sx, Sy);
   for (i=0; i<9; i++) __SetPixel((Mode & INV)? Foreground : Background);
-  Sx++;                                   // 每一个字符串前增加一空白列
+  Sx++;                                   // Add a blank column before each string.
   while(*Str != 0){
     DispChar8x9(Mode, *Str++);
   }
 }
 /*******************************************************************************
-  List_Pop: 打开菜单窗
+  List_Pop: Open the menu window
 *******************************************************************************/
 void List_Pop(void)
 {
@@ -729,7 +729,7 @@ void List_Pop(void)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Close_Pop: 关闭菜单窗及会话窗
+  Close_Pop: Close the menu window and session window
 *******************************************************************************/
 void ClosePop(void)
 {
@@ -738,7 +738,7 @@ void ClosePop(void)
   else Demo_Pop();
 }
 /*******************************************************************************
-  Move_Pop: 打开及游动演示窗
+  Move_Pop: Open and run demo windows
 *******************************************************************************/
 void MovePop(void)
 {
@@ -753,7 +753,7 @@ void MovePop(void)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Dialog_Pop: 弹出会话窗
+  Dialog_Pop: Popup window
 *******************************************************************************/
 void Dialog_Pop(u8* Str)
 {
@@ -768,7 +768,7 @@ void Dialog_Pop(u8* Str)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Power_Pop: 弹出会话窗
+  Power_Pop: Popup window
 *******************************************************************************/
 void Power_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 {
@@ -776,39 +776,39 @@ void Power_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
   PopColor(DAR,WHT);
   OpenPop(X_Posi, Y_Posi, High, Width, COVER);
   Pop_STR6x8( 4*6, 41, PRN, Str);
-  Pop_STR6x8( 1*6, 29, SYMB,  "{|:");         //播放暂停图标
+  Pop_STR6x8( 1*6, 29, SYMB,  "{|:");         //Play pause icon
   Pop_STR6x8( 5*6, 29, PRN,  "PwrOff Only");
   Pop_STR6x8( 1*6, 17, SYMB,   "[\\:");       //"S" 
   Pop_STR6x8( 5*6, 17, PRN,   "PwrOff & SaveParam");
-  Pop_STR6x8( 1*6, 5,  SYMB,  "}~:");         //关机图标
+  Pop_STR6x8( 1*6, 5,  SYMB,  "}~:");         //Shutdown icon
   Pop_STR6x8( 5*6, 5,  PRN,  "Exit");
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Dialog_Pop_Cal: 弹出会话窗
+  Dialog_Pop_Cal: Popup window
 *******************************************************************************/
 void Dialog_CalPop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 {
   u16 i;
-  i = (Width - 17*6)/2;                      //选择按钮行起始位置
+  i = (Width - 17*6)/2;                      //Select button row starting position
   PopType |= DAILOG_POP;
   PopColor(WHT,DAR);
   OpenPop(X_Posi, Y_Posi, High, Width, COVER);
   Pop_STR6x8( 1*6, 16, PRN, Str);
-  Pop_STR6x8( i,      4, SYMB,  "[\\");      //关机图标
+  Pop_STR6x8( i,      4, SYMB,  "[\\");      //Shutdown icon
   Pop_STR6x8( i+ 2*6, 4, PRN,  ":Yes");
-  Pop_STR6x8( i+10*6, 4, SYMB,  "()");       //播放暂停图标
+  Pop_STR6x8( i+10*6, 4, SYMB,  "()");       //Play pause icon
   Pop_STR6x8( i+12*6, 4, PRN,  ":No");
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  Product_Pop: 弹出会话窗
+  Product_Pop: Popup window
 *******************************************************************************/
 void Product_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 {
   u16 i;
   u8 ptr[15];
-  i = Width/5;                               //标题起始位置
+  i = Width/5;                               //Title start position
   PopType |= DAILOG_POP;
   PopColor(DAR,WHT);
   OpenPop(X_Posi, Y_Posi, High, Width, COVER);
@@ -838,7 +838,7 @@ void Product_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  About_Pop: 弹出会话窗
+  About_Pop: Popup window
 *******************************************************************************/
 void About_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
 { 
@@ -849,7 +849,7 @@ void About_Pop(u8* Str, u16 X_Posi, u16 Y_Posi, u16 High, u16 Width )
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  显示关机提示弹出窗
+  Display shutdown prompt popup
 *******************************************************************************/
 void PwrOff_Pop(void)
 {
@@ -860,7 +860,7 @@ void PwrOff_Pop(void)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  提示弹出窗
+  Prompt popup
 *******************************************************************************/
 void Tips_Pop(u8* Str)
 {
@@ -871,7 +871,7 @@ void Tips_Pop(u8* Str)
   ParamTab[POPF] = SHOW;
 }
 /*******************************************************************************
-  显示Demo_Pop提示弹出窗
+  Show Demo_Pop prompt pop-up
 *******************************************************************************/
 void Demo_Pop(void)
 {
@@ -884,7 +884,7 @@ void Demo_Pop(void)
   Pop_STR(4, 10, PRN, "only");
 }
 /*******************************************************************************
-  打印字符串
+  Print string
 *******************************************************************************/
 void PrintStr(u8 Mode, u8 *Str)
 {
@@ -892,7 +892,7 @@ void PrintStr(u8 Mode, u8 *Str)
 
   SetPosi(Sx, Sy);
   for (i=0; i<14; i++) SetPixel((Mode & INV)? Foreground : Background);
-  Sx++;                             // 每一个字符串前增加一空白列
+  Sx++;                             // Add a blank column before each string
   while(*Str != 0){
     for(i=0; i<8; ++i){
       if(!(Mode & SYMB)) k = Get_TAB_8x14(*Str, i);
@@ -904,13 +904,13 @@ void PrintStr(u8 Mode, u8 *Str)
         else       SetPixel((Mode & INV)? Foreground : Background);
        k >>= 1;
       }
-      Sx++;                        //显示位置水平方向+1
+      Sx++;                        //Display position horizontal+1
     }
-    Str++;                         //字符串指针+1
+    Str++;                         //String pointer+1
   }
 }
 /*******************************************************************************
-  打印字符串6x8
+  Print string 6x8
 *******************************************************************************/
 void PrintStr6x8(u8 Mode, u8 *Str)
 {
@@ -926,17 +926,17 @@ void PrintStr6x8(u8 Mode, u8 *Str)
       if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
       SetPosi(Sx, Sy);  SetPixel((Mode & INV)? Foreground : Background);
       SetPosi(Sx, Sy+1);
-      for(j=0; j<10; ++j){  //j<8时不空行，j<10空两行   即上下各空两行
+      for(j=0; j<10; ++j){  //(j<8) When not empty, (j<10) empty two lines; that is, two lines up and down
         if(k & 1)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
        k >>= 1;
       }
-      Sx++;                 //显示位置水平方向+1
+      Sx++;                 //Display position horizontal+1
     }
   }
 }
 /*******************************************************************************
-  Label打印字符串
+  Label print string
 *******************************************************************************/
 void PrintStr_Cur(u8 Mode, u8 *Str)
 {
@@ -954,14 +954,14 @@ void PrintStr_Cur(u8 Mode, u8 *Str)
         else       SetPixel((Mode & INV)? Background : Foreground);
        k >>= 1;
       }
-      Sx++;               //显示位置水平方向+1
+      Sx++;               //Display position horizontal+1
     }
-    Str++;                //字符串指针+1
+    Str++;                //String pointer+1
   }
 }
 
 /*******************************************************************************
- Display_Str: 在指定位置显示字符串   输入: X、Y坐标，颜色值，字符串
+ Display_Str: Display string at specified position Input: X, Y coordinate, color value, string
 *******************************************************************************/
 u16 Get_TAB_6x8(u8 Code, u16 Row)
 {
@@ -980,7 +980,7 @@ void DispStr6x8(u16 x0, u16 y0, u8 Mode, u8 *Str)
   }
 }
 /*******************************************************************************
- Disp_Char6x8: 主屏幕显示字符/图块       Mode = bit0: Normal/Inv, bit1: Char/Map
+ Disp_Char6x8: Main screen display characters/Blocks       Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispChar6x8(u8 Mode, u8 Code)
 {
@@ -991,13 +991,13 @@ void DispChar6x8(u8 Mode, u8 Code)
     else            k = Get_TAB_6x8(Code, i);
     if(Mode & VOID) k &= (i%2)? 0xAAAA : 0x5555;
     SetPosi(Sx, Sy);
-    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){     //AC/DC标志显示
+    if((Mode & SYMB)&&(Code == 'a' || Code=='b')){     //AC/DC logo display
       for(j=0; j<10; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
         else       SetPixel((Mode & INV)? Foreground : Background);
         k >>= 1;}
     }
-    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1、X10标志显示
+    else if((Mode & SYMB)&&(Code == 'c' || Code=='d')){ //X1, X10 flag display
      SetPosi(Sx, Sy+9);
       for(j=0; j<5; ++j){
         if(k & 4)  SetPixel((Mode & INV)? Background : Foreground);
@@ -1019,7 +1019,7 @@ void DispChar6x8(u8 Mode, u8 Code)
 }
 
 /*******************************************************************************
- viod Clr_WaveWin(u16 Col)  清除波形显示区
+ Clear waveform display area
 *******************************************************************************/
 void Clr_WaveWin(u16 Col)
 {
@@ -1034,7 +1034,7 @@ void Clr_WaveWin(u16 Col)
   }
 }
 /*******************************************************************************
- viod Clr_WavePosi(u16 Col)  清除波形位置显示
+ Clear waveform position display
 *******************************************************************************/
 void Clr_WavePosi(u16 Col)
 {

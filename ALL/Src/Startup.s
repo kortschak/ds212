@@ -164,7 +164,7 @@ __vector_table
         DCD     FPU_IRQHandler                    ; FPU
         
 ;//=============================================================================
-;//                 DFU 模块相关函数入口地址定义
+;//                 DFU Module related function entry address definition
 ;//=============================================================================
 
 ;; Default interrupt handlers.

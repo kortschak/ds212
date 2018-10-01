@@ -22,8 +22,8 @@ typedef struct
   u8  menu_flag;         //win
   u8  mflag;             //menu
   u8  iflag;             //item
-  u8  current;           //当前菜单页
-  u8  menu_index[12];    //当前菜单项目
+  u8  current;           //current menu page
+  u8  menu_index[12];    //current menu item
 } MAINMENU;
 
 extern MAINMENU menu;
@@ -66,13 +66,13 @@ extern u16   CHA_Col, CHB_Col;
 
 enum            {  CH_A,    CH_B,    CH_C};
 //==============+========+========+========+========+========+========+========+
-//   SR_C选项   | -CH_A  | -CH_B  | CH_A+B | CH_A-B |  MEM_1 |  MEM_2 |  MEM_2  |
+//   SR_C Options   | -CH_A  | -CH_B  | CH_A+B | CH_A-B |  MEM_1 |  MEM_2 |  MEM_2  |
 //==============+========+========+========+========+========+========+========+
 enum            {  aNEG,    bNEG,     ADD,     SUB,     MR1,     MR2,    MR3, };
 //==============+========+========+========+========+========+========+========+
 enum            { Oscillo, Measure,  Option};
 
-enum{               //第一页子菜单选项
+enum{               //First page submenu options
   CH1_Vol,  CH1_Posi, CH1_Coupl, CH1_Enable, CH1_Probe,
   CH2_Vol,  CH2_Posi, CH2_Coupl, CH2_Enable, CH2_Probe, 
   CH3_Type, CH3_Posi, CH3_Enable,
@@ -82,7 +82,7 @@ enum{               //第一页子菜单选项
   WIN_Posi, WIN_Depth,           WIN_Enable, WIN_T0         
 };
 
-enum{             //第三页之菜单选项
+enum{             //Third page menu options
   SAVE_Pam,   SAVE_Bmp,    SAVE_Dat,   SAVE_Buf,     SAVE_Csv,    LOAD_Dat,   LOAD_Buf,   SAVE_Svg,
   WAVE_Type,  WAVE_Freq,   WAVE_Duty, 
   SYS_Volume, SYS_BKLight, SYS_Standy, SYS_PowerOff, SYS_MenuCyc, SYS_ItemCyc,SYS_PosiCyc, 

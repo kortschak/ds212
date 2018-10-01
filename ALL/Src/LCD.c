@@ -1,5 +1,5 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
- LCD.c  
+ LCD.c
  Version  : DS212                                                 Author : bure
 *******************************************************************************/
 #include "Version.h"
@@ -21,7 +21,7 @@
 
 
 /*******************************************************************************
- Clear_Screen: 清LCD显示器屏幕。
+ Clear_Screen: Clear LCD monitor screen
 *******************************************************************************/
 void ClrScrn(u16 Color)
 { u32 i;
@@ -29,7 +29,7 @@ void ClrScrn(u16 Color)
   for(i=0; i<240*LCD_ROW; i++) SetPixel(Color);
 }
 /*******************************************************************************
- Display_Str: 在指定位置显示字符串   输入: X、Y坐标，颜色值，字符串
+ Display_Str: Display string at specified position - Input: X, Y coordinate, color value, string
 *******************************************************************************/
 u16 Get_TAB_8x14(u8 Code, u16 Row)
 {
@@ -55,7 +55,7 @@ void Disp_Str(u16 x, u16 y, u16 Color, u8 *s)
 {
   u16 i, j, b;
   SetBlock(x, y, LCD_ROW-1, y+13);
-  for (i=0; i<14; i++) SetPixel(BG);    //字符串前增加一空白列
+  for (i=0; i<14; i++) SetPixel(BG);    // Add a blank column before the string.
   while(*s != 0) {
     for(i=0; i<8; i++){
       b = Get_TAB_8x14(*s, i);
@@ -65,12 +65,12 @@ void Disp_Str(u16 x, u16 y, u16 Color, u8 *s)
         b >>= 1;
       }
     }
-    s++;                                //字符串指针+1
+    s++;                                //String pointer+1
   }
-  SetBlock(0, 0, LCD_ROW-1, LCD_COL-1); //恢复全尺寸窗口
+  SetBlock(0, 0, LCD_ROW-1, LCD_COL-1); //Restore full-size window
 }
 /*******************************************************************************
- Display_6x8: 在指定位置显示字符串   输入: X、Y坐标，颜色值，字符串
+ Display_6x8: Display string at specified position - Input: X, Y coordinate, color value, string
 *******************************************************************************/
 u16 GetTAB_6x8(u8 Code, u16 Row)
 {
@@ -82,21 +82,21 @@ void DispStr_6x8(u16 x0, u16 y0, u16 Color, u8 *Str)
 {
   Sx = x0; Sy = y0;
   __SetPosi(Sx, Sy);
-                                   // 每一个字符串前增加一空白列
+                                   // Add a blank column before each string.
   while(*Str != 0){
     DispChar_6x8(Color, *Str++);
   }
 }
 /*******************************************************************************
- DispChar_6x8: 主屏幕显示字符/图块       Mode = bit0: Normal/Inv, bit1: Char/Map
+ DispChar_6x8: Character/tile displayed on the main screen Mode = bit0: Normal/Inv, bit1: Char/Map
 *******************************************************************************/
 void DispChar_6x8(u16 Color, u8 Code)
 {
   u16 i, j, k;
-  
+
   for(i=0; i<6; ++i){
     k = GetTAB_6x8(Code, i);
-      SetPosi(Sx, Sy);  
+      SetPosi(Sx, Sy);
       SetPixel(BG);
       SetPosi(Sx, Sy+1);
       for(j=0; j<10; ++j){
@@ -105,6 +105,6 @@ void DispChar_6x8(u16 Color, u8 Code)
         k >>= 1;
       }
     Sx++;
-  } 
+  }
 }
 /******************************** END OF FILE *********************************/

@@ -1,9 +1,11 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
  Brief   : ILI9341 LCD Drivers                                    Author : bure
 ********************************************************************************
-   本模块按通用LCD驱动模块规划设计，可根据实际硬件配置加载不同的LCD驱动模块
+   This module is designed according to the general LCD driver module
+   and can load different LCD driver modules according to the actual
+   hardware configuration.
 
- * 调用时需要外部提供的硬件相关宏定义如下：
+ * The externally provided hardware-related macros are defined as follows:
     LCD_nRST_LOW()
     LCD_nRST_HIGH()
     LCD_RS_LOW()
@@ -18,7 +20,7 @@
     LCD_PORT_IN()
     LCD_PORT_OUT()
 
- * 采用统一名称可供外部调用的函数如下：
+ * The functions that can be called externally with a uniform name are as follows:
     void LCD_Init(void);
     void SetBlock(u16 x1, u16 x2, u16 y1, u16 y2);
     void SetPosi(u16 x0, u16 y0);
@@ -37,7 +39,7 @@ void Direction(u8 Direction)
   LCD_DAT_W(Direction << 5); // Bit7/6/5: Y/X/V Mirror
 }
 /*******************************************************************************
-  Init_LCD : ILI9341 LCD 显示模块初始化
+  Init_LCD : ILI9341 LCD display module initialization
 *******************************************************************************/
 void LCD_Init(void)
 {
@@ -161,7 +163,7 @@ __Ctrl(DELAYmS, 120);
 LCD_CMD_W(0x29);    //Display on 
 }
 /*******************************************************************************
-  Set Block : 指定显示块   输入: X、Y坐标
+  Set Block : Specify display block. Input: X, Y Coordinates
 *******************************************************************************/
 void SetBlock(u16 x1, u16 y1, u16 x2, u16 y2)
 {
@@ -180,7 +182,7 @@ void SetBlock(u16 x1, u16 y1, u16 x2, u16 y2)
   LCD_CMD_W(0x2C);           // Ready to write GRAM
 }
 /*******************************************************************************
-  Set Position : 指定显示位置   输入: X、Y坐标
+  Set Position : Specify display position. Input: X, Y coordinates
 *******************************************************************************/
 void SetPosi(u16 x0, u16 y0)
 {
@@ -206,7 +208,7 @@ void SendPixels(u16* pBuf, u16 n)
   while(n--) {LCD_DAT_W(*pBuf++);};
 }
 /*******************************************************************************
- Set Pixel: 设置屏幕上一个指定位置点的颜色。 输入: 颜色值
+ Set Pixel: Sets the color of a specified point on the screen. Input: color value
 *******************************************************************************/
 void SetPixel(u16 Color)
 {
@@ -224,7 +226,7 @@ void SetPixel(u16 Color)
   LCD_nWR_ACT();        //WR Cycle from 1 -> 0 -> 1
 }
 /*******************************************************************************
- Read Pixel: 读取当前屏幕上一个指定位置点的颜色。 输出: 颜色值
+ Read Pixel: Reads the color of a specified point on the current screen. Output: color value
 *******************************************************************************/
 u16 ReadPixel(void )
 {

@@ -16,7 +16,7 @@
 #define SE         0x20     /* Sector 4K Erase instruction */
 #define Dummy_Byte 0xA5
 #define WIP_Flag   0x01     /* Write In Progress (WIP) flag */
-#define TMAX       100000   /* 超时限制*/
+#define TMAX       100000   /* Timeout limit */
 
 u8   ExtFlashReadByte(void);
 u8   ExtFlashSendByte(u8 byte);
@@ -63,7 +63,7 @@ void ExtFlashSectorErase(u32 SecAddr)
 //  NVIC_EnableIRQ(USB_LP_IRQn);
 }
 /*******************************************************************************
- 写 Ext Flash 扇区
+ Write Ext Flash sector
 *******************************************************************************/
 void ExtFlashSecWr(u8* pBuf, u32 WrAddr);
 void ExtFlashSecWr(u8* pBuf, u32 WrAddr)
@@ -76,7 +76,7 @@ void ExtFlashSecWr(u8* pBuf, u32 WrAddr)
   }
 }
 /*******************************************************************************
- 写 Ext Flash 页
+ Write Ext Flash page
 *******************************************************************************/
 void ExtFlashPageProg(u8* pBuf, u32 WrAddr, u8 WrCmd)
 {

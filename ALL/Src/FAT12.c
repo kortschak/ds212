@@ -11,14 +11,14 @@
 
 typedef struct
 {
-  u32 FAT1_BASE;          // FAT1区开始地址
-  u32 FAT2_BASE;          // FAT2区开始地址
-  u32 ROOT_BASE;          // 根目录开始地址
-  u32 FILE_BASE;          // 文件区开始地址 
+  u32 FAT1_BASE;          // FAT1 area start address
+  u32 FAT2_BASE;          // FAT2 area start address
+  u32 ROOT_BASE;          // Root directory start address
+  u32 FILE_BASE;          // File area start address
   u32 FAT_LEN;
-  u32 SEC_LEN;            // 扇区长度 
-  u32 FAT_END;            // 链接结束
-  u8  FAT1_SEC;           // FAT1扇区数
+  u32 SEC_LEN;            // Sector length
+  u32 FAT_END;            // End of link
+  u8  FAT1_SEC;           // Number of FAT1 sectors
   u8  FAT2_SEC;
 }FAT_InitTypeDef;
 
@@ -43,7 +43,7 @@ int Init_Fat_Value(void)
   return 0;
 }
 /*******************************************************************************
- 读磁盘页面(256 Bytes)  包含USB读写冲突后重读
+ Read disk page (256 Bytes) - Contains USB read and write conflicts after reread.
 *******************************************************************************/
 u8 ReadDiskData(u8* pBuffer, u32 ReadAddr, u16 Lenght)
 {
@@ -52,12 +52,12 @@ u8 ReadDiskData(u8* pBuffer, u32 ReadAddr, u16 Lenght)
   while(1){
     Clash = 0;
     ExtFlashDataRd(pBuffer, ReadAddr, Lenght);
-    if(n++ > 6) return SEC_ERR;     // 超时出错返回
-    if(Clash == 0) return OK;       // 无冲突产生则返回
+    if(n++ > 6) return SEC_ERR;     // Timeout error return.
+    if(Clash == 0) return OK;       // Return without collision.
   }
 }
 /*******************************************************************************
- 写磁盘页面(256 Bytes)  包含USB读写冲突后重写
+ Write disk page (256 Bytes) - Contains USB read and write conflicts rewritten.
 *******************************************************************************/
 u8 ProgDiskPage(u8* pBuffer, u32 ProgAddr)
 {                         
@@ -66,12 +66,12 @@ u8 ProgDiskPage(u8* pBuffer, u32 ProgAddr)
   while(1){
     Clash = 0;
     ExtFlashSecWr(pBuffer, ProgAddr);
-    if(n++ > 6) return SEC_ERR;     // 超时出错返回
-    if(Clash == 0) return OK;       // 无冲突产生则返回
+    if(n++ > 6) return SEC_ERR;     // Timeout error return.
+    if(Clash == 0) return OK;       // Return without collision.
   }
 } 
 /*******************************************************************************
- 查找下一个链接簇号后返回，当前簇号保存在指针+1的位置
+ Finds the next linked cluster number and returns. The current cluster number is stored in the pointer +1 position.
 *******************************************************************************/
 u8 NextCluster(u16* pCluster)
 {
@@ -80,26 +80,26 @@ u8 NextCluster(u16* pCluster)
   
   Addr=FAT_V.FAT1_BASE +(*pCluster + *pCluster/2);
   
-  *(pCluster+1)= *pCluster;                                   // 保存前一个簇号
+  *(pCluster+1)= *pCluster;                                   // Save the previous cluster number.
   *pCluster = 0;
   if((*(pCluster+1) >=FAT_V.FAT_END)||(*(pCluster+1)< 2)) return SEC_ERR;
   if(ReadDiskData((u8*)&FatNum, Addr, 2)!= OK) return SEC_ERR;
-  *pCluster= (*(pCluster+1) & 1)?(FatNum >>4):(FatNum & 0xFFF);//指向下一个簇号
+  *pCluster= (*(pCluster+1) & 1)?(FatNum >>4):(FatNum & 0xFFF);//Point to the next cluster number.
   return OK; 
 }
 /*******************************************************************************
- 读文件扇区(512 Bytes), 返回时指针指向下一个簇号，当前簇号保存在指针+1的位置
+ Read file sector (512 Bytes), return pointer to the next cluster number. The current cluster number is stored in the pointer +1 position.
 *******************************************************************************/
 u8 ReadFileSec(u8* pBuffer, u16* pCluster)
 {
   u32 ReadAddr =FAT_V.FILE_BASE + FAT_V.SEC_LEN*(*pCluster-2);
 
   if(ReadDiskData(pBuffer, ReadAddr, FAT_V.SEC_LEN)!=OK) return SEC_ERR; 
-  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // 取下一个簇号
+  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // Get the next cluster number.
   return OK;
 } 
 /*******************************************************************************
- 写文件扇区(512/4096 Bytes)，填写当前FAT表及返回查找到的下一个簇号
+ Write file sector (512/4096 Bytes), fill in the current FAT table and return the next cluster number found.
 *******************************************************************************/
 u8 ProgFileSec(u8* pBuffer, u16* pCluster)
 {
@@ -107,7 +107,7 @@ u8 ProgFileSec(u8* pBuffer, u16* pCluster)
   u32 ProgAddr = FAT_V.FILE_BASE + FAT_V.SEC_LEN*(*pCluster-2);
   if(ProgDiskPage(pBuffer, ProgAddr)!= OK) return SEC_ERR; 
   
-  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // 取下一个簇号
+  if(NextCluster(pCluster)!=0) return FAT_ERR;                 // Get the next cluster number.
   Tmp = *(pCluster+1);
   if(*pCluster == 0){
     *pCluster = Tmp;
@@ -117,7 +117,7 @@ u8 ProgFileSec(u8* pBuffer, u16* pCluster)
   return OK;
 }
 /*******************************************************************************
- 查找空闲簇号，返回时指针指向下一个空闲簇号，当前簇号保存在指针+1的位置
+ Find the free cluster number. When it returns, the pointer points to the next free cluster number. The current cluster number is saved in the position of pointer +1.
 *******************************************************************************/
 u8 SeekBlank(u8* pBuffer, u16* pCluster)
 {
@@ -125,7 +125,7 @@ u8 SeekBlank(u8* pBuffer, u16* pCluster)
   u8   Buffer[2];
   u8   Tmp_Flag = 1;
 
-  *(pCluster+1)= *pCluster;                                    // 保存当前簇号
+  *(pCluster+1)= *pCluster;                                    // Save current cluster number.
 
   for(*pCluster=0; (*pCluster)<4095; (*pCluster)++){
     if(ReadDiskData(Buffer, FAT_V.FAT1_BASE +(*pCluster)+(*pCluster)/2, 2)!= 0)
@@ -144,15 +144,15 @@ u8 SeekBlank(u8* pBuffer, u16* pCluster)
   return OK;
 }         
 /*******************************************************************************
- 将下一簇号写入FAT表当前簇链接位，返回时指针指向下一簇号，指针+1为当前簇号
+ Writes the next cluster number to the FAT table's current cluster link bit. When it returns, the pointer points to the next cluster number. Pointer +1 is the current cluster number.
 *******************************************************************************/
 u8 SetCluster(u8* pBuffer, u16* pCluster)
 {
   u16  Offset, i, k;
   u32  SecAddr;
 
-  i = *(pCluster+1);                    // 提取原当前簇号
-  k = *pCluster;                        // 提取下一簇号
+  i = *(pCluster+1);                    // Extract the current cluster number.
+  k = *pCluster;                        // Extract the next cluster number.
   Offset = i+ i/2;
   SecAddr = FAT_V.FAT1_BASE +(Offset & 0xF000 );
   Offset &= 0x0FFF;
@@ -169,7 +169,7 @@ u8 SetCluster(u8* pBuffer, u16* pCluster)
   return OK;
 }
 /*******************************************************************************
- 读模式打开文件：返回文件第一个簇号及目录项地址或 0簇号及第一个空白目录项地址
+ Read Mode Open File: Returns the first cluster number and directory entry address of the file or 0 cluster number and the first blank directory entry address.
 *******************************************************************************/
 u8 OpenFileRd(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
 {
@@ -182,11 +182,11 @@ u8 OpenFileRd(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
       for(i=0; i<11; i++){
         if(pBuffer[n + i]!= 0){
           if(pBuffer[n + i]!= pFileName[i]) break;
-          if(i == 10){                             // 找到文件名
-            *pCluster = *(u16*)(pBuffer + n + 0x1A); // 文件第一个簇号
+          if(i == 10){                             // Find the file name.
+            *pCluster = *(u16*)(pBuffer + n + 0x1A); // The first cluster number of the file.
             return OK;         
           }
-        } else return NEW;               // 遇到第一个空白目录项后返回
+        } else return NEW;               // Returns after the first blank directory entry.
       }
       *pDirAddr += 32;
     }
@@ -194,7 +194,7 @@ u8 OpenFileRd(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
   return OVER;
 }
 /*******************************************************************************
- 写模式打开文件：返回文件第一个簇号及目录项地址
+ Write mode to open the file: return the file first cluster number and directory entry address.
 *******************************************************************************/
 u8 OpenFileWr(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
 {
@@ -202,19 +202,19 @@ u8 OpenFileWr(u8* pBuffer, u8* pFileName, u16* pCluster, u32* pDirAddr)
   
   i = OpenFileRd(pBuffer, pFileName, pCluster, pDirAddr);
   if(i != NEW) return i;
-  else{                                                    // 当前项为空白目录项
-    if(SeekBlank(pBuffer, pCluster)!= OK) return OVER;     // 若FAT表满返回
+  else{                                                    // The current item is a blank directory item.
+    if(SeekBlank(pBuffer, pCluster)!= OK) return OVER;     // If the FAT table is full, return overflow.
     n =*pDirAddr & 0xFFF;
     offset=*pDirAddr-n;
     if(ReadDiskData(pBuffer,offset, FAT_V.SEC_LEN)!= OK) return SEC_ERR; 
-    for(i=0; i<11; i++) pBuffer[n+i]= pFileName[i];      // 创建新目录项offset +
+    for(i=0; i<11; i++) pBuffer[n+i]= pFileName[i];      // Create new directory entry offset +
     *(u16*)(pBuffer + n + 0x1A)= *pCluster;
     if(ProgDiskPage(pBuffer,offset)!= OK) return SEC_ERR;
     return OK;
   }
 }                
 /*******************************************************************************
- 关闭文件，将结束符写入FAT表，将文件长度写入目录项，复制FAT1到FAT2
+ Close the file, write the terminator to the FAT table, write the file length to the directory entry, copy FAT1 to FAT2.
 *******************************************************************************/
 u8 CloseFile(u8* pBuffer, u32 Lenght, u16* pCluster, u32* pDirAddr)
 {

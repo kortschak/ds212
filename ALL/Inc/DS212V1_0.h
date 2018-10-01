@@ -1,5 +1,5 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
- Brief   : 底层硬件配置                                          Author : bure
+ Brief   : Low-level hardware configuration                        Author : bure
 *******************************************************************************/
 
 #define PRODSTR          "DS212"
@@ -16,14 +16,14 @@
 
 
 
-//------------------------------ KEY 相关宏定义 --------------------------------
+//------------------------------ KEY Related macro definitions --------------------------------
 
 #define KU_BIT            GPIO_Pin_7 /* GPIO_B */
 #define KD_BIT            GPIO_Pin_4 /* GPIO_B */
 #define KL_BIT            GPIO_Pin_3 /* GPIO_B */
 #define KR_BIT            GPIO_Pin_8 /* GPIO_B */
 
-//------------------------------ RCC 相关宏定义 --------------------------------
+//------------------------------ RCC Related macro definitions --------------------------------
 
 #define APB1_PERIPHS      RCC_APB1Periph_TIM2 | RCC_APB1Periph_TIM3  | \
                           RCC_APB1Periph_SPI2 | RCC_APB1Periph_I2C1  | \
@@ -39,7 +39,7 @@
                           RCC_AHBPeriph_ADC12 | RCC_AHBPeriph_ADC34  | \
                           RCC_AHBPeriph_DMA2  | RCC_AHBPeriph_DMA1
 
-//------------------------------ USB 相关宏定义 --------------------------------
+//------------------------------ USB Related macro definitions --------------------------------
 
 #define USB_DN            GPIO_Pin_11 /*GPIO_A*/
 #define USB_DP            GPIO_Pin_12 /*GPIO_A*/
@@ -53,7 +53,7 @@
 #define MAP_SWC           GPIOA, GPIO_PinSource14,  GPIO_AF_0     
 #define SWD_EVENTOUT      GPIOA, GPIO_PinSource13,  GPIO_AF_15
 #define SWC_EVENTOUT      GPIOA, GPIO_PinSource14,  GPIO_AF_15                              
-//---------------------------- LCD 显示相关宏定义 ------------------------------
+//---------------------------- LCD Display Related macro definitions ------------------------------
 
 #define LCD_nRD           GPIO_Pin_4 /*GPIO_D*/
 #define LCD_nWR           GPIO_Pin_5 /*GPIO_D*/
@@ -68,11 +68,11 @@
 #define LCD_PORT_OUT()    GPIOE->MODER = 0x55555555
 
 
-//------------------------------ 电池 相关宏定义 --------------------------------
+//------------------------------ Battery Related macro definitions --------------------------------
 #define V_BAT             GPIO_Pin_10 /*GPIO_D*/
 #define V_USB             GPIO_Pin_9  /*GPIO_D*/                           
                             
-//------------------------------ SPI 相关宏定义 --------------------------------
+//------------------------------ SPI Related macro definitions --------------------------------
 #define SPIx              SPI2
 #define SPI_RST           GPIO_Pin_8  /*GPIO_D*/
 #define SPI_CS            GPIO_Pin_12 /*GPIO_B*/
@@ -83,7 +83,7 @@
 #define MAP_MISO          GPIOB, GPIO_PinSource14, GPIO_AF_5
 #define MAP_MOSI          GPIOB, GPIO_PinSource15, GPIO_AF_5
                            
-//-------------------------- 背光及蜂鸣器相关宏定义 ----------------------------
+//-------------------------- Backlight and buzzer Related macro definitions ----------------------------
 
 #define TIM_BL            TIM8
 #define OUT_BL            GPIO_Pin_9 /*GPIO_B*/
@@ -96,7 +96,7 @@
 #define BUZZER(Val)       TIM_BZ->CCR4 = Val/2
 
 
-//-------------------------- 信号通道控制相关宏定义 ----------------------------
+//-------------------------- Signal channel control Related macro definitions ----------------------------
 
 #define TIM_PA           TIM2
 #define OUT_PA           GPIO_Pin_2  /*GPIO_A*/
@@ -136,24 +136,24 @@
 #define BZ_LOW           GPIOD->BSRR = SEL_BZ
 #define BZ_HIGH          GPIOD->BRR  = SEL_BZ
 
-//------------------------------  采样定时宏定义 -------------------------------
+//------------------------------  Sample timing macro definition -------------------------------
 
 #define TIM_AD           TIM1
 #define TIM_AD_CCR       TIM_AD->CCR3
 
-//------------------------------  采样传输宏定义 -------------------------------
+//------------------------------  Sample transmission macro definition -------------------------------
 
 #define DMA_CH_A         DMA1_Channel1
 #define DMA_CH_B         DMA2_Channel5
 
-//------------------------------  信号输出宏定义 -------------------------------
+//------------------------------  Signal output macro definition -------------------------------
 
 #define TIM_PO           TIM16
 #define TIM_DA           TIM7
 #define OUT_ANALG        DAC->DHR12R2
 #define OUT_DMA          DMA2_Channel4
 
-//------------------------------  相关宏定义 --------------------------------
+//------------------------------  Related macro definitions --------------------------------
 
 
 

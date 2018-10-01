@@ -1,5 +1,5 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
- Brief   : 底层硬件配置                                          Author : bure
+ Brief   : Low-level hardware configuration                     Author : bure
 *******************************************************************************/
 #ifndef __BIOS_H
 #define __BIOS_H
@@ -14,27 +14,27 @@ extern u8  NumStr[20];
 enum{LOW = 0, HIGH = 1, ANALOG = 2, PULSED = 4, SIMULTANEO = 5, INTERLEAVE = 6,};
 
 
-// 函数 u32 Info(u8 Item) 中 Item 的定义以及返回值类型说明
+// Function u32 Info(u8 Item) in Item Definition and return type description
 //=====+========+========+========+========+========+========+========+========+
-//Item:|产品型号|硬件版本| MCU型号| LCD型号| LCD型号|FPGA型号| DFU版本| OEM版本|
+//Item:|Product Model|Hardware Version|MCU Model|LCD Model|LCD Model|FPGA Model|DFU Version|OEM Version|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // RET:|   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 enum   {  PROD,     SCH,     MCU,     LCD,     ADC,    FPGA,     DFU,     OEM,
 //=====+========+========+========+========+========+========+========+========+
-//Item:| U盘容量|扇区大小|扇区数目|产品串号|授权许可|电源状态|输入电压|输入电流|
+//Item:|U disk capacity|Sector size|Number of sectors|Product serial number|License|Power state|Input voltage|Input current|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // RET:|   u8*  |   u16  |   u16  |   u32  |   u8   |   u16  | u16 mV | u16 mA |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
           DISK,   SECTOR,  AMOUNT,  DEV_SN,  LIC_OK,  P_INFO,  P_VUSB,  P_IUSB,
 //=====+========+========+========+========+========+========+========+========+
-//Item:|电源温度|电池电压|充电电流|放电电流|供电电压|充电电量|放电电量|正弦波表|
+//Item:|Power supply temperature|Battery voltage|Charge current|Discharge current|Supply voltage|Recharge power|Discharge power|Sine wave table|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // RET:|  u8 C  | u16 mV | u16 mA | u16 mA | u16 mV |   u32  |   u32  |   u16* |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
-         P_TEMP,  P_VBAT,  P_ICHG,  P_IBAT,  P_VAPS,  P_QNT1,  P_QNT2, SIN_TAB, 
+         P_TEMP,  P_VBAT,  P_ICHG,  P_IBAT,  P_VAPS,  P_QNT1,  P_QNT2, SIN_TAB,
 //=====+========+========+========+========+========+========+========+========+
-//Item:|三角波表|锯齿波表|采样计数|采样计数|输入按键|水平编码|垂直编码|
+//Item:|Triangle wave table|Sawtooth wave table|Sample count|Sample count|Input key|Horizontal coding|Vertical coding|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // RET:|   u16* |   u16* |   u16  |   u16  |   u8   |   u16  |   u16  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
@@ -45,27 +45,27 @@ enum   {  PROD,     SCH,     MCU,     LCD,     ADC,    FPGA,     DFU,     OEM,
 
 
 
-// 函数 void Ctrl(u8 Item, u32 Val) 中 Item 的定义以及 Val 类型说明
+// Function void Ctrl(u8 Item, u32 Val) in Item Definition and Val type description
 //=====+========+========+========+========+========+========+========+========+
-//Item:|系统配置| LCD清屏| LCD方向|毫秒延时|中断定时|讯响状态|讯响音量|背光亮度|
+//Item:|System Configuration| LCD clear screen| LCD direction|Millisecond delay|Interrupt timing|Sound state|Sound volume|Backlight brightness|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // Val:|   u8   |  Color |   0~3  |   mS   |   mS   |   0/1  |  0~99  |  0~99  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
-enum   {SYS_CFG, LCD_CLR, LCD_DIR, DELAYmS, SYS_INT, BUZZ_ST, BUZZVOL, B_LIGHT,    
+enum   {SYS_CFG, LCD_CLR, LCD_DIR, DELAYmS, SYS_INT, BUZZ_ST, BUZZVOL, B_LIGHT,
 //=====+========+========+========+========+========+========+========+========+
-//Item:|输出模式|脉冲分频|脉冲周期|脉冲宽度|模拟定时|模拟点数|模拟数据|模拟电平|
+//Item:|Output mode|Pulse frequency Division|Pulse period|Pulse width|Analog timing|Analog points|Analog data|Analog level|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // Val:|   0~2  |   u16  |   u16  |   u16  |  0~99  |   u16  |  u16*  |   u16  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
-        OUT_MOD, OUT_PSC, OUT_ARR, OUT_WTH, DAC_TIM, OUT_CNT, OUT_BUF, OUT_VAN, 
+        OUT_MOD, OUT_PSC, OUT_ARR, OUT_WTH, DAC_TIM, OUT_CNT, OUT_BUF, OUT_VAN,
 //=====+========+========+========+========+========+========+========+========+
-//Item:|电源使能| DC1电源| LDO电源|电源信号|采样状态|采样定时|采样缓冲|采样总数|
+//Item:|Power enable|DC1 power|LDO power|Power signal|Sampling status|Sampling timing|Sampling buffer|Sampling total|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // Val:|   0~1  |   u8   |   u8   |   u8   |   0~1  |   u16  |  u16*  |   u16  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
-         PM_EN,   PM_VDC1, PM_LDO, PM_CTRL, SMPL_ST, SMPLTIM, SMPLBUF, SMPLNUM, 
+         PM_EN,   PM_VDC1, PM_LDO, PM_CTRL, SMPL_ST, SMPLTIM, SMPLBUF, SMPLNUM,
 //=====+========+========+========+========+========+========+========+========+
-//Item:| CHA量程| CHB量程| CHA偏移| CHA偏移|采样模式|电压开关|
+//Item:| CHA range | CHB range | CHA offset | CHA offset | Sampling mode | Voltage switch |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // Val:|   0~1  |   u8   | 0~4095 | 0~4095 |  0~1   |   0~1  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
@@ -73,26 +73,26 @@ enum   {SYS_CFG, LCD_CLR, LCD_DIR, DELAYmS, SYS_INT, BUZZ_ST, BUZZVOL, B_LIGHT,
 //=====+========+========+========+========+========+========+========+========+
 
 
-// 函数 void Ctrl(SYS_CFG, Val) 中  Val 定义的设备类型说明
+// Function void Ctrl(SYS_CFG, Val) in  Val Defined device type description
 //=====+=================+=================+=================+=================+
-// Val:|   RCC 初始化    |  Timers 初始化  |   GPIO & OpAmp  |   TouchPad IRQ  |
+// Val:|   RCC initialization    |  Timers initialization  |   GPIO & OpAmp  |   TouchPad IRQ  |
 //-----+-----------------+-----------------+-----------------+-----------------+
 enum   {  RCC_DEV = 0x01,   TIM_DEV = 0x02,  GPIO_OPA = 0x04,   CTP_DEV = 0x08,
 //-----+-----------------+-----------------+-----------------+-----------------+
-//     |    I2C 初始化   |  ADC DAC 初始化 |    LCD 初始化   |    MSD 初始化   |
+//     |    I2C initialization   |  ADC DAC initialization |    LCD initialization   |    MSD initialization   |
 //-----+-----------------+-----------------+-----------------+-----------------+
             SPI = 0x10,   ADC_DAC = 0x20,   LCD_DEV = 0x40,  USB_DISK = 0x80,};
 //=====+=================+=================+=================+=================+
 
 
-// 函数 void Ctrl(AiRANGE/BiRANGE, AC+LV+ACT) 中 Val 定义的通道特性说明
+// Function void Ctrl(AiRANGE/BiRANGE, AC+LV+ACT) in Val Defined channel characteristics description
 //======+======================+=======================+=======================+
-// Val: |      AC/DC 耦合      |     低压/高压量程     |     接地/激活状态     |
+// Val: |      AC/DC coupling      |     Low/high voltage range     |     Grounding/activation     |
 //------+----------------------+-----------------------+-----------------------+
 enum    { AC = 0x00, DC = 0x02,  LV = 0x00,  HV = 0x01, GND = 0x00, ACT = 0x04,};
 //======+======================+=======================+=======================+
 
-//------------------------------ SCI 相关宏定义 --------------------------------
+//------------------------------ SCI related macro definitions --------------------------------
 
 #define SCI_CLK_HIGH()    GPIOA->BSRR = USB_DN
 #define SCI_DIO_HIGH()    GPIOA->BSRR = USB_DP
@@ -102,7 +102,7 @@ enum    { AC = 0x00, DC = 0x02,  LV = 0x00,  HV = 0x01, GND = 0x00, ACT = 0x04,}
 
 #define SCI_DIO_ST        GPIOA->IDR & USB_DP
 
-//----------------------- Ext Flash 控制相关宏定义 -----------------------------
+//----------------------- Ext Flash Control related macro definitions -----------------------------
 
 #define ExtFlash_CS_HIGH()  GPIOB->BSRR = SPI_CS
 #define ExtFlash_CS_LOW()   GPIOB->BRR  = SPI_CS

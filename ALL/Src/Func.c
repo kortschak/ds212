@@ -8,7 +8,7 @@
 u32 TestCnt = 0;
 
 /*******************************************************************************
-  16 bites 大端模式数据转换为小端模式
+  16 bytes Big-endian mode data is converted to little-endian mode.
 *******************************************************************************/
 void Rev16(u16* pBuf)
 {
@@ -17,7 +17,7 @@ void Rev16(u16* pBuf)
   asm(" STRH    R1, [R0] ");
 }
 /*******************************************************************************
-  32 bites 大端模式数据转换为小端模式
+  32 bytes Big-endian mode data is converted to little-endian mode.
 *******************************************************************************/
 void Rev32(u32* pBuf)
 {
@@ -26,7 +26,7 @@ void Rev32(u32* pBuf)
   asm(" STR     R1, [R0] ");
 }
 /*******************************************************************************
-  计算 x 的 y 次方
+  Calculate the yth power of x.
 *******************************************************************************/
 u32 Power(u8 x, u8 y)
 {
@@ -37,7 +37,7 @@ u32 Power(u8 x, u8 y)
   return m;
 }
 /*******************************************************************************
-  计算 10 的 x 次方
+  Calculate the xth power of 10.
 *******************************************************************************/
 u32 Exp(u8 x)
 {
@@ -47,7 +47,7 @@ u32 Exp(u8 x)
   return m;
 }
 /*******************************************************************************
-  在数据区中查找第 Idx 个字符串的起始地址
+  Find the starting address of the Idx string in the data area
 *******************************************************************************/
 u8* SeekStr(u8* ptr, u8 Idx)
 {
@@ -55,7 +55,7 @@ u8* SeekStr(u8* ptr, u8 Idx)
   return ptr;
 }
 /*******************************************************************************
- Value2Str: 32位数转e位有效数字符串 + 量纲字符串（结构为Unit[][6]）+  模式
+ Value2Str: 32-bit to e-digit effective number character string + dimension string (structure is Unit[][6]) + mode
 *******************************************************************************/
 void Value2Str(u8 *p, s32 n, uc8 *pUnit, s8 e, u8 Mode)
 {
@@ -68,18 +68,18 @@ void Value2Str(u8 *p, s32 n, uc8 *pUnit, s8 e, u8 Mode)
     if(n <  0){*p++ = '-'; n = -n;}
   }else if(Mode == UNSIGN) *p++ = ' ';
     
-  while(m >= 10){m /= 10; i++;} // 计算 n 的有效位数 i
+  while(m >= 10){m /= 10; i++;} // Calculate the number of significant bits of n; place in i.
   if((i%3 == 2)&&(e == 2)) e++;
   m = n; i = 0;
   while(m >= 10){
     m /= 10;
-    if(++i > e) c *= 10;        // n 的有效位数 i 大于e则计算四舍五入值
+    if(++i > e) c *= 10;        // The number of significant digits of n, calculate the rounding value if greater than e; place in i.
   }
-  if(i >= e) n += c;            // n 加上四舍五入值
+  if(i >= e) n += c;            // Add rounding to n.
   m = n; i = 0;
-  while(m >= 10){m /= 10; i++;} // 重新计算 n 的有效位数 i
+  while(m >= 10){m /= 10; i++;} // Recalculate the number of significant digits of n; place in i.
 
-  m = i/3;                      // 计算量纲单位取值偏移量
+  m = i/3;                      // Calculate dimension unit offset.
   while(e--){
     *p++ = '0'+ n/Exp(i);
     if(e &&(i%3 == 0)) *p++ = '.';
@@ -88,30 +88,30 @@ void Value2Str(u8 *p, s32 n, uc8 *pUnit, s8 e, u8 Mode)
   }
   pUnit += 6*m;                 //
   do {*p++ = *pUnit;}
-  while(*pUnit++);              // 加上量纲字符字符串
+  while(*pUnit++);              // With dimensional character strings
 }
 
 /*******************************************************************************
  Two ASCII character Change to 1 Byte HEX data
 *******************************************************************************/
-u8 Str2Byte(u8 x,u8 y) // 双ASCII字符转1字节二进制数
+u8 Str2Byte(u8 x,u8 y) // Double ASCII character to 1-byte binary number
 {
   uc8 Hexcode[17]="0123456789ABCDEF";
   u8 i, Temp=0;
 
-  if(x>='a' && x<='z')  x-=32;     // 小写改大写
-  if(y>='a' && y<='z')  y-=32;     // 小写改大写
+  if(x>='a' && x<='z')  x-=32;     // Lower case to capital
+  if(y>='a' && y<='z')  y-=32;     // Lower case to capital
   for(i=0;i<16;i++){
-    if(Hexcode[i]==x)  Temp+=i*16; // 将字符转为高4位十六进制数值
+    if(Hexcode[i]==x)  Temp+=i*16; // Convert the character to a high 4-digit hexadecimal value.
   }
   for(i=0;i<16;i++){
-    if(Hexcode[i]==y)  Temp+=i;    // 将字符转为低4位十六进制数值
+    if(Hexcode[i]==y)  Temp+=i;    // Convert the character to a lower 4-digit hexadecimal value.
   }
   return Temp;
 }
 
 /*******************************************************************************
- u16ToDec4Str: 无符号16位二进制数转4位十进制字符串，有效数字前填空格
+ u16ToDec4Str: Unsigned 16-bit binary digits to 4-digit decimal string with spaces before valid digits.
 *******************************************************************************/
 void u16ToDec4Str(u8 *p, u16 n)
 {
@@ -140,7 +140,7 @@ void u16ToDec4Str(u8 *p, u16 n)
   }
 }
 /*******************************************************************************
- u16ToDec5Str: 无符号16位二进制数转5位十进制字符串
+ u16ToDec5Str: Unsigned 16-bit binary number to 5-digit decimal string
 *******************************************************************************/
 void u16ToDec5Str(u8 *p, u16 n)
 {

@@ -1,5 +1,5 @@
 /********************* (C) COPYRIGHT 2017 e-Design Co.,Ltd. ********************
- Brief   : 底层硬件配置                                            Author : bure
+ Brief   : Low-level hardware configuration                      Author : bure
 *******************************************************************************/
 #ifndef __DRIVE_H
 #define __DRIVE_H
@@ -24,7 +24,7 @@ extern u16  Key_S_Time, Vb_Sum, Vbattrey;;
 #define WAIT_TIMES      100000
 
 //=====+========+========+========+========+========+========+========+========+
-//Item:|产品型号|硬件版本| MCU型号| LCD型号| LCD型号|FPGA型号| DFU版本| OEM版本|
+//Item:|Product model|Hardware version| MCU model| LCD model| LCD model|FPGA model| DFU version| OEM version|
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
 // RET:|   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |   u8*  |
 //-----+--------+--------+--------+--------+--------+--------+--------+--------+
@@ -33,20 +33,20 @@ extern u16  Key_S_Time, Vb_Sum, Vbattrey;;
 
 
 //----------------------------- key code define ------------------------------//
-#define K_RUN           0x02     /* RUN键             */
-#define K_M             0x04     /* Bit2           M键*/
-#define K_UP            0x08     /* Bit3           U键*/
-#define K_DOWN          0x10     /* Bit4           D键*/
-#define K_LEFT          0x20     /* Bit5           L键*/
-#define K_RIGHT         0x40     /* Bit6           R键*/
-#define K_S             0x80     /* Bit7           S键*/
+#define K_RUN           0x02     /* RUN key          */
+#define K_M             0x04     /* Bit2           M key*/
+#define K_UP            0x08     /* Bit3           U key*/
+#define K_DOWN          0x10     /* Bit4           D key*/
+#define K_LEFT          0x20     /* Bit5           L key*/
+#define K_RIGHT         0x40     /* Bit6           R key*/
+#define K_S             0x80     /* Bit7           S key*/
 
-#define KEY_DOUBLE_M    0x4000   /*M双击*/
-#define KEY_DOUBLE_S    0x8000   /*S双击*/
+#define KEY_DOUBLE_M    0x4000   /*M double click*/
+#define KEY_DOUBLE_S    0x8000   /*S double click*/
 
-#define R_HOLD          0x0200   /*RUN长按*/
-#define S_HOLD          0x2000   /*M长按  */
-#define M_HOLD          0x1000   /*S长按  */
+#define R_HOLD          0x0200   /*RUN hold*/
+#define S_HOLD          0x2000   /*M press  */
+#define M_HOLD          0x1000   /*S press  */
 
 //----------------------------------------------------------------------------//
 void USB_MSD_Config(void);

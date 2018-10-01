@@ -36,13 +36,13 @@
 #define DATA_CNT       6
 #define F_TYPE         7
 #define F_FLAG         8
-#define SEG_DATA       9               /* 通信包缓冲区 9~26 共17字节*/
+#define SEG_DATA       9               /* Envelope Buffer 9-26 Total 17 bytes */
 
 void Disk_SecWr(u8* pBuf, u32 DiskAddr);
 void Disk_SecRd(u8* pBuf, u32 DiskAddr);
 u8   Char2Nib(u8 x);
-u8   *SecBuf, *Var, *Data;   u32* V32; // 磁盘工作区指针
-u8   DiskBuf[SECTOR_SIZE+32+28];       // USB 磁盘工作数据区
+u8   *SecBuf, *Var, *Data;   u32* V32; // Disk workspace pointer
+u8   DiskBuf[SECTOR_SIZE+32+28];       // USB disk working data area
 
 extern u16 Smpl[0x4000];
 
